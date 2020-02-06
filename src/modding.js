@@ -1,0 +1,1 @@
+var ApplyMod = (mod_code) => setInterval(mod_code,0);
