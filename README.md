@@ -16,6 +16,7 @@ The Latest Version And All It's Contents
 
 ## Soon:
 
+- [ ] Uploading Icons And Plugins
 - [ ] New Wiki 
 - [ ] More Examples And Games
 - [ ] New Rewritten Docs,And API Cheatsheet
