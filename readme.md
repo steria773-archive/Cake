@@ -43,7 +43,7 @@ A HTML5 Game Framework/Engine To Make HTMl5 Games Rapidly!!!
 Most Of Cake Game Framework/Engine Functions Written As Variables With Arrow Function Values,Allowing It To Be Modified In-Game Or Web Console Or From Code
 
 ### Scripting(Game Programming)
-- Coding The Game Can Be In JavaScript Or CoffeeScript Or LiveScript Or TypeScript
+- Coding The Game Can Be In JavaScript Or Any Programming Language(s) That Compiles To JavaScript(Your Call)
 - Also You Can Use Any Language But You Need To Find A Way To Compile That Language's Code To JavaScript
 - You Can Call Native Code (From Device) With It's Default Compiler(Python,Ruby, Or Any)
 - Scripting Languages Tested On Cake Game Framework/Engine:
