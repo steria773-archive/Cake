@@ -64,11 +64,11 @@ Cake Can Be Used For Huge HTML5 Games,Altough There Is Some Simple Games And Exa
 
 ### Games
 
-1. Treasure Island
-2. Pong
-3. Rotator
-4. Dash
-5. Evada
+1. [Treasure Island](https://rabios.github.io/Cake/games/treasure_island.html)
+2. [Pong](https://rabios.github.io/Cake/games/pong.html)
+3. [Rotator](https://rabios.github.io/Cake/games/rotator.html)
+4. [Dash](https://rabios.github.io/Cake/games/dash.html)
+5. [Evada](https://rabios.github.io/Cake/games/evada.html)
 
 ### Examples
 
