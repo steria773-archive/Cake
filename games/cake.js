@@ -2583,9 +2583,15 @@ var RGB = (r, g, b) =>
 	if (Unknown(r)) r = 0;
 	if (Unknown(g)) g = 0;
 	if (Unknown(b)) b = 0;
-	return `rgb(${r.toString()},${g.toString()},${b.toString()})`;
+	return `rgb(${r},${g},${b})`;
 };
-
+var HSL = (h, s, l) =>
+{
+	if (Unknown(h)) h = 0;
+	if (Unknown(s)) s = 0;
+	if (Unknown(l)) l = 0;
+	return `rgb(${h},${s},${l})`;
+};
 var TranslateBackground = (horizontal, vertical) =>
 {
 	cakecanvas.style.backgroundAttachment = "fixed";
@@ -2678,7 +2684,9 @@ var HideCanvas = () => cakecanvas.style.visibility = "hidden";
 var ShowCanvas = () => cakecanvas.style.visibility = "visible";
 var ConvertToImage = () => cakecanvas.toDataURL();
 var Screenshot = () => window.open(cakecanvas.toDataURL());
-
+var RandomColor = () => { return `rgb(${Math.floor(Math.random() * 256)},${Math.floor(Math.random() * 256)},${Math.floor(Math.random() * 256)})`; };
+var RandomBetween = (x) => { return Math.floor(Math.random() * x); };
+var RandomAlpha = () => cakepen.globalAlpha = Math.random();
 
 //Module: Game
 //Cake Game Library!!!
@@ -2693,6 +2701,7 @@ var CrashGame = () =>
 var ViewSourceCode = (index) => window.open(document.scripts[index].src);
 var ViewGameSourceCode = () => window.open(document.scripts[2].src);
 var StartProcess = (dir) => window.open("file:///" + dir.toString);
+var UpdateCake = () => Import("https://cdn.jsdelivr.net/gh/Rabios/Cake/build/cake.js");
 
 //Module: Components(Game Objects)
 //Cake Library For Creating Players With Shape,Or Image,Or Custom Functioned Type Or Shape!!!
