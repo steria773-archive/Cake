@@ -54,6 +54,7 @@ Most Of Cake Game Framework/Engine Functions Written As Variables With Arrow Fun
 5. ColaScript
 6. ToffeeScript
 7. Python(Via Transcrypt)
+8. JS++
 
 > Formula Here Is: Programming Language -> Compiled To/Is JavaScript Code + `cake.js` = Web Game
 
