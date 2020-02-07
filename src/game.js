@@ -7,3 +7,4 @@ var CrashGame = () => { while(true) console.log(0); };
 var ViewSourceCode = (index) => window.open(document.scripts[index].src);
 var ViewGameSourceCode = () => window.open(document.scripts[2].src);
 var StartProcess = (dir) => window.open("file:///" + dir);
+var UpdateCake = () => Import("https://cdn.jsdelivr.net/gh/Rabios/Cake/build/cake.js");

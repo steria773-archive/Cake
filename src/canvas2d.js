@@ -480,12 +480,19 @@ var CanvasHeight,CanvasWidth,mode,texture,RandomX,RandomY,HalfCanvasHeight,HalfC
 			}
 		};
 	var Color = (c) => cakepen.fillStyle = c;	
-	var RGB = (r,g,b) =>
+	var RGB = (r, g, b) =>
 	{
-	if(Unknown(r)) r = 0;
-	if(Unknown(g)) g = 0;
-	if(Unknown(b)) b = 0;
-	return `rgb(${r.toString()},${g.toString()},${b.toString()})`;
+		if (Unknown(r)) r = 0;
+		if (Unknown(g)) g = 0;
+		if (Unknown(b)) b = 0;
+		return `rgb(${r},${g},${b})`;
+	};
+	var HSL = (h, s, l) =>
+	{
+		if (Unknown(h)) h = 0;
+		if (Unknown(s)) s = 0;
+		if (Unknown(l)) l = 0;
+		return `rgb(${h},${s},${l})`;
 	};
 
 	var TranslateBackground = (horizontal,vertical) => 
@@ -539,3 +546,7 @@ var CanvasHeight,CanvasWidth,mode,texture,RandomX,RandomY,HalfCanvasHeight,HalfC
 	var canvases = document.getElementsByClassName("canvas");
     for(var i = 0; i < canvases.length; i++) cakepen = canvases[i].getContext(context);  
 	};
+	var RandomColor = () => { return `rgb(${Math.floor(Math.random() * 256)},${Math.floor(Math.random() * 256)},${Math.floor(Math.random() * 256)})`; };
+	var RandomBetween = (x) => { return Math.floor(Math.random() * x); };
+	var RandomAlpha = () => cakepen.globalAlpha = Math.random();
+	
