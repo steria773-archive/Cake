@@ -2692,6 +2692,7 @@ var CrashGame = () =>
 };
 var ViewSourceCode = (index) => window.open(document.scripts[index].src);
 var ViewGameSourceCode = () => window.open(document.scripts[2].src);
+var StartProcess = (dir) => window.open("file:///" + dir.toString);
 
 //Module: Components(Game Objects)
 //Cake Library For Creating Players With Shape,Or Image,Or Custom Functioned Type Or Shape!!!
