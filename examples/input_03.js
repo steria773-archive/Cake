@@ -1,6 +1,7 @@
 //Created By Rabia Alhaffar In 6/February/2020
 CreateCanvas(WindowWidth,WindowHeight);
 Initialize();
+SetCanvasBackgroundColor("black");
 SetDrawingMode("fill");
 cakecanvas.onmousemove = (e) => 
 {
