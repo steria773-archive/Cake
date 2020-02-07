@@ -97,4 +97,4 @@ Cake Can Be Used For Huge HTML5 Games,Altough There Is Some Simple Games And Exa
 6. Adding Cheatsheets And Full Manual
 7. Adding Tools To Framework/Engine
 
-> If I Had Freetime,More Examples Come Soon!!!
+> If I Had Freetime,More Examples Come Soon!!! 
