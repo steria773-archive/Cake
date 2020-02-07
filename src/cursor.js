@@ -1,8 +1,7 @@
 //Created By Rabia Alhaffar In 5/February/2020
 //A Library To Change Cursor Shape To Image!!!
 var HideCursor = () => cakecanvas.style.cursor = "none";
-var HideCursorFully = () => document.body.style.cursor = "none";
-var ShowCursor = () => document.body.style.cursor = "pointer";
+var ShowCursor = () => cakecanvas.style.cursor = "auto";
 var SetCursor = (img_src,type,cursor_size) =>
 {
 var cursor_image;
