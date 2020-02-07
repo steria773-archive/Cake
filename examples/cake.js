@@ -2678,7 +2678,8 @@ var HideCanvas = () => cakecanvas.style.visibility = "hidden";
 var ShowCanvas = () => cakecanvas.style.visibility = "visible";
 var ConvertToImage = () => cakecanvas.toDataURL();
 var Screenshot = () => window.open(cakecanvas.toDataURL());
-
+var RandomColor = () => { return `rgb(${Math.floor(Math.random() * 256)},${Math.floor(Math.random() * 256)},${Math.floor(Math.random() * 256)})`; };
+var RandomAlpha = () => { return Math.random(); };
 
 //Module: Game
 //Cake Game Library!!!
