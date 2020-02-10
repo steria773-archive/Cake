@@ -43,4 +43,4 @@
 # Important To Read
 1. WinJS Comes With Visual Studio Versions 2012,2013,2015,2017,2019
 2. Adobe Phonegab Build Is Online Build So You Do Not Need To Download Anything
-3. NW.js Is Better Than Web2GUI In Stability
+3. NW.js Is Better Than Web2Executable In Stability 
