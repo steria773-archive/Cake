@@ -17,7 +17,7 @@ Notes About Native Calling Here:
 */
 var child_process = require("child_process");
 var CallBatch = (script) =>           child_process.exec("start " + script);
-var CallPython = (script) =>          child_process.exec("start python " + [script]);
+var CallPython = (script) =>          child_process.exec("start python " + script);
 var CallJanet = (script) =>           child_process.exec("start janet " + script);
 var CallScript = (script) =>          child_process.exec("start node " + script);
 var CallJSC = (script) =>             child_process.exec("start jsc " + script);     

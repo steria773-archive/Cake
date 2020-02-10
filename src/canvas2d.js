@@ -6,7 +6,7 @@ var WindowHeight = window.innerHeight,WindowWidth = window.innerWidth,ScreenHeig
 //Undefined Values(Defined It's Value When You Initialize The Engine In-Game Code!!!)
 var CanvasHeight,CanvasWidth,mode,texture,RandomX,RandomY,HalfCanvasHeight,HalfCanvasWidth,cakecanvas,cakepen;
 //Game Graphics Functions!!!
-		var DrawText = (x,y,text,color,stroke_color,textAlign) =>
+		var DrawText = (x,y,text,color,stroke_color,textAlign,alpha) =>
 		{
 			if(Unknown(x)) x = 0;
 			if(Unknown(y)) y = 0;
@@ -14,7 +14,8 @@ var CanvasHeight,CanvasWidth,mode,texture,RandomX,RandomY,HalfCanvasHeight,HalfC
 			if(Unknown(color)) color = "black";
 			if(Unknown(stroke_color)) stroke_color = color;
 			if(Unknown(textAlign)) textAlign = "";
-			cakepen.fillStyle = color,cakepen.strokeStyle = stroke_color,cakepen.textAlign = textAlign;
+			if(Unknown(alpha)) alpha = 1.0;
+			cakepen.globalAlpha = alpha,cakepen.fillStyle = color,cakepen.strokeStyle = stroke_color,cakepen.textAlign = textAlign;
 			if(mode == "fill") cakepen.fillText(text,x,y);
 			if(mode == "stroke") cakepen.strokeText(text,x,y);
 			if(mode == "custom") { cakepen.fillText(text,x,y); cakepen.strokeText(text,x,y); }	
@@ -34,7 +35,7 @@ var CanvasHeight,CanvasWidth,mode,texture,RandomX,RandomY,HalfCanvasHeight,HalfC
 			if(Unknown(line_w)) line_width = 1;
 			cakepen.lineHeight = line_height,cakepen.lineWidth = line_width;
 		};
-		var DrawRect = (x,y,width,height,color,stroke_color) =>
+		var DrawRect = (x,y,width,height,color,stroke_color,alpha) =>
 		{
 			if(Unknown(x)) x = 0;
 			if(Unknown(y)) y = 0;
@@ -43,13 +44,15 @@ var CanvasHeight,CanvasWidth,mode,texture,RandomX,RandomY,HalfCanvasHeight,HalfC
 			if(!Unknown(color)) cakepen.fillStyle = color;
 			if(Unknown(color)) cakepen.fillStyle = "black";
 			if(!Unknown(stroke_color)) cakepen.strokeStyle = stroke_color;
-			if(Unknown(stroke_color)) cakepen.strokeStyle = color;			
+			if(Unknown(stroke_color)) cakepen.strokeStyle = color;
+			if(Unknown(alpha)) alpha = 1.0;
+			cakepen.globalAlpha = alpha;			
 			if(mode == "fill") cakepen.fillRect(x,y,width,height);
 			if(mode == "stroke") cakepen.strokeRect(x,y,width,height);
 			if(mode == "custom") { cakepen.fillRect(x,y,width,height); cakepen.stroke(); }
 		};
 
-		var DrawLine = (line_height,line_width,start_x,start_y,end_x,end_y,color) =>
+		var DrawLine = (line_height,line_width,start_x,start_y,end_x,end_y,color,alpha) =>
 		{
 			if(Unknown(start_x)) start_x = 0;
 			if(Unknown(start_y)) start_y = 0;
@@ -57,7 +60,8 @@ var CanvasHeight,CanvasWidth,mode,texture,RandomX,RandomY,HalfCanvasHeight,HalfC
 			if(Unknown(end_y)) end_y = 0;
 			if(Unknown(line_h)) line_height = 1;
 			if(Unknown(line_w)) line_width = 1;
-			cakepen.lineHeight = line_height,cakepen.lineWidth = line_width;
+			if(Unknown(alpha)) alpha = 1.0;
+			cakepen.globalAlpha = alpha,cakepen.lineHeight = line_height,cakepen.lineWidth = line_width;
 			cakepen.beginPath();
 			if(Unknown(color)) color = "black";
 			cakepen.strokeStyle = color;
@@ -67,11 +71,12 @@ var CanvasHeight,CanvasWidth,mode,texture,RandomX,RandomY,HalfCanvasHeight,HalfC
 			cakepen.closePath();
 		};
 
-		var DrawGrid = (gridsize,color) =>
+		var DrawGrid = (gridsize,color,alpha) =>
 		{
 			if(Unknown(gridsize)) gridsize = 10;
 			if(Unknown(color)) color = "black";
-			cakepen.fillStyle = color;
+			if(Unknown(alpha)) alpha = 1.0;
+			cakepen.globalAlpha = alpha,cakepen.fillStyle = color;
 			var grid_loop_width = cakecanvas.width / gridsize,grid_loop_height = cakecanvas.height / gridsize;
 			var x = 0,y = 0;
 			for(var i = 0;i < grid_loop_height;i++)
@@ -85,14 +90,15 @@ var CanvasHeight,CanvasWidth,mode,texture,RandomX,RandomY,HalfCanvasHeight,HalfC
 				x = 0,y = y + gridsize;
 			}
 			};
-		var DrawCircle = (x,y,radius,color,stroke_color) =>
+		var DrawCircle = (x,y,radius,color,stroke_color,alpha) =>
 		{
 			        if(Unknown(x)) x = 0;
 					if(Unknown(y)) y = 0;
                     if(Unknown(radius)) radius = 1;
 					if(Unknown(color)) color = "black";
 					if(Unknown(stroke_color)) stroke_color = "black";
-					cakepen.fillStyle = color,cakepen.strokeStyle = stroke_color;
+					if(Unknown(alpha)) alpha = 1.0;
+					cakepen.globalAlpha = alpha,cakepen.fillStyle = color,cakepen.strokeStyle = stroke_color;
 					cakepen.beginPath();
                     cakepen.arc(x, y, radius, 90, 180 * Math.PI);
 				    if(mode == "fill") cakepen.fill();
@@ -100,7 +106,7 @@ var CanvasHeight,CanvasWidth,mode,texture,RandomX,RandomY,HalfCanvasHeight,HalfC
 					if(mode == "custom") { cakepen.stroke(); cakepen.fill(); }
 					cakepen.closePath();
 			};
-			var DrawArc = (x,y,radius,color,stroke_color,startAngle,endAngle) =>
+			var DrawArc = (x,y,radius,color,stroke_color,startAngle,endAngle,alpha) =>
 			{
 						if(Unknown(x)) x = 0;
 						if(Unknown(y)) y = 0;
@@ -109,7 +115,8 @@ var CanvasHeight,CanvasWidth,mode,texture,RandomX,RandomY,HalfCanvasHeight,HalfC
 						if(Unknown(endAngle)) endAngle = 180;				
 						if(Unknown(color)) color = "black";
 						if(Unknown(stroke_color)) stroke_color = "black";
-						cakepen.fillStyle = color,cakepen.strokeStyle = stroke_color;
+						if(Unknown(alpha)) alpha = 1.0;
+						cakepen.globalAlpha = alpha,cakepen.fillStyle = color,cakepen.strokeStyle = stroke_color;
 						cakepen.beginPath();
 						cakepen.arc(x, y, radius, startAngle, endAngle);
 						if(mode == "fill") cakepen.fill();
@@ -118,7 +125,7 @@ var CanvasHeight,CanvasWidth,mode,texture,RandomX,RandomY,HalfCanvasHeight,HalfC
 						cakepen.closePath();
 				};
 
-		var DrawTri = (a,b,c,size,color,stroke_color) =>
+		var DrawTri = (a,b,c,size,color,stroke_color,alpha) =>
 		{
 			if(Unknown(a)) a = 0;
 			if(Unknown(b)) b = 0;
@@ -126,7 +133,8 @@ var CanvasHeight,CanvasWidth,mode,texture,RandomX,RandomY,HalfCanvasHeight,HalfC
 			if(Unknown(size)) size = 0;
 			if(Unknown(color)) color = "black";
 			if(Unknown(stroke_color)) stroke_color = color;
-			cakepen.fillStyle = color,cakepen.strokeStyle = stroke_color;
+			if(Unknown(alpha)) alpha = 1.0;
+			cakepen.globalAlpha = alpha,cakepen.fillStyle = color,cakepen.strokeStyle = stroke_color;
 			cakepen.beginPath();
 		    cakepen.moveTo(a,b);
 		    cakepen.lineTo(b,c);
@@ -138,7 +146,7 @@ var CanvasHeight,CanvasWidth,mode,texture,RandomX,RandomY,HalfCanvasHeight,HalfC
 			cakepen.closePath();
 		};
 		
-		var DrawTriangle = (x1,y1,x2,y2,x3,y3,size,color,stroke_color) =>
+		var DrawTriangle = (x1,y1,x2,y2,x3,y3,size,color,stroke_color,alpha) =>
 		{
 			if(Unknown(x1)) x1 = 0;
 			if(Unknown(y1)) y1 = 0;
@@ -149,8 +157,8 @@ var CanvasHeight,CanvasWidth,mode,texture,RandomX,RandomY,HalfCanvasHeight,HalfC
 			if(Unknown(size)) size = 0;
 			if(Unknown(color)) color = "black";
 			if(Unknown(stroke_color)) stroke_color = color;
-			cakepen.fillStyle = color;
-			cakepen.strokeStyle = stroke_color;
+			if(Unknown(alpha)) alpha = 1.0;
+			cakepen.globalAlpha = alpha,cakepen.fillStyle = color,cakepen.strokeStyle = stroke_color;
 			cakepen.beginPath();
 		    cakepen.moveTo(x1,y1);
 		    cakepen.lineTo(x2,y2);
@@ -163,46 +171,47 @@ var CanvasHeight,CanvasWidth,mode,texture,RandomX,RandomY,HalfCanvasHeight,HalfC
 		};	
 		var ClearCanvas = () =>
 		{
-		cakepen.clearRect(0,0,cakecanvas.height,cakecanvas.width);
+		cakepen.clearRect(0,0,cakecanvas.width,cakecanvas.height);
 		cakecanvas.height = cakecanvas.height,cakecanvas.width = cakecanvas.width;	
 		};
 		
-		var DrawPolygon = (points,color,stroke_color) =>
+		var DrawPolygon = (points,color,stroke_color,alpha) =>
 		{
 		 if(Unknown(color)) color = "black";
 		 if(Unknown(stroke_color)) stroke_color = color; 
-		 cakepen.fillStyle = color,cakepen.strokeStyle = stroke_color;
+		 if(Unknown(alpha)) alpha = 1.0;
+		 cakepen.globalAlpha = alpha,cakepen.fillStyle = color,cakepen.strokeStyle = stroke_color;
 		 if (points.length <= 0) return;
+		 cakepen.beginPath();
          cakepen.moveTo(points[0][0], points[0][1]);
          for (var i = 0; i < points.length; i++) cakepen.lineTo(points[i][0], points[i][1]);
          if (mode == "fill") cakepen.fill();
          if (mode == "stroke") cakepen.stroke();
 		 if (mode == "custom") { cakepen.fill(); cakepen.stroke(); }
+		 cakepen.closePath();
 		 };		 
 		
-		var DrawPolygonLineSides = (x,y,size,sides,color,stroke_color,start_angle,anticlockwise) =>
+		var DrawPolygonLineSides = (x,y,size,sides,color,stroke_color,start_angle,end_angle,alpha) =>
 		{
 		if(Unknown(x)) x = 0;
 		if(Unknown(y)) y = 0;
 		if(Unknown(size)) size = 1;
 		if(Unknown(color)) color = "black";
 		if(Unknown(sides)) sides = 1;
-		if(Unknown(anticlockwise)) anticlockwise = false;
 		if(Unknown(start_angle)) start_angle = 90;
 		if(Unknown(end_angle)) end_angle = 180 * Math.PI;
 		if(Unknown(stroke_color)) stroke_color = color;
-		cakepen.fillStyle = color,cakepen.strokeStyle = stroke_color;
+		if(Unknown(alpha)) alpha = 1.0;
+		cakepen.globalAlpha = alpha,cakepen.fillStyle = color,cakepen.strokeStyle = stroke_color;
 		cakepen.beginPath();
-        if (sides < 3) return;
         var a = 360 / sides;
-        a = anticlockwise? -a : a;
 		cakepen.moveTo(x,y);
         for (var i = 1; i < sides; i++) cakepen.lineTo(size * Math.cos(a * i),size * Math.sin(a * i));
         cakepen.closePath();
 		cakepen.fill();
 		};
 
-	    var DrawTexture = (url,x,y,width,height) =>
+	    var DrawTexture = (url,x,y,width,height,alpha) =>
 		{
 		texture = new Image();
 		texture.src = url;
@@ -210,6 +219,8 @@ var CanvasHeight,CanvasWidth,mode,texture,RandomX,RandomY,HalfCanvasHeight,HalfC
 		if(Unknown(y)) y = 0;
 		if(Unknown(height)) height = 0;
 		if(Unknown(width)) width = 0;
+		if(Unknown(alpha)) alpha = 1.0;
+		cakepen.globalAlpha = alpha;
 		cakepen.drawImage(texture,x,y,width,height);
 		};
 
@@ -236,13 +247,13 @@ var CanvasHeight,CanvasWidth,mode,texture,RandomX,RandomY,HalfCanvasHeight,HalfC
           if(mode == "scale") cakepen.scale(a,b);		  
 		 };
 
-         var DrawFilledGrid = (gridsize,color,stroke_color) =>
+         var DrawFilledGrid = (gridsize,color,stroke_color,alpha) =>
 		 {
 			if(Unknown(gridsize)) gridsize = 10;
 			if(Unknown(color)) color = "black";
 			if(Unknown(stroke_color)) stroke_color = color;
-			cakepen.strokeStyle = stroke_color;
-			cakepen.fillStyle = color;
+			if(Unknown(alpha)) alpha = 1.0;
+			cakepen.globalAlpha = alpha,cakepen.strokeStyle = stroke_color,cakepen.fillStyle = color;
 			var grid_loop_width = cakecanvas.width / gridsize,grid_loop_height = cakecanvas.height / gridsize,x = 0,y = 0;
 			for(var i = 0;i < grid_loop_height;i++)
 			{
@@ -258,9 +269,11 @@ var CanvasHeight,CanvasWidth,mode,texture,RandomX,RandomY,HalfCanvasHeight,HalfC
 			}
 			};
 
-        var DrawSuperFilledGrid = (gridsize) =>
+        var DrawSuperFilledGrid = (gridsize,alpha) =>
 		{
 			if(Unknown(gridsize)) gridsize = 0;
+			if(Unknown(alpha)) alpha = 1.0;
+			cakepen.globalAlpha = alpha;
 			var grid_loop_width = cakecanvas.width / gridsize,grid_loop_height = cakecanvas.height / gridsize,x = 0,y = 0;
 			for(var i = 0;i < grid_loop_height;i++)
 			{
@@ -306,14 +319,15 @@ var CanvasHeight,CanvasWidth,mode,texture,RandomX,RandomY,HalfCanvasHeight,HalfC
 		cakepen.fill();
 		};
 
-		var DrawPixel = (x,y,size,color,show_grid) =>
+		var DrawPixel = (x,y,size,color,alpha,show_grid) =>
 		{
 		if(Unknown(color)) color = "black";
 		if(Unknown(x)) x = 0;
 		if(Unknown(y)) y = 0;
-		if(Unknown(size)) size = 0;
-		if(Unknown(show_grid)) show_grid = false;
-		cakepen.fillStyle = color,cakepen.strokeStyle = "black";
+		if(Unknown(size)) size = 5;
+		if(Unknown(show_grid)) show_grid = true;
+		if(Unknown(alpha)) alpha = 1.0;
+		cakepen.globalAlpha = alpha,cakepen.fillStyle = color,cakepen.strokeStyle = "black";
 		cakepen.fillRect(x,y,size,size);
 		if(show_grid) cakepen.strokeRect(x,y,size,size);	
 		};
@@ -348,54 +362,56 @@ var CanvasHeight,CanvasWidth,mode,texture,RandomX,RandomY,HalfCanvasHeight,HalfC
 		document.getElementsByTagName("body")[0].appendChild(canvas);
 		};
 
-		var DrawSquare = (x,y,size,color,stroke_color) =>
+		var DrawSquare = (x,y,size,color,stroke_color,alpha) =>
 		{
 		if(Unknown(x)) x = 0;
 		if(Unknown(y)) y = 0;
 		if(Unknown(size)) size = 0;
 		if(Unknown(color)) color = "black";
 		if(Unknown(stroke_color)) stroke_color = color;
-        cakepen.fillStyle = color,cakepen.strokeStyle = stroke_color;
+		if(Unknown(alpha)) alpha = 1.0;
+        cakepen.globalAlpha = alpha,cakepen.fillStyle = color,cakepen.strokeStyle = stroke_color;
         if(mode == "fill") cakepen.fillRect(x,y,size,size);			
 		if(mode == "stroke") cakepen.strokeRect(x,y,size,size);	
 		if(mode == "custom") { cakepen.fillRect(x,y,size,size); cakepen.stroke(); }
 		};
 
-		var DrawSnowflake = (x,y,length,color,stroke_color) =>
+		var DrawSnowflake = (x,y,length,color,stroke_color,m,alpha) =>
 		{
 		if(Unknown(x)) x = 0;
 		if(Unknown(y)) y = 0;
 		if(Unknown(length)) length = 0;
 		if(Unknown(color)) color = "black";
 		if(Unknown(stroke_color)) stroke_color = color;
-		cakepen.fillStyle = color,cakepen.strokeStyle = stroke_color;
+		if(Unknown(alpha)) alpha = 1.0;
+		cakepen.globalAlpha = alpha,cakepen.fillStyle = color,cakepen.strokeStyle = stroke_color;
 		var deg = Math.PI / 180; 
         cakepen.translate(x,y); 
         cakepen.moveTo(x,y); 
-        Leg(mode);
+        Leg(m);
         cakepen.rotate(-120 * deg);
-        Leg(mode);
+        Leg(m);
         cakepen.rotate(-120 * deg);
-        Leg(mode);
+        Leg(m);
         cakepen.closePath();
-		var Leg = (mode) =>
+		};
+		var Leg = (l) =>
 		{
-        if (mode == 0) cakepen.lineTo(length, 0);
+        if (l == 0) cakepen.lineTo(length, 0);
         else 
 		{ 
         cakepen.scale(1 / 3,1 / 3); 
-        Leg(mode - 1); 
+        Leg(l - 1); 
         cakepen.rotate(60 * deg); 
-        Leg(mode - 1);
+        Leg(l - 1);
         cakepen.rotate(-120 * deg);
-        Leg(mode - 1); 
+        Leg(l - 1); 
         cakepen.rotate(60 * deg); 
-        Leg(mode - 1);
+        Leg(l - 1);
         } 
         cakepen.translate(length, 0);
-        };
         };		
-		var DrawRoundedRect = (x,y,width,height,size,color,stroke_color) => 
+		var DrawRoundedRect = (x,y,width,height,radius,color,stroke_color,alpha) => 
 		{
 		if(Unknown(x)) x = 0;
 		if(Unknown(y)) y = 0;
@@ -403,18 +419,19 @@ var CanvasHeight,CanvasWidth,mode,texture,RandomX,RandomY,HalfCanvasHeight,HalfC
 		if(Unknown(height)) height = 0;
 		if(Unknown(color)) color = "black";
 		if(Unknown(stroke_color)) stroke_color = color;
-		cakepen.fillStyle = color,cakepen.strokeStyle = stroke_color;
-        if (typeof size === "undefined") size = 5;
+		if(Unknown(alpha)) alpha = 1.0;
+		cakepen.globalAlpha = alpha,cakepen.fillStyle = color,cakepen.strokeStyle = stroke_color;
+        if (typeof radius === "undefined") radius = 5;
         cakepen.beginPath();
-        cakepen.moveTo(x + size,y);
-        cakepen.lineTo(x + width - size,y);
-        cakepen.quadraticCurveTo(x + width,y,x + width,y + size);
-        cakepen.lineTo(x + width,y + height - size);
-        cakepen.quadraticCurveTo(x + width,y + height,x + width - size,y + height);
-        cakepen.lineTo(x + size,y + height);
-        cakepen.quadraticCurveTo(x,y + height,x,y + height - size);
-        cakepen.lineTo(x,y + size);
-        cakepen.quadraticCurveTo(x,y,x + size,y);
+        cakepen.moveTo(x + radius,y);
+        cakepen.lineTo(x + width - radius,y);
+        cakepen.quadraticCurveTo(x + width,y,x + width,y + radius);
+        cakepen.lineTo(x + width,y + height - radius);
+        cakepen.quadraticCurveTo(x + width,y + height,x + width - radius,y + height);
+        cakepen.lineTo(x + radius,y + height);
+        cakepen.quadraticCurveTo(x,y + height,x,y + height - radius);
+        cakepen.lineTo(x,y + radius);
+        cakepen.quadraticCurveTo(x,y,x + radius,y);
         cakepen.closePath();
         if(mode == "fill") cakepen.fill();			
         if(mode == "stroke") cakepen.stroke();
@@ -448,7 +465,7 @@ var CanvasHeight,CanvasWidth,mode,texture,RandomX,RandomY,HalfCanvasHeight,HalfC
 		elm.style.position = "absolute";
 		};
 		var SetLineJoining = (mode) => cakepen.lineJoin = mode;	
-		var DrawEllipse = (x,y,radius,color,stroke_color,rotation,start_angle,end_angle,anticlockwise) =>
+		var DrawEllipse = (x,y,radius,color,stroke_color,rotation,start_angle,end_angle,alpha) =>
 		{
 		if(Unknown(x)) x = 0;
 		if(Unknown(y)) y = 0;
@@ -459,9 +476,9 @@ var CanvasHeight,CanvasWidth,mode,texture,RandomX,RandomY,HalfCanvasHeight,HalfC
 		if(Unknown(radius)) radius = 1;
 		if(Unknown(color)) color = "black";
 		if(Unknown(stroke_color)) stroke_color = color;
-		cakepen.fillStyle = color;
-		cakepen.strokeStyle = stroke_color;
-		if(anticlockwise) cakepen.ellipse(x,y,radius,radius,rotation,start_angle,end_angle * Math.PI,true);	else cakepen.ellipse(x,y,radius,radius,rotation,start_angle,end_angle * Math.PI,false);
+		if(Unknown(alpha)) alpha = 1.0;
+		cakepen.globalAlpha = alpha,cakepen.fillStyle = color,cakepen.strokeStyle = stroke_color;
+		cakepen.ellipse(x,y,radius,radius,rotation,start_angle,end_angle * Math.PI,false);
 		};
 		var Cut = () => cakepen.clip();	
 		var SetTextDrawingDirection = (dir) => cakepen.direction = dir;	
@@ -512,7 +529,7 @@ var CanvasHeight,CanvasWidth,mode,texture,RandomX,RandomY,HalfCanvasHeight,HalfC
 	var SwitchContext = (c) => { if(Unknown(c)) c = "2d"; cakepen = cakecanvas.getContext(c); };
 	var SwitchContent = (canvas,c) => { cakecanvas = document.getElementsByTagName("canvas")[canvas - 1]; cakepen = cakecanvas.getContext(c); };
 	//For SpriteSheets Drawing!!!
-	var DrawImageAdvanced = (source_x,source_y,source_width,source_height,x,y,width,height) =>
+	var DrawImageAdvanced = (source_x,source_y,source_width,source_height,x,y,width,height,alpha) =>
 	{
 	    texture = new Image();
 		texture.src = url;
@@ -524,6 +541,8 @@ var CanvasHeight,CanvasWidth,mode,texture,RandomX,RandomY,HalfCanvasHeight,HalfC
 		if(Unknown(y)) y = 0;
 		if(Unknown(height)) height = 0;
 		if(Unknown(width)) width = 0
+		if(Unknown(alpha)) alpha = 1.0;
+		cakepen.globalAlpha = 1.0;
 		cakepen.drawImage(source_x,source_y,source_width,source_height,x,y,width,height);	
 	};	
 	var HideCanvas = () => cakecanvas.style.visibility = "hidden";
@@ -549,4 +568,28 @@ var CanvasHeight,CanvasWidth,mode,texture,RandomX,RandomY,HalfCanvasHeight,HalfC
 	var RandomColor = () => { return `rgb(${Math.floor(Math.random() * 256)},${Math.floor(Math.random() * 256)},${Math.floor(Math.random() * 256)})`; };
 	var RandomBetween = (x) => { return Math.floor(Math.random() * x); };
 	var RandomAlpha = () => cakepen.globalAlpha = Math.random();
+	var HSL = (h,s,l) =>
+	{
+		if(Unknown(h)) h = 0;
+		if(Unknown(s)) s = 0;
+		if(Unknown(l)) l = 0;
+		return `hsl(${h},${s},${l})`;
+	};
+	var HSLA = (h,s,l,a) =>
+	{
+		if(Unknown(h)) h = 0;
+		if(Unknown(s)) s = 0;
+		if(Unknown(l)) l = 0;
+		if(Unknown(a)) a = 1.0;
+		return `hsla(${r},${g},${b},${a})`;
+	};
+	var RGBA = (r,g,b,a) =>
+	{
+		if(Unknown(r)) r = 0;
+		if(Unknown(g)) g = 0;
+		if(Unknown(b)) b = 0;
+		if(Unknown(a)) a = 1.0;
+		return `rgba(${r},${g},${b},${a})`;
+	};
+	var MakeCanvasCompatible = () => { cakecanvas.width = WindowWidth,cakecanvas.height = WindowHeight; };
 	

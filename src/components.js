@@ -2,8 +2,7 @@
 //In Update,Not Completed Yet!!!
 //Only For 2D,3D Version Are Standalone!!!
 function Rectangle(x,y,width,height,color,stroke_color,autoupdate)
-{
-		
+{	
 		this.x = x;
 		this.y = y;
 		this.height = height;
@@ -23,8 +22,37 @@ function Rectangle(x,y,width,height,color,stroke_color,autoupdate)
 		this.destroyed = false;
 		this.rotated = false;
 		this.collidable = true;
+		this.clicked = false;
+		this.touched = false;
+		this.hovered = false;
+		this.state = "default";
 		this.rotationAngle = 0;
-		
+		this.clickFunction = 0;
+		var touchPosition = { x:0,y:0 };
+		var mousePosition = { x:0,y:0 };
+		var isClicking = false,isTouching = false,mousePressed = false,canvasTouched = false;
+this.SetInteractions = function(clickF) 
+{
+	if(Unknown(clickF)) clickF = 0;
+	this.clickFunction = clickF;
+};
+this.Add = function()
+{
+document.addEventListener("mousemove",(e) => 
+{ 
+	mousePosition.x = e.offsetX || e.layerX;
+	mousePosition.y	= e.offsetY || e.layerY;
+});
+document.addEventListener("touchmove",(e) => 
+{
+	touchPosition.x = e.pageX || e.clientX;
+	touchPosition.y = e.pageY || e.clientY;
+});
+cakecanvas.addEventListener("touchstart",() => { canvasTouched = true; });
+cakecanvas.addEventListener("touchend",() => { canvasTouched = false; });
+cakecanvas.addEventListener('mousedown',() => { mousePressed = true; });
+cakecanvas.addEventListener('mouseup',() => { mousePressed = false; });
+};
 this.Name = function(x) { this.name = x; };
 this.Rotate = function(a) { this.rotated = true,this.rotationAngle = a; };
 this.Draw = function()
@@ -44,7 +72,29 @@ this.Draw = function()
 		cakepen.rotate(-this.rotationAngle);
 		};
 		
-this.UpdatePosition = function() { this.gravitySpeed += this.gravity,this.x += this.speedX,this.y += this.speedY + this.gravitySpeed; };
+this.UpdatePosition = function() 
+{ 
+	this.gravitySpeed += this.gravity;
+	this.x += this.speedX;
+	this.y += this.speedY + this.gravitySpeed; 
+	if ((mousePosition.x >= this.x && mousePosition.x <= this.x + this.width &&
+		mousePosition.y >= this.y && mousePosition.y <= this.y + this.height) ||
+		(touchPosition.x >= this.x && touchPosition.x <= this.x + this.width &&
+		touchPosition.y >= this.y && touchPosition.y <= this.y + this.height)) {
+	  this.state = 'hover'; this.hovered = true;
+	  // check for click
+	  if (mousePressed || canvasTouched) 
+	  {
+		this.state = 'active';
+		if ((typeof clickFunction === 'function') && (!isClicking || !isTouching)) {
+		  clickFunction();
+		  isClicking = true; isTouching = true; this.clicked = true; this.touched = true;
+		}
+	  }
+	  else isClicking = false,isTouching = false,this.clicked = false,this.touched = false;
+	}
+	else this.state = 'default';
+};
 this.Update = function() { this.UpdatePosition(); this.Draw(); };
 this.Floor = function() { if(this.y > cakecanvas.height - this.height) this.y = cakecanvas.height - this.height; };
 this.FloorAndBounce = function() { if(this.y > cakecanvas.height - this.height) this.y = cakecanvas.height - this.height,this.gravitySpeed = -(this.gravitySpeed * this.bounce); };
@@ -152,6 +202,7 @@ this.Move = function(position,force)
 this.Add = function(feature,code) { this.feature = code; };
 this.InPosition = function(x_pos,y_pos) { return(this.x == x_pos && this.y == y_pos); };
 if(autoupdate) this.Update();
+this.Add();
 }
 
 function Texture(url,x,y,width,height,autoupdate)
@@ -175,8 +226,37 @@ this.color = color;
 this.destroyed = false;
 this.rotated = false;
 this.collidable = true;
+this.clicked = false;
+this.touched = false;
+this.hovered = false;
+this.state = "default";
+this.clickFunction = 0;
 this.rotationAngle = 0;
 this.name = "";
+var mousePosition = { x:0,y:0 };
+var isClicking = false,isTouching = false,mousePressed = false,canvasTouched = false;
+this.SetInteractions = function(clickF) 
+{
+	if(Unknown(clickF)) clickF = 0;
+	this.clickFunction = clickF;
+};
+this.Add = function()
+{
+document.addEventListener("mousemove",(e) => 
+{ 
+	mousePosition.x = e.offsetX || e.layerX;
+	mousePosition.y	= e.offsetY || e.layerY;
+});
+document.addEventListener("touchmove",(e) => 
+{
+	touchPosition.x = e.pageX || e.clientX;
+	touchPosition.y = e.pageY || e.clientY;
+});
+cakecanvas.addEventListener("touchstart",() => { canvasTouched = true; });
+cakecanvas.addEventListener("touchend",() => { canvasTouched = false; });
+cakecanvas.addEventListener('mousedown',() => { mousePressed = true; });
+cakecanvas.addEventListener('mouseup',() => { mousePressed = false; });
+};
 this.Name = function(x) { this.name = x; };
 this.Rotate = function(a) { this.rotated = true,this.rotationAngle = a; };
 this.Draw = function()
@@ -192,7 +272,29 @@ cakepen.globalAlpha = this.alpha;
 cakepen.rotate(-this.rotationAngle);
 };
 	
- this.UpdatePosition = function() { this.gravitySpeed += this.gravity,this.x += this.speedX,this.y += this.speedY; };
+ this.UpdatePosition = function() 
+ {
+	 this.gravitySpeed += this.gravity;
+	 this.x += this.speedX;
+	 this.y += this.speedY;
+	 if ((mousePosition.x >= this.x && mousePosition.x <= this.x + this.width &&
+		mousePosition.y >= this.y && mousePosition.y <= this.y + this.height) ||
+		(touchPosition.x >= this.x && touchPosition.x <= this.x + this.width &&
+		touchPosition.y >= this.y && touchPosition.y <= this.y + this.height)) {
+	  this.state = 'hover'; this.hovered = true;
+	  // check for click
+	  if (mousePressed || canvasTouched) 
+	  {
+		this.state = 'active';
+		if ((typeof clickFunction === 'function') && (!isClicking || !isTouching)) {
+		  clickFunction();
+		  isClicking = true; isTouching = true; this.clicked = true; this.touched = true;
+		}
+	  }
+	  else isClicking = false,isTouching = false,this.clicked = false,this.touched = false;
+	}
+	else this.state = 'default'; 
+};
  this.Floor = function() { if(this.y > cakecanvas.height - this.height) this.y = cakecanvas.height - this.height; };
  this.FloorAndBounce = function() { if(this.y > cakecanvas.height - this.height) this.y = cakecanvas.height - this.height,this.gravitySpeed = -(this.gravitySpeed * this.bounce); };		
  this.Accelerate = function(g) { this.gravity = g; };
@@ -233,13 +335,13 @@ this.InPosition = function(x_pos,y_pos) { return(this.x == x_pos && this.y == y_
 if(autoupdate) this.Update();
 }
 
-function Circle(x,y,size,color,start_angle,end_angle,autoupdate)
+function Circle(x,y,radius,color,start_angle,end_angle,autoupdate)
 {
 		this.x = x;
 		this.y = y;
 		this.a = start_angle;
 		this.b = end_angle;
-		this.radius = size;
+		this.radius = radius;
 		this.r = this.radius;
 		this.alpha = 1;
 		this.speedX = 0;
@@ -253,9 +355,38 @@ function Circle(x,y,size,color,start_angle,end_angle,autoupdate)
 		this.destroyed = false;
 		this.rotated = false;
 		this.collidable = true;
+		this.clicked = false;
+		this.touched = false;
+		this.hovered = false;
+		this.clickFunction = 0;
 		this.rotationAngle = 0;
 		this.name = "";
-
+		this.state = "default";
+		var touchPosition = { x:0,y:0 };
+		var mousePosition = { x:0,y:0 };
+		var isClicking = false,isTouching = false,mousePressed = false,canvasTouched = false;
+this.SetInteractions = function(clickF) 
+{
+	if(Unknown(clickF)) clickF = 0;
+	this.clickFunction = clickF;
+};
+this.Add = function()
+{
+document.addEventListener("mousemove",(e) => 
+{ 
+	mousePosition.x = e.offsetX || e.layerX;
+	mousePosition.y	= e.offsetY || e.layerY;
+});
+document.addEventListener("touchmove",(e) => 
+{
+	touchPosition.x = e.pageX || e.clientX;
+	touchPosition.y = e.pageY || e.clientY;
+});
+cakecanvas.addEventListener("touchstart",() => { canvasTouched = true; });
+cakecanvas.addEventListener("touchend",() => { canvasTouched = false; });
+cakecanvas.addEventListener('mousedown',() => { mousePressed = true; });
+cakecanvas.addEventListener('mouseup',() => { mousePressed = false; });
+};
 this.Name = function(x) { this.name = x; };
 this.Draw = function()
 {  
@@ -279,7 +410,29 @@ this.Draw = function()
         cakepen.globalAlpha = this.alpha;
         cakepen.rotate(-this.rotationAngle);		
 		};
-this.UpdatePosition = function() { this.gravitySpeed += this.gravity,this.x += this.speedX,this.y += this.speedY + this.gravitySpeed; };
+this.UpdatePosition = function() 
+{ 
+	this.gravitySpeed += this.gravity;
+	this.x += this.speedX;
+	this.y += this.speedY + this.gravitySpeed;
+	if ((mousePosition.x >= this.x && mousePosition.x <= this.x + this.radius &&
+		mousePosition.y >= this.y && mousePosition.y <= this.y + this.radius) ||
+		(touchPosition.x >= this.x && touchPosition.x <= this.x + this.radius &&
+		touchPosition.y >= this.y && touchPosition.y <= this.y + this.radius)) {
+	  this.state = 'hover'; this.hovered = true;
+	  // check for click
+	  if (mousePressed || canvasTouched) 
+	  {
+		this.state = 'active';
+		if ((typeof clickFunction === 'function') && (!isClicking || !isTouching)) {
+		  clickFunction();
+		  isClicking = true; isTouching = true; this.clicked = true; this.touched = true;
+		}
+	  }
+	  else isClicking = false,isTouching = false,this.clicked = false,this.touched = false;
+	}
+	else this.state = 'default';
+ };
 this.Floor = function() { if(this.y > cakecanvas.height - this.radius) this.y = cakecanvas.height - this.radius; };
 this.FloorAndBounce = function() { if(this.y > cakecanvas.height - this.radius) this.y = cakecanvas.height - this.radius,this.gravitySpeed = -(this.gravitySpeed * this.bounce); };
 this.Accelerate = function(g) { this.gravity = g; };
@@ -293,7 +446,7 @@ this.Translate = function(position_x,position_y)
    if(Unknown(position_y)) position_y = this.y;
    this.x = position_x,this.y = position_y;   
 };
-this.Resize = function(size) { if(Unknown(size)) size = this.radius; this.radius = size; };
+this.Resize = function(r) { if(Unknown(r)) r = this.radius; this.radius = r; };
 this.Force = function(force_x,force_y)
 {
    if(Unknown(force_x)) force_x = this.speedX;
@@ -334,9 +487,38 @@ function Square(x,y,size,color,autoupdate)
 		this.collidable = true;
 		this.alpha = 1;
 		this.stroke = this.color;
+		this.clicked = false;
+		this.touched = false;
+		this.hovered = false;
+		this.state = "default";
+		this.clickFunction = 0;
 		this.rotationAngle = 0;
 		this.name = "";
-
+		var touchPosition = { x:0,y:0 };
+		var mousePosition = { x:0,y:0 };
+		var isClicking = false,isTouching = false,mousePressed = false,canvasTouched = false;
+this.SetInteractions = function(clickF) 
+{
+	if(Unknown(clickF)) clickF = 0;
+	this.clickFunction = clickF;
+};
+this.Add = function()
+{
+document.addEventListener("mousemove",(e) => 
+{ 
+	mousePosition.x = e.offsetX || e.layerX;
+	mousePosition.y	= e.offsetY || e.layerY;
+});
+document.addEventListener("touchmove",(e) => 
+{
+	touchPosition.x = e.pageX || e.clientX;
+	touchPosition.y = e.pageY || e.clientY;
+});
+cakecanvas.addEventListener("touchstart",() => { canvasTouched = true; });
+cakecanvas.addEventListener("touchend",() => { canvasTouched = false; });
+cakecanvas.addEventListener('mousedown',() => { mousePressed = true; });
+cakecanvas.addEventListener('mouseup',() => { mousePressed = false; });
+};
 this.Name = function(x) { this.name = x; };
 this.Draw = function()
 {  
@@ -352,7 +534,29 @@ this.Draw = function()
 		cakepen.globalAlpha = this.alpha;
 		cakepen.rotate(-this.rotationAngle);
 		};
-this.UpdatePosition = function() { this.gravitySpeed += this.gravity,this.x += this.speedX,this.y += this.speedY + this.gravitySpeed; };
+this.UpdatePosition = function() 
+{ 
+	this.gravitySpeed += this.gravity;
+	this.x += this.speedX;
+	this.y += this.speedY + this.gravitySpeed;
+	if ((mousePosition.x >= this.x && mousePosition.x <= this.x + this.size &&
+		mousePosition.y >= this.y && mousePosition.y <= this.y + this.size) ||
+		(touchPosition.x >= this.x && touchPosition.x <= this.x + this.size &&
+		touchPosition.y >= this.y && touchPosition.y <= this.y + this.size)) {
+	  this.state = 'hover'; this.hovered = true;
+	  // check for click
+	  if (mousePressed || canvasTouched) 
+	  {
+		this.state = 'active';
+		if ((typeof clickFunction === 'function') && (!isClicking || !isTouching)) {
+		  clickFunction();
+		  isClicking = true; isTouching = true; this.clicked = true; this.touched = true;
+		}
+	  }
+	  else isClicking = false,isTouching = false,this.clicked = false,this.touched = false;
+	}
+	else this.state = 'default';
+};
 this.Floor = function() { if(this.y > cakecanvas.height - this.size) this.y = cakecanvas.height - this.size; };
 this.FloorAndBounce = function() { if(this.y > cakecanvas.height - this.size) this.y = cakecanvas.height - this.size,this.gravitySpeed = -(this.gravitySpeed * this.bounce); };
 this.Accelerate = function(g) { this.gravity = g; };
@@ -409,8 +613,38 @@ function RoundedRect(x,y,width,height,color,radius,autoupdate)
 		this.destroyed = false;
 		this.rotated = false;
 		this.collidable = true;
+		this.clicked = false;
+		this.touched = false;
+		this.hovered = false;
+		this.state = "default";
+		this.clickFunction = 0;
 		this.rotationAngle = 0;
 		this.name = "";
+		var touchPosition = { x:0,y:0 };
+		var mousePosition = { x:0,y:0 };
+		var isClicking = false,isTouching = false,mousePressed = false,canvasTouched = false;
+this.SetInteractions = function(clickF) 
+{
+	if(Unknown(clickF)) clickF = 0;
+	this.clickFunction = clickF;
+};
+this.Add = function()
+{
+document.addEventListener("mousemove",(e) => 
+{ 
+	mousePosition.x = e.offsetX || e.layerX;
+	mousePosition.y	= e.offsetY || e.layerY;
+});
+document.addEventListener("touchmove",(e) => 
+{
+	touchPosition.x = e.pageX || e.clientX;
+	touchPosition.y = e.pageY || e.clientY;
+});
+cakecanvas.addEventListener("touchstart",() => { canvasTouched = true; });
+cakecanvas.addEventListener("touchend",() => { canvasTouched = false; });
+cakecanvas.addEventListener('mousedown',() => { mousePressed = true; });
+cakecanvas.addEventListener('mouseup',() => { mousePressed = false; });
+};
 this.Name = function(x) { this.name = x; };
 this.Draw = function()
 {  
@@ -440,7 +674,29 @@ this.Draw = function()
 		cakepen.rotate(-this.rotationAngle);
 		};
 		
-this.UpdatePosition = function() { this.gravitySpeed += this.gravity,this.x += this.speedX,this.y += this.speedY + this.gravitySpeed; };		
+this.UpdatePosition = function() 
+{ 
+	this.gravitySpeed += this.gravity;
+	this.x += this.speedX;
+	this.y += this.speedY + this.gravitySpeed; 
+	if ((mousePosition.x >= this.x && mousePosition.x <= this.x + this.width &&
+		mousePosition.y >= this.y && mousePosition.y <= this.y + this.height) ||
+		(touchPosition.x >= this.x && touchPosition.x <= this.x + this.width &&
+		touchPosition.y >= this.y && touchPosition.y <= this.y + this.height)) {
+	  this.state = 'hover'; this.hovered = true;
+	  // check for click
+	  if (mousePressed || canvasTouched) 
+	  {
+		this.state = 'active';
+		if ((typeof clickFunction === 'function') && (!isClicking || !isTouching)) {
+		  clickFunction();
+		  isClicking = true; isTouching = true; this.clicked = true; this.touched = true;
+		}
+	  }
+	  else isClicking = false,isTouching = false,this.clicked = false,this.touched = false;
+	}
+	else this.state = 'default';
+};		
 this.Floor = function() { if(this.y > cakecanvas.height - this.size) this.y = cakecanvas.height - this.size; };
 this.FloorAndBounce = function() { if(this.y > cakecanvas.height - this.size) this.y = cakecanvas.height - this.size,this.gravitySpeed = -(this.gravitySpeed * this.bounce); };		
 this.Accelerate = function(g) { this.gravity = g; };
@@ -566,7 +822,37 @@ this.name = "";
 this.destroyed = false;
 this.rotated = false;
 this.collidable = true;
+this.clicked = false;
+this.touched = false;
+this.hovered = false;
+this.state = "default";
+this.clickFunction = 0;
 this.rotationAngle = 0;
+var touchPosition = { x:0,y:0 };
+var mousePosition = { x:0,y:0 };
+var isClicking = false,isTouching = false,mousePressed = false,canvasTouched = false;
+this.SetInteractions = function(clickF) 
+{
+	if(Unknown(clickF)) clickF = 0;
+	this.clickFunction = clickF;
+};
+this.Add = function()
+{
+document.addEventListener("mousemove",(e) => 
+{ 
+	mousePosition.x = e.offsetX || e.layerX;
+	mousePosition.y	= e.offsetY || e.layerY;
+});
+document.addEventListener("touchmove",(e) => 
+{
+	touchPosition.x = e.pageX || e.clientX;
+	touchPosition.y = e.pageY || e.clientY;
+});
+cakecanvas.addEventListener("touchstart",() => { canvasTouched = true; });
+cakecanvas.addEventListener("touchend",() => { canvasTouched = false; });
+cakecanvas.addEventListener('mousedown',() => { mousePressed = true; });
+cakecanvas.addEventListener('mouseup',() => { mousePressed = false; });
+};
 this.Name = function(x) { this.name = x; };
 this.Draw = function()
 {
@@ -590,7 +876,29 @@ for(x in this.img.src) cakepen.drawImage(this.img.src,this.x,this.y,this.height,
 cakepen.globalAlpha = 1;
 cakepen.rotate(-this.rotationAngle);
 };
-this.UpdatePosition = function() { this.gravitySpeed += this.gravity,this.x += this.speedX,this.y += this.speedY; };
+this.UpdatePosition = function() 
+{ 
+	this.gravitySpeed += this.gravity;
+	this.x += this.speedX;
+	this.y += this.speedY;
+	if ((mousePosition.x >= this.x && mousePosition.x <= this.x + this.width &&
+		mousePosition.y >= this.y && mousePosition.y <= this.y + this.height) ||
+		(touchPosition.x >= this.x && touchPosition.x <= this.x + this.width &&
+		touchPosition.y >= this.y && touchPosition.y <= this.y + this.height)) {
+	  this.state = 'hover'; this.hovered = true;
+	  // check for click
+	  if (mousePressed || canvasTouched) 
+	  {
+		this.state = 'active';
+		if ((typeof clickFunction === 'function') && (!isClicking || !isTouching)) {
+		  clickFunction();
+		  isClicking = true; isTouching = true; this.clicked = true; this.touched = true;
+		}
+	  }
+	  else isClicking = false,isTouching = false,this.clicked = false,this.touched = false;
+	}
+	else this.state = 'default';
+};
 this.Floor = function() { if(this.y > cakecanvas.height - this.height) this.y = cakecanvas.height - this.height; };
 this.FloorAndBounce = function() { if(this.y > cakecanvas.height - this.height) this.y = cakecanvas.height - this.height,this.gravitySpeed = -(this.gravitySpeed * this.bounce); };
 this.Accelerate = function(g) { this.gravity = g; };
