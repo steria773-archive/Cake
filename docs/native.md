@@ -5,7 +5,7 @@
 ## Mobiles And Smartphones
 
 ### Android
-1. [Droidscript](https://droidscript.org/)
+1. [Droidscript](https://androidscript.org/)
 2. [Adobe Phonegab Build](https://build.phonegap.com/)
 3. [AIDE Phonegab](https://play.google.com/store/apps/details?id=com.aide.phonegap)
 
