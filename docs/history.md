@@ -1,8 +1,12 @@
 # Release History
+## March 2019
+Development Of The Game Framework/Engine Started
+## October 2019
+First Old Release On Github
 ## 7/February/2020
-First Release
+First New Release
 ## 10/February/2020
-
+New Update
 ### Additions
 1. More GUIs(Checkbox)
 2. Added More Functions To `CanvasRenderingContext2D`
@@ -16,3 +20,4 @@ First Release
 ### Bug Fixes
 1. Fixed Bug In Clearing Canvas
 2. Fixed Bugs When Giving Info About Touch Position And Key Pressed
+3. Fixed Bug When Creating SWF Or JAR Objects Using `AddContent()`
