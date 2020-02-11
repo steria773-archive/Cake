@@ -16,7 +16,6 @@ New Update
 6. A Function To Make Canvas Size Compatible With Window Sizes
 7. Ability To Update Framework/Engine Online,Use `UpdateCake()`
 8. Ability To Open Local Files Using `file:///` System
-
 ### Bug Fixes
 1. Fixed Bug In Clearing Canvas
 2. Fixed Bugs When Giving Info About Touch Position And Key Pressed
