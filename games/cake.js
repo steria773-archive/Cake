@@ -4528,7 +4528,7 @@ var CheckCookie = (cname) =>
 var AddContent = (source, w, h) =>
 {
 	var content = document.createElement("object");
-	content.src = source, content.height = h, content.width = w;
+	content.data = source, content.height = h, content.width = w;
 	document.getElementsByTagName("body")[0].appendChild(content);
 };
 
