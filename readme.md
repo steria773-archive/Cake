@@ -36,7 +36,7 @@ Result Can Be Found [Here](https://rabios.github.io/Cake/examples/input_03.html)
   - Ability To Take Screenshots(PC Browsers)
   - A 3D System Called Space To Make 3D Polygons And Shapes With 2D Graphics
 - WebGL
-  - Built On The Top Of `lightgl.js`
+  - Built On The Top Of [`lightgl.js`](https://github.com/evanw/lightgl.js)
   - A Customized Version Coming Soon(Made From Pure WebGL)
 
 ### Physics
@@ -45,8 +45,8 @@ Result Can Be Found [Here](https://rabios.github.io/Cake/examples/input_03.html)
 
 ### Input
 - Event Creation Made Easy
-- Keyboard: Using Event Listeners Or `mousetrap.js`
-- Gamepad: Using Event Listeners Or `gamepad.js`
+- Keyboard: Using Event Listeners Or [`mousetrap.js`](https://craig.is/killing/mice)
+- Gamepad: Using Event Listeners Or [`gamepad.js`](https://github.com/neogeek/gamepad.js/)
 
 ### Audio
 - Powered By WebAudio API
@@ -119,4 +119,4 @@ Cake Can Be Used For Huge HTML5 Games,Altough There Is Some Simple Games And Exa
 6. Adding Cheatsheets And Full Manual
 7. Adding Tools To Framework/Engine
 
-> If I Had Freetime,More Examples Come Soon!!!  
+> If I Had Freetime,More Examples Come Soon!!! 
