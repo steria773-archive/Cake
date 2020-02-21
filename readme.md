@@ -36,8 +36,7 @@ Result Can Be Found [Here](https://rabios.github.io/Cake/examples/input_03.html)
   - Ability To Take Screenshots(PC Browsers)
   - A 3D System Called Space To Make 3D Polygons And Shapes With 2D Graphics
 - WebGL
-  - Built On The Top Of [`lightgl.js`](https://github.com/evanw/lightgl.js)
-  - A Customized Version Coming Soon(Made From Pure WebGL)
+  - Made From Pure WebGL
 
 ### Physics
 - A Lightweight Physics Engine Based On Collision Detection(Size Of 4kb)
@@ -45,8 +44,7 @@ Result Can Be Found [Here](https://rabios.github.io/Cake/examples/input_03.html)
 
 ### Input
 - Event Creation Made Easy
-- Keyboard: Using Event Listeners Or [`mousetrap.js`](https://craig.is/killing/mice)
-- Gamepad: Using Event Listeners Or [`gamepad.js`](https://github.com/neogeek/gamepad.js/)
+- Gamepad,Mouse,Touch Events Functions Pre-made For Easy Use
 
 ### Audio
 - Powered By WebAudio API
@@ -100,15 +98,14 @@ Cake Can Be Used For Huge HTML5 Games,Altough There Is Some Simple Games And Exa
 4. [Scrolling Background](https://rabios.github.io/Cake/examples/component_03.html)
 5. [Scrolling Sides](https://rabios.github.io/Cake/examples/component_02.html)
 6. [Input With Keyboard](https://rabios.github.io/Cake/examples/input_01.html)
-7. [Input With Gamepad](https://rabios.github.io/Cake/examples/input_02.html)
-8. [Input With Mouse And Touch](https://rabios.github.io/Cake/examples/input_03.html)
-9. [Physics Example(Rectangles Collision)](https://rabios.github.io/Cake/examples/physics_01.html)
-10. [Switching Between Game Levels](https://rabios.github.io/Cake/examples/fps_01.html)
-11. [Launchpad](https://rabios.github.io/Cake/examples/launchpad.html)
-12. [Button Example](https://rabios.github.io/Cake/examples/button_01.html)
-13. [Controlling Components](https://rabios.github.io/Cake/examples/component_01.html)
-14. [Safe Type Checking](https://rabios.github.io/Cake/examples/compiler_01.html)
-15. [3D Graphics(Taken And Forked/Modified From explorercanvas Repo)](https://rabios.github.io/Cake/examples/graphics_04.html)
+7. [Input With Mouse And Touch](https://rabios.github.io/Cake/examples/input_03.html)
+8. [Physics Example(Rectangles Collision)](https://rabios.github.io/Cake/examples/physics_01.html)
+9. [Switching Between Game Levels](https://rabios.github.io/Cake/examples/fps_01.html)
+10. [Launchpad](https://rabios.github.io/Cake/examples/launchpad.html)
+11. [Button Example](https://rabios.github.io/Cake/examples/button_01.html)
+12. [Controlling Components](https://rabios.github.io/Cake/examples/component_01.html)
+13. [Safe Type Checking](https://rabios.github.io/Cake/examples/compiler_01.html)
+14. [3D Graphics(Taken And Forked/Modified From explorercanvas Repo)](https://rabios.github.io/Cake/examples/graphics_04.html)
 
 ## Soon
 1. Updating Wiki/Documentation
