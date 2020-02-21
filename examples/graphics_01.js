@@ -1,4 +1,4 @@
-CreateCanvas(350,400,"3px black solid");
+CreateCanvas(350,400,u,"3px black solid");
 Initialize();
 SetDrawingMode("fill");
 SetFont("20px arial");

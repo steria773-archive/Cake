@@ -1,7 +1,6 @@
 //Created By Rabia Alhaffar In 3/January/2020
-CreateCanvas(1350,650);
+CreateCanvas(1350,650,"black");
 Initialize();
-SetCanvasBackgroundColor("black");
 var r1 = new Rectangle(RandomX,RandomY,200,40,"blue");
 var r2 = new Rectangle(RandomX,RandomY,200,40,"blue");
 var r3 = new Rectangle(RandomX,RandomY,200,40,"blue");

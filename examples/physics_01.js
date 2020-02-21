@@ -1,4 +1,4 @@
-	    CreateCanvas(500,425,"3px black solid");
+	    CreateCanvas(500,425,u,"3px black solid");
 		Initialize();
         var player = new Rectangle(200,300,40,40,"blue");
         var box = new Rectangle(300,300,40,40,"red");
@@ -7,11 +7,6 @@
            ClearCanvas();
            player.Update();
            box.Update();
-           Mousetrap.bind(["w","up"],function(){player.speedX = 0;    player.speedY = -3;});
-           Mousetrap.bind(["a","left"],function(){player.speedX = -3; player.speedY = 0;});
-           Mousetrap.bind(["s","down"],function(){player.speedX = 0;  player.speedY = 3;});
-           Mousetrap.bind(["d","right"],function(){player.speedX = 3; player.speedY = 0;});
-           Mousetrap.bind(["q","space"],function(){player.speedX = 0; player.speedY = 0;});
            if(CheckCollisionRect(player,box))
            {
                player.color = "green";
@@ -19,10 +14,7 @@
            }
            else player.color = "blue";
             },120);
-       function MovePlayer()
-       {
-           player.speedX = 3;
-       }
+       var MovePlayer = () => player.speedX = 3;
        function StopPlayer()
        {
        if(player.speedX != 0)
@@ -40,4 +32,13 @@
            b1.style.color = "red";
        }
        }
-	   Level_1.Start();
+       Level_1.Start();
+//Game Controls
+document.addEventListener("keydown",(e) =>
+{
+    if(e.key == "w" || e.keyCode == 38) player.speedX = 0,player.speedY = -3;
+    if(e.key == "s" || e.keyCode == 40) player.speedX = 0,player.speedY = 3;
+    if(e.key == "a" || e.keyCode == 37) player.speedX = -3,player.speedY = 0;
+    if(e.key == "d" || e.keyCode == 39) player.speedX = 3,player.speedY = 0;
+    if(e.key == "q") player.Stop();
+});

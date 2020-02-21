@@ -15,7 +15,7 @@
 */
 var count = 0;
 // Init 3D components
-CreateCanvas(600,600,"none");
+CreateCanvas(600,600);
 Initialize();
 var scene = new Scene();
 var space = new Space();
