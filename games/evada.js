@@ -1,6 +1,6 @@
 //Created By Rabia Alhaffar In 18/January/2019
 //A New Game - Dude ;)
-CreateCanvas(1350, 650, "3px black solid");
+CreateCanvas(1350, 650, u,"3px black solid");
 Initialize();
 SetDrawingMode("fill");
 var psize = 60, score = 0;
@@ -146,7 +146,7 @@ var Game = new Level(() => {
     if (CheckCanvasCollisionBottom(e17)) e17.Force(-(Math.floor(Math.random() * 20)), -(Math.floor(Math.random() * 20))); 
     if (CheckCanvasCollisionBottom(e18)) e18.Force(-(Math.floor(Math.random() * 20)), -(Math.floor(Math.random() * 20))); 
     if (CheckCanvasCollisionBottom(e19)) e19.Force(-(Math.floor(Math.random() * 20)), -(Math.floor(Math.random() * 20)));
-    if (CheckCanvasCollisionBottom(e20)) e20.Force(-(Math.floor(Math.random() * 20)), -(Math.floor(Math.random() * 20))); 
+    if (CheckCanvasCollisionBottom(e20)) e20.Force(-(Math.floor(Math.random() * 20)), -(Math.floor(Math.random() * 20)));
     cakecanvas.onmousemove = (e) => 
     {
         DrawSquare(e.clientX, e.clientY, psize, "blue");
@@ -171,6 +171,10 @@ var Game = new Level(() => {
             CheckCollisionRectAdvanced(e.clientX, e.clientY, psize, psize, e19.x, e19.y, e19.height, e19.width) ||
             CheckCollisionRectAdvanced(e.clientX, e.clientY, psize, psize, e20.x, e20.y, e20.height, e20.width)) psize--;
     };
-    if (psize == 0) { Game.Pause(); alert("Your Score Is: " + score + "\nThanks For Playing!!!"); RestartGame(); }
-}, 120);
-Game.Start();
+    if(psize == 0)
+    {
+        Game.Pause();
+        alert("Your Score Is: " + score + "\nThanks For Playing!!!");
+        RestartGame();
+    }
+},120).Start();
