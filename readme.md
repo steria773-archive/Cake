@@ -100,12 +100,11 @@ Cake Can Be Used For Huge HTML5 Games,Altough There Is Some Simple Games And Exa
 6. [Input With Keyboard](https://rabios.github.io/Cake/examples/input_01.html)
 7. [Input With Mouse And Touch](https://rabios.github.io/Cake/examples/input_03.html)
 8. [Physics Example(Rectangles Collision)](https://rabios.github.io/Cake/examples/physics_01.html)
-9. [Switching Between Game Levels](https://rabios.github.io/Cake/examples/fps_01.html)
-10. [Launchpad](https://rabios.github.io/Cake/examples/launchpad.html)
-11. [Button Example](https://rabios.github.io/Cake/examples/button_01.html)
-12. [Controlling Components](https://rabios.github.io/Cake/examples/component_01.html)
-13. [Safe Type Checking](https://rabios.github.io/Cake/examples/compiler_01.html)
-14. [3D Graphics(Taken And Forked/Modified From explorercanvas Repo)](https://rabios.github.io/Cake/examples/graphics_04.html)
+9. [Launchpad](https://rabios.github.io/Cake/examples/launchpad.html)
+10. [Button Example](https://rabios.github.io/Cake/examples/button_01.html)
+11. [Controlling Components](https://rabios.github.io/Cake/examples/component_01.html)
+12. [Safe Type Checking](https://rabios.github.io/Cake/examples/compiler_01.html)
+13. [3D Graphics(Taken And Forked/Modified From explorercanvas Repo)](https://rabios.github.io/Cake/examples/graphics_04.html)
 
 ## Soon
 1. Updating Wiki/Documentation
