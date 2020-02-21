@@ -3579,31 +3579,31 @@ function Bar(x, y, width, height, color)
 //Created By Rabia Alhaffar In 13/December/2019
 //An Library To Use Cake Game Framework Context Functions With Other HTML5 Game Framework Canvas Contexts
 var cake;
-var IntegrateWith = (engine) =>
+var IntegrateWith = (engine,c) =>
 {
-if(engine == "tululoo") cakecanvas = tu_canvas,cakepen = tu_context;	
-if(engine == "blacksmith") cakecanvas = CANVAS,cakepen = CONTEXT;	
+Initialize(c);
+if(engine == "tululoo") tu_canvas = cakecanvas,tu_context = cakepen;	
+if(engine == "blacksmith") CANVAS = cakecanvas,CONTEXT = cakepen;	
 if(engine == "blocksjs") cakecanvas = canvasElement,cakepen = layer.ctx;
-if(engine == "booty") cakecanvas = b5.Display.canvas,cakepen = b5.Display.context;	
-if(engine == "cartridge") cakecanvas = canvas,cakepen = ctx;	
-if(engine == "easel") cakecanvas = canvas,cakepen = Graphics._ctx;	
-if(engine == "pixi") cakepen = PIXI.Graphics;	
-if(engine == "iio") cake = iio;
-if(engine == "quark") cakecanvas = Quark._helpContext.canvas,cakepen = Quark._helpContext.context;
-if(engine == "quintus") cakecanvas = Q.ctx.canvas,cakepen = Q.ctx;
+if(engine == "booty") b5.Display.canvas = cakecanvas,b5.Display.context = cakepen;	
+if(engine == "cartridge") canvas = cakecanvas,ctx = cakepen;	
+if(engine == "easel") canvas = cakecanvas,Graphics._ctx = cakepen;	
+if(engine == "pixi") PIXI.Graphics = cakepen;	
+if(engine == "iio") iio = cake;
+if(engine == "quark") Quark._helpContext.canvas = cakecanvas,Quark._helpContext.context = cakepen; 
+if(engine == "quintus") Q.ctx.canvas = cakecanvas,Q.ctx = cakepen;
 if(engine == "simplegameengine") cakecanvas = _tempCanvas2D.canvas,cakepen = _tempCanvas2D;
-if(engine == "oversimplified") cakecanvas = Oversimplified.canvas,cakepen = Oversimplified.context;
-if(engine == "joy") cake = Joy,cakecanvas = Joy.currentEngine.context.canvas,cakepen = Joy.currentEngine.context.ctx;
-if(engine == "gamvas") cakecanvas = gamvas._canvas,cakepen = gamvas._context2D;
-if(engine == "nini") cakecanvas = Graphics.canvas,cakepen = Graphics.canvas.getContext("2d");	
-if(engine == "squarepig") cakecanvas = pig.canvas,cakepen = pig.context;	
-if(engine == "threejs") cakecanvas = THREE.Scene(),cakepen = THREE.WebGLRenderer(),cake = THREE;
-if(engine == "lightgl") cakepen = GL.Create(),cake = GL;	
-if(engine == "goo") cakepen = goo.GooRunner(),cakecanvas = goo.world;
+if(engine == "oversimplified") Oversimplified.canvas = cakecanvas,Oversimplified.context = cakepen;
+if(engine == "joy") Joy = cake,Joy.currentEngine.context.canvas = cakecanvas,Joy.currentEngine.context.ctx = cakepen;
+if(engine == "gamvas") gamvas._canvas = cakecanvas,gamvas._context2D = cakepen;
+if(engine == "nini") Graphics.canvas = cakecanvas,cakepen = Graphics.canvas.getContext("2d");	
+if(engine == "squarepig") pig.canvas = cakecanvas,pig.context = cakepen;	
+if(engine == "threejs") THREE = cake;
+if(engine == "lightgl") cakepen = GL.Create(),GL = cake;	
 if(engine == "hilo") cake = Hilo;
 if(engine == "hilo3d") cake = Hilo3d;
-if(engine == "stage") cake = Stage,cakepen = ctx,cakecanvas = stage;	
-if(engine == "arcadejs") cake = ArcadeJS,cakecanvas = ArcadeJS._firstGame.canvas,cakepen = ArcadeJS._firstGame.context;
+if(engine == "stage") cake = Stage,ctx = cakepen,stage = cakecanvas;	
+if(engine == "arcadejs") cake = ArcadeJS,ArcadeJS._firstGame.canvas = cakecanvas,ArcadeJS._firstGame.context = cakepen;
 };
 
 //Module: Steam
