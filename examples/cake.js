@@ -1,6 +1,6 @@
 //Copyright (c)2019-Present Rabia Alhaffar,All Rights Reserved!!!
 //Cake Canvas (2D And 3D) And WebGL(2D And 3D) HTML5 Game Framework!!!
-//Date: 16/February/2020
+//Date: 21/February/2020
 //The Engine/Framework Code Starts Here!!!
 //Variables:
 var Opera = (!!window.opr && !!opr.addons) || !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0,
@@ -93,43 +93,44 @@ var HEXCOLOR = {
 	SILVER: 0xB3B6B7,
 	CYAN: 0x1ABC9C
 };
-var XBKey = {
-	A: "button_1",
-	B: "button_2",
-	X: "button_3",
-	Y: "button_4",
-	LB: "shoulder_top_left",
-	RB: "shoulder_top_right",
-	LT: "shoulder_bottom_left",
-	RT: "shoulder_bottom_right",
-	Back: "select",
-	Start: "start",
-	LeftAnalogStick: "stick_button_left",
-	RightAnalogStick: "stick_button_right",
-	Up: "d_pad_up",
-	Down: "d_pad_down",
-	Left: "d_pad_left",
-	Right: "d_pad_right",
-	XBOX_Button: "vendor"
+//Gamepad(USB,PS4,PS3,XBOX) Keys:
+var XBKey =
+{
+A:0,
+B:1,
+X:2,
+Y:3,
+LB:4,
+RB:5,
+LT:6,
+RT:7,
+Back:8,
+Start:9,
+LeftAnalogStick:10,
+RightAnalogStick:11,
+Up:12,
+Down:13,
+Left:14,
+Right:15
 };
-var PSKey = {
-	X: "button_1",
-	O: "button_2",
-	Square: "button_3",
-	Triangle: "button_4",
-	L1: "shoulder_top_left",
-	R1: "shoulder_top_right",
-	L2: "shoulder_bottom_left",
-	R2: "shoulder_bottom_right",
-	Select: "select",
-	Start: "start",
-	LeftAnalogStick: "stick_button_left",
-	RightAnalogStick: "stick_button_right",
-	Up: "d_pad_up",
-	Down: "d_pad_down",
-	Left: "d_pad_left",
-	Right: "d_pad_right",
-	Playstation_Button: "vendor"
+var PSKey =
+{
+X:0,
+O:1,
+Square:2,
+Triangle:3,
+L1:4,
+R1:5,
+L2:6,
+R2:7,
+Select:8,
+Start:9,
+LeftAnalogStick:10,
+RightAnalogStick:11,
+Up:12,
+Down:13,
+Left:14,
+Right:15
 };
 //TV Keys
 var TVKey = {
