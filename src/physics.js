@@ -23,12 +23,11 @@
 	   var CheckCanvasCollisionTopAdvanced = (o_y,o_h) => { return(o_y <= o_h * 0.5); };
 	   var CheckCanvasCollisionBottom = (object) => { return(object.y + object.height >= cakecanvas.height + object.height * 0.5); };
 	   var CheckCanvasCollisionBottomAdvanced = (o_y,o_h) => { return(o_y + o_h >= cakecanvas.height + o_h * 0.5); };
-	   //In Test(For Circles!!!)
-	   var CheckCanvasCollisionBottomCircle = (c1) => { return(c1.y + c1.size >= cakecanvas.height); };
-	   var CheckCanvasCollisionTopCircle = (c1) => { return(c1.y - c1.size <= 0); };
-	   var CheckCanvasCollisionLeftCircle = (c1) => { return(c1.x + c1.size <= 0); };
-	   var CheckCanvasCollisionRightCircle = (c1) => { return(c1.x + c1.size >= cakecanvas.width); };
-	   var CheckCanvasCollisionBottomCircleAdvanced = (c_1_y,c_1_r) => { return(c_1_y + c_1_r >= cakecanvas.height); };
-	   var CheckCanvasCollisionTopCircleAdvanced = (c_1_y,c_1_r) => { return(c_1_y - c_1_r <= 0); };
-	   var CheckCanvasCollisionLeftCircleAdvanced = (c_1_x,c_1_r) => { return(c_1_x + c_1_r <= 0); };
-	   var CheckCanvasCollisionRightCircleAdvanced = (c_1_x,c_1,r) => { return(c_1_x + c_1_r >= cakecanvas.width); };
+	   var CheckCollisionCircleLeftCanvas = (c1) => { return c1.x + c1.speedX < c1.radius; };
+	   var CheckCollisionCircleRightCanvas = (c1) => { return c1.x + c1.speedX > cakecanvas.width - c1.radius; };
+	   var CheckCollisionCircleBottomCanvas = (c1) => { return c1.y + c1.speedY > cakecanvas.height - c1.radius; };
+	   var CheckCollisionCircleTopCanvas = (c1) => { return c1.y + c1.speedY < c1.radius; };
+	   var CheckCollisionCircleTopCanvasAdvanced = (c1_y,c1_speedY,c1_r) => { return c1_y + c1_speedY < c1_r; }; 
+	   var CheckCollisionCircleBottomCanvasAdvanced = (c1_y,c1_speedY,c1_r) => { return c1_y + c1_speedY > cakecanvas.height - c1_r; };
+	   var CheckCollisionCircleLeftCanvas = (c1_x,c1_speedX,c1_r) => { return c1_x + c1_speedX < c1_r; };
+	   var CheckCollisionCircleRightCanvas = (c1_x,c1_speedX,c1_r) => { return c1_x + c1_speedX > cakecanvas.width - c1_r; };

@@ -86,8 +86,8 @@ this.UpdatePosition = function()
 	  if (mousePressed || canvasTouched) 
 	  {
 		this.state = 'active';
-		if ((typeof clickFunction === 'function') && (!isClicking || !isTouching)) {
-		  clickFunction();
+		if ((typeof this.clickFunction === 'function') && (!isClicking || !isTouching)) {
+		  this.clickFunction();
 		  isClicking = true; isTouching = true; this.clicked = true; this.touched = true;
 		}
 	  }
@@ -129,9 +129,10 @@ this.Move = function(position,force)
    if(position == "left") this.speedX = Math.abs(force);
    if(position == "right") this.speedX = force;
 };
-this.Add = function(feature,code) { this.feature = code; };
+this.AddFeature = function(feature,code) { this.feature = code; };
 this.InPosition = function(x_pos,y_pos) { return(this.x == x_pos && this.y == y_pos); };
 if(autoupdate) this.Update();
+this.Add();
 }
 function Text(x,y,text,color,font,textAlign,autoupdate)
 {
@@ -199,7 +200,7 @@ this.Move = function(position,force)
    if(position == "left") this.speedX = Math.abs(force);
    if(position == "right") this.speedX = force;
 };
-this.Add = function(feature,code) { this.feature = code; };
+this.AddFeature = function(feature,code) { this.feature = code; };
 this.InPosition = function(x_pos,y_pos) { return(this.x == x_pos && this.y == y_pos); };
 if(autoupdate) this.Update();
 this.Add();
@@ -286,8 +287,8 @@ cakepen.rotate(-this.rotationAngle);
 	  if (mousePressed || canvasTouched) 
 	  {
 		this.state = 'active';
-		if ((typeof clickFunction === 'function') && (!isClicking || !isTouching)) {
-		  clickFunction();
+		if ((typeof this.clickFunction === 'function') && (!isClicking || !isTouching)) {
+		  this.clickFunction();
 		  isClicking = true; isTouching = true; this.clicked = true; this.touched = true;
 		}
 	  }
@@ -330,17 +331,18 @@ this.Move = function(position,force)
    if(position == "left") this.speedX = Math.abs(force);
    if(position == "right") this.speedX = force;
 };
-this.Add = function(feature,code) { this.feature = code; };
+this.AddFeature = function(feature,code) { this.feature = code; };
 this.InPosition = function(x_pos,y_pos) { return(this.x == x_pos && this.y == y_pos); };
 if(autoupdate) this.Update();
+this.Add();
 }
 
-function Circle(x,y,radius,color,start_angle,end_angle,autoupdate)
+function Circle(x,y,radius,color,autoupdate)
 {
 		this.x = x;
 		this.y = y;
-		this.a = start_angle;
-		this.b = end_angle;
+		this.a = 90;
+		this.b = 180 * Math.PI;
 		this.radius = radius;
 		this.r = this.radius;
 		this.alpha = 1;
@@ -403,7 +405,7 @@ this.Draw = function()
         if(this.destroyed) cakepen.globalAlpha = 0;
 		if(this.rotated) cakepen.rotate(this.rotationAngle);
 		cakepen.beginPath();
-        cakepen.arc(this.x, this.y, this.radius, this.a, this.b * Math.PI);
+        cakepen.arc(this.x, this.y, this.radius, this.a, this.b);
         cakepen.stroke();
         cakepen.fill();
         cakepen.closePath();
@@ -425,7 +427,7 @@ this.UpdatePosition = function()
 	  {
 		this.state = 'active';
 		if ((typeof clickFunction === 'function') && (!isClicking || !isTouching)) {
-		  clickFunction();
+		  this.clickFunction();
 		  isClicking = true; isTouching = true; this.clicked = true; this.touched = true;
 		}
 	  }
@@ -461,9 +463,10 @@ this.Move = function(position,force)
    if(position == "left") this.speedX = Math.abs(force);
    if(position == "right") this.speedX = force;
 };
-this.Add = function(feature,code) { this.feature = code; };
+this.AddFeature = function(feature,code) { this.feature = code; };
 this.InPosition = function(x_pos,y_pos) { return(this.x == x_pos && this.y == y_pos); };
 if(autoupdate) this.Update();
+this.Add();
 }
 
 function Square(x,y,size,color,autoupdate)
@@ -548,8 +551,8 @@ this.UpdatePosition = function()
 	  if (mousePressed || canvasTouched) 
 	  {
 		this.state = 'active';
-		if ((typeof clickFunction === 'function') && (!isClicking || !isTouching)) {
-		  clickFunction();
+		if ((typeof this.clickFunction === 'function') && (!isClicking || !isTouching)) {
+		  this.clickFunction();
 		  isClicking = true; isTouching = true; this.clicked = true; this.touched = true;
 		}
 	  }
@@ -585,10 +588,11 @@ this.Move = function(position,force)
    if(position == "left") this.speedX = Math.abs(force);
    if(position == "right") this.speedX = force;
 };
-this.Add = function(feature,code) { this.feature = code; };
+this.AddFeature = function(feature,code) { this.feature = code; };
 this.InPosition = function(x_pos,y_pos) { return(this.x == x_pos && this.y == y_pos); };
 this.Resize = function(s) { if(Unknown(s)) s = this.size; this.size = s; };
 if(autoupdate) this.Update();
+this.Add();
 }
 
 function RoundedRect(x,y,width,height,color,radius,autoupdate)
@@ -688,8 +692,8 @@ this.UpdatePosition = function()
 	  if (mousePressed || canvasTouched) 
 	  {
 		this.state = 'active';
-		if ((typeof clickFunction === 'function') && (!isClicking || !isTouching)) {
-		  clickFunction();
+		if ((typeof this.clickFunction === 'function') && (!isClicking || !isTouching)) {
+		  this.clickFunction();
 		  isClicking = true; isTouching = true; this.clicked = true; this.touched = true;
 		}
 	  }
@@ -732,9 +736,10 @@ this.Move = function(position,force)
    if(position == "left") this.speedX = Math.abs(force);
    if(position == "right") this.speedX = force;
 };
-this.Add = function(feature,code) { this.feature = code; };
+this.AddFeature = function(feature,code) { this.feature = code; };
 this.InPosition = function(x_pos,y_pos) { return(this.x == x_pos && this.y == y_pos); };
 if(autoupdate) this.Update();
+this.Add();
 }
 function Polygon(points,color,autoupdate)
 {
@@ -797,9 +802,10 @@ this.Move = function(position,force)
    if(position == "left") this.speedX = Math.abs(force);
    if(position == "right") this.speedX = force;
 };
-this.Add = function(feature,code) { this.feature = code; };
+this.AddFeature = function(feature,code) { this.feature = code; };
 this.InPosition = function(x_pos,y_pos) { return(this.x == x_pos && this.y == y_pos); };
 if(autoupdate) this.Update();
+this.Add();
 }
 function Sprite(url,x,y,width,height,autoupdate)
 {	
@@ -890,8 +896,8 @@ this.UpdatePosition = function()
 	  if (mousePressed || canvasTouched) 
 	  {
 		this.state = 'active';
-		if ((typeof clickFunction === 'function') && (!isClicking || !isTouching)) {
-		  clickFunction();
+		if ((typeof this.clickFunction === 'function') && (!isClicking || !isTouching)) {
+		  this.clickFunction();
 		  isClicking = true; isTouching = true; this.clicked = true; this.touched = true;
 		}
 	  }
@@ -1016,8 +1022,129 @@ this.Move = function(position,force)
    if(position == "left") this.speedX = Math.abs(force);
    if(position == "right") this.speedX = force;
 };
-this.Add = function(feature,code) { this.feature = code; };
+this.AddFeature = function(feature,code) { this.feature = code; };
 this.InPosition = function(x_pos,y_pos) { return(this.x == x_pos && this.y == y_pos); };
 this.Update = function() { this.UpdatePosition(); this.Draw(); };
 if(autoupdate) this.Update();
+this.Add();
+}
+function LinearGradient(x,y,w,h,content)
+{
+	this.x = x;
+	this.y = y;
+	this.height = h;
+	this.width = w;
+	this.content = content;
+	this.gradient = cakepen.createLinearGradient(this.x, this.y, this.width, this.height);
+	for(var loopdlg = 0;loopdlg < content.length;loopdlg++) this.gradient.addColorStop(content[loopdlg][0], content[loopdlg][1]);
+}
+function RadialGradient(x,y,w,h,r,content)
+{
+	this.x = x;
+	this.y = y;
+	this.width = w;
+	this.height = h;
+	this.size = r;
+	this.radius = r;
+	this.content = content;
+	this.gradient = cakepen.createRadialGradient(this.x, this.y, this.radius, this.width, this.height, this.radius);
+	for(var loopdrg = 0;loopdrg < content.length;loopdrg++) this.gradient.addColorStop(content[loopdrg][0],content[loopdrg][1]);
+}
+function Line(pos1,pos2,size,color)
+{
+this.pos1 = pos1;
+this.pos2 = pos2;
+this.size = size;
+this.color = color;
+this.destroyed = false;
+this.alpha = 1.0;
+if(Unknown(this.pos1[0])) this.pos1[0] = 0;
+if(Unknown(this.pos1[1])) this.pos1[1] = 0;
+if(Unknown(this.pos2[0])) this.pos2[0] = 0;
+if(Unknown(this.pos2[1])) this.pos2[1] = 0;
+if(Unknown(this.size)) this.size = 1;
+if(Unknown(this.color)) this.color = "black";
+this.Draw = function()
+{
+	cakepen.strokeStyle = this.color;
+	cakepen.lineHeight = this.size;
+	cakepen.lineWidth = this.size;
+	if(this.destroyed) cakepen.globalAlpha = 0;
+	cakepen.beginPath();
+	cakepen.moveTo(pos1[0],pos1[1]);
+	cakepen.lineTo(pos2[0],pos2[1]);
+	cakepen.stroke();
+	cakepen.closePath();
+	cakepen.globalAlpha = this.alpha;
+};
+this.Update = function()
+{
+	this.Draw();
+};
+this.Resize = function(linesize)
+{
+	if(Unknown(linesize)) linesize = this.size;
+	this.size = linesize;
+};
+this.Translate = function(position1,position2)
+{
+	this.pos1[0] = position1[0];
+	this.pos1[1] = position1[1];
+	this.pos2[0] = position2[0];
+	this.pos2[1] = position2[1];
+};
+this.Destroy = function(){ this.destroyed = true; };
+}
+function Triangle(pos1,pos2,pos3,color)
+{
+this.pos1 = pos1;
+this.pos2 = pos2;
+this.pos3 = pos3;
+this.color = color;
+this.destroyed = false;
+this.rotated = false;
+this.rotationAngle = 0;
+this.alpha = 1.0;
+if(Unknown(this.pos1[0])) this.pos1[0] = 0;
+if(Unknown(this.pos1[1])) this.pos1[1] = 0;
+if(Unknown(this.pos2[0])) this.pos2[0] = 0;
+if(Unknown(this.pos2[1])) this.pos2[1] = 0;
+if(Unknown(this.pos3[0])) this.pos3[0] = 0;
+if(Unknown(this.pos3[1])) this.pos3[1] = 0;
+if(Unknown(this.color)) this.color = "black";
+this.Draw = function()
+{
+	cakepen.strokeStyle = this.color;
+	if(this.destroyed) cakepen.globalAlpha = 0;
+	if(this.rotated) cakepen.rotate(this.rotationAngle);
+	cakepen.beginPath();
+	cakepen.moveTo(pos1[0],pos1[1]);
+	cakepen.lineTo(pos2[0],pos2[1]);
+	cakepen.lineTo(pos3[0],pos3[1]);
+	cakepen.lineTo(pos1[0],pos1[1]);
+	cakepen.stroke();
+	cakepen.closePath();
+	cakepen.globalAlpha = this.alpha;
+	cakepen.rotate(-this.rotationAngle);
+};
+this.Update = function()
+{
+	this.Draw();
+};
+this.Rotate = function(a)
+{
+	if(Unknown(a)) a = 0;
+	this.rotated = true;
+	this.rotationAngle = a;
+};
+this.Translate = function(position1,position2,position3)
+{
+	this.pos1[0] = position1[0];
+	this.pos1[1] = position1[1];
+	this.pos2[0] = position2[0];
+	this.pos2[1] = position2[1];
+	this.pos3[0] = position3[0];
+	this.pos3[1] = position3[1];
+};
+this.Destroy = function(){ this.destroyed = true; };
 }
