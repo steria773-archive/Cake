@@ -109,12 +109,18 @@ Cake Can Be Used For Huge HTML5 Games,Altough There Is Some Simple Games And Exa
 12. [Safe Type Checking](https://rabios.github.io/Cake/examples/compiler_01.html)
 13. [3D Graphics(Taken And Forked/Modified From explorercanvas Repo)](https://rabios.github.io/Cake/examples/graphics_04.html)
 
+### Experiments
+
+1. [Component Interaction With Mouse And Touch](https://rabios.github.io/Cake/experiments/experiment_01.html)
+2. [Interactive Canvas](https://rabios.github.io/Cake/experiments/experiment_02.html)
+3. [Gradients](https://rabios.github.io/Cake/experiments/experiment_03.html)
+4. [Integration With Other HTML5 Game Engines](https://rabios.github.io/Cake/experiments/experiment_04.html)
+
 ## Soon
 1. Updating Wiki/Documentation
 2. More New Examples And Features
 3. New Tests For Other Programming Languages
 4. More Bug Fixes
-5. Adding Events To Components
 6. Adding Cheatsheets And Full Manual
 7. Adding Tools To Framework/Engine
 
