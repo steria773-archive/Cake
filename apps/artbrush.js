@@ -4,10 +4,15 @@ var drawmode = "fill";
 var brushsize = 5;
 var alpha = 1;
 var brushishidden = false;
-alert("Welcome To Artbrush App!!!\nMove The Mouse To Paint With Brush\nPress C Key If You Want To Change Brush Color\nPress S Key If You Want To Change Brush Size\nPress T Key If You Want To Change Brush Type\nPress H Key To Hide Brush\nPress B Key To Show Brush\nPress E Key To Take Screenshot\nPress M Key To Set Brush Painting Mode\nPress Q Key To Show This Info Again\nPowered By Cake Game Engine!!!");
+alert("Welcome To Artbrush App!!!\nMove The Mouse To Paint With Brush\nClick Canvas To Toggle Full Screen\nPress C Key If You Want To Change Brush Color\nPress S Key If You Want To Change Brush Size\nPress T Key If You Want To Change Brush Type\nPress H Key To Hide Brush\nPress B Key To Show Brush\nPress E Key To Take Screenshot\nPress M Key To Set Brush Painting Mode\nPress Q Key To Show This Info Again\nPowered By Cake Game Engine!!!");
 CreateCanvas(window.innerWidth,window.innerHeight,"white");
 Initialize();
 SetDrawingMode(drawmode);
+cakecanvas.onclick = () => 
+{
+    if(!Fullscreen) ToggleFullscreen();
+    if(Fullscreen) ExitFullscreen();
+};
 cakecanvas.onmousemove = (e) =>
 {
     if(brushtype == "pencil" || brushtype == 1) DrawCircle(e.clientX,e.clientY,brushsize,brushcolor,brushcolor,brushishidden ? 0 : 1);
