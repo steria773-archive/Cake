@@ -925,6 +925,10 @@ var ViewSourceCode = (index) => window.open(document.scripts[index].src);
 var ViewGameSourceCode = () => window.open(document.scripts[2].src);
 var StartProcess = (dir) => window.open("file:///" + dir.toString);
 var UpdateCake = () => Import("https://cdn.jsdelivr.net/gh/Rabios/Cake/build/cake.js");
+var Destroy = (component) =>
+{
+    if(!component.destroyed) component.Destroy();
+};
 
 //Module: Components(Game Objects)
 //Cake Library For Creating Players With Shape,Or Image,Or Custom Functioned Type Or Shape!!!
@@ -2152,18 +2156,36 @@ var Import = (script_source) =>
 //Module: FPS And Levels
 //Created By Rabia Alhaffar On 16/November/2019
 //An Library For Timers,Frames Per Second
-//Created By Rabia Alhaffar On 16/November/2019
-//An Library For Timers,Frames Per Second
 function Level(code,fps)
 {
 this.code = code;
 this.fps = fps;
+this.paused = false;
+this.played = false;
+this.resumed = false;
+this.started = false;
 this.interval = 0;
 if(Unknown(this.fps)) this.fps = 120;
-this.Play = function() { this.interval = setInterval(this.code,1000 / this.fps); };
-this.Pause = function() { clearInterval(this.interval); };
-this.Resume = function() { this.Start(); };
-this.Start = function() { this.Play(); };
+this.Play = function() 
+{ 
+	this.interval = setInterval(this.code,1000 / this.fps); 
+	this.started = true,this.played = true;
+};
+this.Pause = function() 
+{
+	clearInterval(this.interval);
+	this.started = true,this.played = false,this.resumed = false,this.paused = true;
+};
+this.Resume = function() 
+{
+	this.Start();
+	this.started = true,this.played = true,this.resumed = true;
+};
+this.Start = function() 
+{
+	this.Play();
+	this.started = true,this.played = true;
+};
 this.Switch = function(level) { this.Pause(); level.Start(); };	
 this.SetFPS = function(fps) { this.fps = fps; };
 this.Unlimit = function() { this.fps = 1; };
@@ -4469,3 +4491,45 @@ document.onclick = Click;
 document.onmousedown = MouseButtonDown;
 document.onmouseup = MouseButtonUp;
 document.onmouseover = Hover;
+
+//Module: Game Events
+//Created By Rabia Alhaffar In 22/February/2020
+//Events Based System For Cake,Similar To Unity LOL
+var OnAwake = (f) =>
+{
+    window.onload = () => setTimeout(f,0); 
+};
+var OnStart = (f) => 
+{
+    window.onload = () => setTimeout(f,1000);
+};
+var OnUpdate = (f) =>
+{
+    window.onload = () => setInterval(f,1);
+};
+var OnClose = (f) =>
+{
+    window.onclose = () => setTimeout(f,0);
+};
+var OnLevelStart = (l,f) =>
+{
+    if(l.started || l.resumed) setTimeout(f,0);
+};
+var OnLevelPause = (l,f) =>
+{
+    if(l.paused) setTimeout(f,0);
+};
+var OnCollision = (obj1,obj2,f) =>
+{
+    if(CheckCollisionRect(obj1,obj2)) setTimeout(f,1);
+    if(CheckCollisionCircle(obj1,obj2)) setTimeout(f,1);
+    if(CheckCollisionCircleRect(obj1,obj2)) setTimeout(f,1);
+};
+var OnDestroy = (obj,f) =>
+{
+    if(obj.destroyed) setTimeout(f,0);
+};
+var OnRotate = (obj,f) =>
+{
+    if(obj.rotated) setTimeout(f,0);
+};
