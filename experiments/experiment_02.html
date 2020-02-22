@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head><title>Interactive Canvas</title></head>
+    <body>
+        <center>
+            <canvas id="cakecanvas"
+                    height="0"
+                    width="0">
+            </canvas>
+        </center>
+    </body>
+    <script src="cake.js"></script>
+    <script>
+        alert("Welcome To Interactive Canvas!!!\nOpen Web Developer Tools Console\nThen Write Code!!!");
+        Initialize();
+        cakecanvas.height = window.innerHeight,cakecanvas.width = window.innerWidth;
+        SetDrawingMode("fill");
+    </script>
+</html>
