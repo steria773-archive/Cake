@@ -82,6 +82,9 @@ Most Of Cake Game Framework/Engine Functions Written As Variables With Arrow Fun
 ## Showcase
 Cake Can Be Used For Huge HTML5 Games,Altough There Is Some Simple Games And Examples Developed And Made By The Same Framework/Engine Developer
 
+### Apps
+1. [Artbrush](https://rabios.github.io/Cake/apps/artbrush.html)
+
 ### Games
 
 1. [Treasure Island](https://rabios.github.io/Cake/games/treasure_island.html)
