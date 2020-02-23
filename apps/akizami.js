@@ -1,10 +1,10 @@
 //Created By Rabia Alhaffar In 22/2/2020
-//Based On Artboard Core
+//Based On Artboard Experiment's Core
 var brushtype = "pencil";
 var drawmode = "fill";
 Initialize();
 SetDrawingMode("fill");
-ResizeCanvas(window.innerWidth,CanvasHeight);
+ResizeCanvas(window.innerWidth - 50,CanvasHeight);
 var SetMode = (m) =>
 {
     if(m == 1) SetDrawingMode("fill");
@@ -31,7 +31,7 @@ cakecanvas.onmousemove = (e) =>
     if(brushtype == "text" || brushtype == 3)
     {
         SetFont(document.getElementById("txtfont").value.toString());
-        DrawText(e.clientX,e.clientY,document.getElementById("txt").value.toString());
+        DrawText(e.clientX,e.clientY,document.getElementById("txt").value.toString(),document.getElementById("color").value.toString(),document.getElementById("color").value.toString(),u,document.getElementById("alpha").value / 100);
     }
     if(brushtype == "eraser" || brushtype == 4) cakepen.clearRect(e.clientX,e.clientY,document.getElementById("esize").value,document.getElementById("esize").value);
 };
