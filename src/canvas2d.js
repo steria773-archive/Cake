@@ -308,14 +308,6 @@ var CanvasHeight,CanvasWidth,mode,texture,RandomX,RandomY,HalfCanvasHeight,HalfC
 		 if(Unknown(vertical_moving)) vertical_moving = 0;
 		 cakepen.transform(horizontal_scaling, horizontal_skewing, vertical_skewing, vertical_scaling, horizontal_moving, vertical_moving);
          };
-		 
-		var CreateTexturePattern = (texture_id,repeat_mode) =>
-		{
-		var texture = document.getElementById(texture_id),texture_patttern = cakepen.createPattern(texture,repeat_mode);
-        cakepen.rect(0, 0, cakecanvas.height, cakecanvas.width);
-		cakepen.fillStyle = texture_patttern;
-		cakepen.fill();
-		};
 
 		var DrawPixel = (x,y,size,color,alpha,show_grid) =>
 		{
@@ -352,15 +344,32 @@ var CanvasHeight,CanvasWidth,mode,texture,RandomX,RandomY,HalfCanvasHeight,HalfC
 		var MakeCanvasFullSize = () => { cakecanvas.style.height = "100%",cakecanvas.style.width = "100%"; };
 		var CreateCanvas = (width,height,bgcolor,border_style) =>
 		{
-		if(Unknown(height)) height = 0;
-		if(Unknown(width)) width = 0;
+		if(Unknown(height)) height = 150;
+		if(Unknown(width)) width = 150;
 		if(Unknown(border_style)) border_style = "none";
 		if(Unknown(bgcolor)) bgcolor = "none";
 		var canvas = document.createElement("canvas");
         canvas.id = "cake-canvas",canvas.height = height,canvas.width = width,canvas.style.backgroundColor = bgcolor,canvas.style.border = border_style;
-		document.getElementsByTagName("body")[0].appendChild(canvas);
+		document.body.appendChild(canvas);
 		};
-
+		var CreateGame = (width,height,gametitle) =>
+		{
+			document.title = gametitle;
+			if(Unknown(height)) height = 150;
+			if(Unknown(width)) width = 150;
+			var gamecanvas = document.createElement("canvas");
+            gamecanvas.id = "cakegamecanvas",gamecanvas.height = height,canvas.width = width;
+			document.body.appendChild(gamecanvas);
+			var cakecanvas = document.getElementById("cakegamecanvas");
+		    var cakepen	= cakecanvas.getContext("2d");
+		    if(cakepen) console.info("CAKE GAME ENGINE INITIALIZED...");
+		    if(!cakepen) 
+		    {
+			RemoveCanvas();
+			alert("CAKE IS NOT SUPPORTED ON THIS BROWSER/DEVICE,WE ARE SORRY!!!");
+			console.error("ERROR: CAKE_NOT_SUPPORTED");
+		    }
+		};
 		var DrawSquare = (x,y,size,color,stroke_color,alpha) =>
 		{
 		if(Unknown(x)) x = 0;
@@ -440,9 +449,16 @@ var CanvasHeight,CanvasWidth,mode,texture,RandomX,RandomY,HalfCanvasHeight,HalfC
 	   var ResetAlpha = () => cakepen.globalAlpha = 1;
 	   var Initialize = (c) =>
 		{
-		if(Unknown(c)) c = 1;
-		cakecanvas = document.getElementsByTagName("canvas")[c - 1];
-        cakepen	= cakecanvas.getContext("2d");
+		if(Unknown(c)) c = 0;
+		cakecanvas = document.getElementsByTagName("canvas")[c];
+		cakepen	= cakecanvas.getContext("2d");
+		if(cakepen) console.info("CAKE GAME ENGINE INITIALIZED...");
+		if(!cakepen) 
+		{
+			RemoveCanvas();
+			alert("CAKE IS NOT SUPPORTED ON THIS BROWSER/DEVICE,WE ARE SORRY!!!");
+			console.error("ERROR: CAKE_NOT_SUPPORTED");
+		}
 		CanvasHeight = cakecanvas.height,CanvasWidth = cakecanvas.width,HalfCanvasHeight = CanvasHeight * 0.5,HalfCanvasWidth = CanvasWidth * 0.5,RandomX = Math.floor(Math.random() * CanvasWidth),RandomY = Math.floor(Math.random() * CanvasHeight);
 		};
 		var ResizeCanvas = (canvas_width,canvas_height) => { cakecanvas.height = canvas_height,cakecanvas.width = canvas_width;	};
@@ -456,7 +472,7 @@ var CanvasHeight,CanvasWidth,mode,texture,RandomX,RandomY,HalfCanvasHeight,HalfC
 		};		
 		var SetDrawingMode = (drawing_mode) => { if(Unknown(drawing_mode)) drawing_mode = "fill"; mode = drawing_mode; };
 		var LineDash = (dash) => cakepen.setLineDash(dash);
-		var RemoveCanvas = () => { cakecanvas = document.getElementsByTagName("canvas")[0]; cakecanvas.parentNode.removeChild(cakecanvas);	};	
+		var RemoveCanvas = (c) => { cakecanvas = document.getElementsByTagName("canvas")[c]; cakecanvas.parentNode.removeChild(cakecanvas);	};	
 		var MeasureText = (text) => cakepen.measureText(text);
 		var EnableDOMInsideCanvas = (elements) =>
 		{
@@ -525,9 +541,9 @@ var CanvasHeight,CanvasWidth,mode,texture,RandomX,RandomY,HalfCanvasHeight,HalfC
 		cakecanvas.style.backgroundRepeat = "no-repeat";
 		cakecanvas.style.backgroundPosition = pos;
 	};
-	var SwitchCanvas = (c) => { if(Unknown(c)) c = 1; cakecanvas = document.getElementsByTagName("canvas")[c - 1]; };
+	var SwitchCanvas = (c) => { if(Unknown(c)) c = 1; cakecanvas = document.getElementsByTagName("canvas")[c]; };
 	var SwitchContext = (c) => { if(Unknown(c)) c = "2d"; cakepen = cakecanvas.getContext(c); };
-	var SwitchContent = (canvas,c) => { cakecanvas = document.getElementsByTagName("canvas")[canvas - 1]; cakepen = cakecanvas.getContext(c); };
+	var SwitchContent = (canvas,c) => { cakecanvas = document.getElementsByTagName("canvas")[canvas]; cakepen = cakecanvas.getContext(c); };
 	//For SpriteSheets Drawing!!!
 	var DrawImageAdvanced = (source_x,source_y,source_width,source_height,x,y,width,height,alpha) =>
 	{

@@ -1,5 +1,5 @@
 //Cake Keyboard Keys,Mouse Buttons,Touch Recording API
-//This Is For Recording,For Game Controlling Check canvas/addlibs/mousetrap.js
+//This Is For Recording
 var Keycode,MouseX,MouseY,MouseButton,MouseButtonName,TouchX,TouchY;
 var Log = (log) => console.log(log);
 var RecordKeyboard = (KeyboardKey) => console.info(`Key Pressed: ${KeyboardKey.key} , Key Code: ${KeyboardKey.keyCode}`);		
@@ -16,10 +16,15 @@ var RecordTouch = (event) =>
 	    TouchX = event.clientX || event.pageX,TouchY = event.clientY || event.pageY;
 		console.info(`Touch X Position: ${TouchX} , Touch Y Position: ${TouchY}`);
 };
+var RecordMotion = (event) =>
+{
+	console.log(`Acceleration X: ${event.accelerationIncludingGravity.x} , Acceleration Y: ${event.accelerationIncludingGravity.y}`);
+};
 document.addEventListener("keydown",RecordKeyboard);
 document.addEventListener("keyup",RecordKeyboard);
 document.addEventListener("mousemove",RecordMouse);
 document.addEventListener("click",RecordMouse);
 document.addEventListener("touchmove",RecordTouch);
 document.addEventListener("touchstart",RecordTouch);
+var EnableAccelerometer = () => document.addEventListener("devicemotion",RecordMotion); //Did This For Not Conflicting With Other Browsers(Other Than Chrome)
 var ClearConsole = () => console.clear();	

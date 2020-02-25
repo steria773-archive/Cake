@@ -4,5 +4,5 @@ var AddContent = (source,w,h) =>
 {
 var content = document.createElement("object");
 content.data = source,content.height = h,content.width = w;
-document.getElementsByTagName("body")[0].appendChild(content);
+document.getElementsByTagName("body").appendChild(content);
 };

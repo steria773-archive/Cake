@@ -13,6 +13,7 @@ var Hover = () => {};
 var GamepadID = (gamepad) => navigator.getGamepads()[gamepad].id; 
 var GamepadConnected = (gamepad) => navigator.getGamepads()[gamepad].connected;
 var GamepadButtonPressed = (gamepad,button) => navigator.getGamepads()[gamepad].buttons[button].pressed;
+var GamepadButtonTouched = (gamepad,button) => navigator.getGamepads()[gamepad].buttons[button].touched;
 var GamepadAxeValue = (gamepad,axe) => navigator.getGamepads()[gamepad].axes[axe];
 document.onkeyup = KeyUp;
 document.onkeydown = KeyDown;
