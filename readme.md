@@ -116,6 +116,8 @@ Cake Can Be Used For Huge HTML5 Games,Altough There Is Some Simple Games And Exa
 3. [Gradients](https://rabios.github.io/Cake/experiments/experiment_03.html)
 4. [Integration With Other HTML5 Game Engines](https://rabios.github.io/Cake/experiments/experiment_04.html)
 5. [Artboard(Which Led To Create Akizami)](https://rabios.github.io/Cake/experiments/experiment_05.html)
+6. [Accelerometer Test](https://rabios.github.io/Cake/experiments/experiment_06.html)
+7. [Multiple Canvases](https://rabios.github.io/Cake/experiments/experiment_07.html)
 
 ## Soon
 1. Updating Wiki/Documentation
