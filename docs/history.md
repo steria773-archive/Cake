@@ -35,3 +35,8 @@ New Update
 ### Bug Fixes
 1. Fixed Integration
 2. Fixed Getting Canvas In `Initialize()` And `CreateCanvas()`
+## 1/March/2020
+New Update
+### Addition
+1. Added `DrawArrays()` To Draw Huge Content From Arrays
+2. Added `Do()` Which Works The Same As `eval()` 
