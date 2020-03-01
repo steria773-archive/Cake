@@ -814,9 +814,11 @@ var CanvasHeight,CanvasWidth,mode,texture,RandomX,RandomY,HalfCanvasHeight,HalfC
 				if(Unknown(content[loopcontent][4])) content[loopcontent][4] = "black";
 				if(Unknown(content[loopcontent][5])) content[loopcontent][5] = "center";
 				if(Unknown(content[loopcontent][6])) content[loopcontent][6] = 1;
+				if(Unknown(content[loopcontent][7])) content[loopcontent][7] = "12px arial";
 				cakepen.fillStyle = content[loopcontent][3];
 				cakepen.strokeStyle = content[loopcontent][4];
 				cakepen.globalAlpha = content[loopcontent][6];
+				cakepen.font = content[loopcontent][7];
 				if(mode == "fill") cakepen.fillText(content[loopcontent][2],content[loopcontent][0],content[loopcontent][1]);
 			    if(mode == "stroke") cakepen.strokeText(content[loopcontent][2],content[loopcontent][0],content[loopcontent][1]);
 				if(mode == "custom")
