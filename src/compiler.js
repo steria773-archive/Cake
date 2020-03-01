@@ -22,3 +22,4 @@ if((values[x++] == undefined) || (values[x++] == NaN) && type == "array") values
 };
 var Unknown = (x) => ((x == undefined) || (x == NaN));
 var Help = (f) => { if(typeof f == "function") console.log(f); };
+var Do = (c) => eval(c);

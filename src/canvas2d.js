@@ -1,4 +1,5 @@
 //Cake 2D Graphics Library!!!
+//Cake Next Is Coming!!!
 //Always Needs More Additions And Updates!!!
 //If You Calling A Function With Undefined Values You Defined,Use u Instead Of undefined Or NaN
 //Defined Values
@@ -627,4 +628,238 @@ var CanvasHeight,CanvasWidth,mode,texture,RandomX,RandomY,HalfCanvasHeight,HalfC
 			cakepen.fillRect(x,y,w,h);
 			cakepen.strokeRect(x,y,w,h);
 		}
+	};
+	//Modes For DrawArrays()
+	var TRIANGLES = "triangles",
+		RECTANGLES = "rectangles",
+		SQUARES = "squares",
+		LINES = "lines",
+		CIRCLES = "circles",
+		POLYGONS = "polygons",
+		TEXTURES = "textures",
+		TEXTS = "texts",
+		ROUNDED_RECTANGLES = "rounded_rectangles";
+//Drawing Using Arrays Feature Is Available,Now For Everyone!!!
+	var DrawArrays = (type,content) =>
+	{
+		if(type == RECTANGLES)
+		{
+			for(var loopcontent = 0;loopcontent < content.length;loopcontent++)
+			{
+				if(Unknown(content[loopcontent][0])) content[loopcontent][0] = 0;
+				if(Unknown(content[loopcontent][1])) content[loopcontent][1] = 0;
+				if(Unknown(content[loopcontent][2])) content[loopcontent][2] = 0;
+				if(Unknown(content[loopcontent][3])) content[loopcontent][3] = 0;
+				if(Unknown(content[loopcontent][4])) content[loopcontent][4] = "black";
+				if(Unknown(content[loopcontent][5])) content[loopcontent][5] = "black";
+				if(Unknown(content[loopcontent][6])) content[loopcontent][6] = 1;
+				cakepen.fillStyle = content[loopcontent][4];
+				cakepen.strokeStyle = content[loopcontent][5];
+				cakepen.globalAlpha = content[loopcontent][6];
+				if(mode == "fill") cakepen.fillRect(content[loopcontent][0],content[loopcontent][1],content[loopcontent][2],content[loopcontent][3]);
+				if(mode == "stroke") cakepen.strokeRect(content[loopcontent][0],content[loopcontent][1],content[loopcontent][2],content[loopcontent][3]);
+				if(mode == "custom")
+				{
+					cakepen.fillRect(content[loopcontent][0],content[loopcontent][1],content[loopcontent][2],content[loopcontent][3]);
+					cakepen.fillRect(content[loopcontent][0],content[loopcontent][1],content[loopcontent][2],content[loopcontent][3]);
+				}
+			}
+		}
+		if(type == SQUARES)
+		{
+			for(var loopcontent = 0;loopcontent < content.length;loopcontent++)
+			{
+				if(Unknown(content[loopcontent][0])) content[loopcontent][0] = 0;
+				if(Unknown(content[loopcontent][1])) content[loopcontent][1] = 0;
+				if(Unknown(content[loopcontent][2])) content[loopcontent][2] = 0;
+				if(Unknown(content[loopcontent][4])) content[loopcontent][3] = "black";
+				if(Unknown(content[loopcontent][5])) content[loopcontent][4] = "black";
+				if(Unknown(content[loopcontent][6])) content[loopcontent][5] = 1;
+				cakepen.fillStyle = content[loopcontent][3];
+				cakepen.strokeStyle = content[loopcontent][4];
+				cakepen.globalAlpha = content[loopcontent][5];
+				if(mode == "fill") cakepen.fillRect(content[loopcontent][0],content[loopcontent][1],content[loopcontent][2],content[loopcontent][2]);
+				if(mode == "stroke") cakepen.strokeRect(content[loopcontent][0],content[loopcontent][1],content[loopcontent][2],content[loopcontent][2]);
+				if(mode == "custom")
+				{
+					cakepen.fillRect(content[loopcontent][0],content[loopcontent][1],content[loopcontent][2],content[loopcontent][2]);
+					cakepen.fillRect(content[loopcontent][0],content[loopcontent][1],content[loopcontent][2],content[loopcontent][2]);
+				}
+			}
+		}
+		if(type == CIRCLES)
+		{
+			for(var loopcontent = 0;loopcontent < content.length;loopcontent++)
+			{
+				if(Unknown(content[loopcontent][0])) content[loopcontent][0] = 0;
+				if(Unknown(content[loopcontent][1])) content[loopcontent][1] = 0;
+				if(Unknown(content[loopcontent][2])) content[loopcontent][2] = 0;
+				if(Unknown(content[loopcontent][4])) content[loopcontent][3] = "black";
+				if(Unknown(content[loopcontent][5])) content[loopcontent][4] = "black";
+				if(Unknown(content[loopcontent][6])) content[loopcontent][5] = 1;
+				cakepen.fillStyle = content[loopcontent][3];
+				cakepen.strokeStyle = content[loopcontent][4];
+				cakepen.globalAlpha = content[loopcontent][5];
+				cakepen.beginPath();
+                cakepen.arc(content[loopcontent][0], content[loopcontent][1], content[loopcontent][2], 90, 180 * Math.PI);
+				if(mode == "fill") cakepen.fill();
+				if(mode == "stroke") cakepen.stroke();		
+				if(mode == "custom")
+				{
+					cakepen.stroke();
+					cakepen.fill();
+				}
+				cakepen.closePath();
+			}
+		}
+		if(type == LINES)
+		{
+			for(var loopcontent = 0;loopcontent < content.length;loopcontent++)
+			{
+				if(Unknown(content[loopcontent][0][0])) content[loopcontent][0][0] = 0;
+				if(Unknown(content[loopcontent][0][1])) content[loopcontent][0][1] = 0;
+				if(Unknown(content[loopcontent][1][0])) content[loopcontent][1][0] = 0;
+				if(Unknown(content[loopcontent][1][1])) content[loopcontent][1][1] = 0;
+				if(Unknown(content[loopcontent][2])) content[loopcontent][2] = 0;
+				if(Unknown(content[loopcontent][3])) content[loopcontent][3] = "black";
+				if(Unknown(content[loopcontent][4])) content[loopcontent][4] = 1;
+				cakepen.strokeStyle = content[loopcontent][3];
+				cakepen.beginPath();
+			    cakepen.moveTo(content[loopcontent][0][0],content[loopcontent][0][1]);
+			    cakepen.lineTo(content[loopcontent][1][0],content[loopcontent][1][1]);
+			    cakepen.stroke();
+			    cakepen.closePath();
+			}
+		}
+		if(type == TRIANGLES)
+		{
+			for(var loopcontent = 0;loopcontent < content.length;loopcontent++)
+			{
+				if(Unknown(content[loopcontent][0][0])) content[loopcontent][0][0] = 0;
+				if(Unknown(content[loopcontent][0][1])) content[loopcontent][0][1] = 0;
+				if(Unknown(content[loopcontent][1][0])) content[loopcontent][1][0] = 0;
+				if(Unknown(content[loopcontent][1][1])) content[loopcontent][1][1] = 0;
+				if(Unknown(content[loopcontent][2][0])) content[loopcontent][2][0] = 0;
+				if(Unknown(content[loopcontent][2][1])) content[loopcontent][2][1] = 0;
+				if(Unknown(content[loopcontent][3])) content[loopcontent][3] = "black";
+				if(Unknown(content[loopcontent][4])) content[loopcontent][4] = "black";
+				if(Unknown(content[loopcontent][5])) content[loopcontent][5] = 1;
+				cakepen.fillStyle = content[loopcontent][3];
+				cakepen.strokeStyle = content[loopcontent][4];
+				cakepen.globalAlpha = content[loopcontent][5];
+				cakepen.beginPath();
+		        cakepen.moveTo(content[loopcontent][0][0],content[loopcontent][0][1]);
+		        cakepen.lineTo(content[loopcontent][1][0],content[loopcontent][1][1]);
+		        cakepen.lineTo(content[loopcontent][2][0],content[loopcontent][2][1]);
+			    cakepen.lineTo(content[loopcontent][0][0],content[loopcontent][0][1]);
+			    if(mode == "fill") cakepen.fill();
+			    if(mode == "stroke") cakepen.stroke();			
+				if(mode == "custom")
+				{
+					cakepen.stroke();
+					cakepen.fill();
+				}
+			    cakepen.closePath();
+			}
+		}
+		if(type == POLYGONS)
+		{
+			for(var loopcontent = 0;loopcontent < content.length;loopcontent++)
+			{
+				if(Unknown(content[loopcontent][0][0])) content[loopcontent][0][0] = 0;
+				if(Unknown(content[loopcontent][0][1])) content[loopcontent][0][1] = 0;
+				if(Unknown(content[loopcontent][1])) content[loopcontent][1] = "black";
+				if(Unknown(content[loopcontent][2])) content[loopcontent][2] = "black";
+				if(Unknown(content[loopcontent][3])) content[loopcontent][3] = 1;
+				cakepen.fillStyle = content[loopcontent][1];
+				cakepen.strokeStyle = content[loopcontent][2];
+				cakepen.globalAlpha = content[loopcontent][3];
+				cakepen.beginPath();
+				cakepen.moveTo(content[loopcontent][0][0], content[loopcontent][0][1]);
+				for (var i = 4; i < content[loopcontent].length; i++) cakepen.lineTo(content[loopcontent][i][0], content[loopcontent][i][1]);
+				if (mode == "fill") cakepen.fill();
+				if (mode == "stroke") cakepen.stroke();
+				if (mode == "custom") 
+				{
+					cakepen.fill();
+					cakepen.stroke();
+				}
+				cakepen.closePath();
+			}
+		}
+		if(type == TEXTURES)
+		{
+			for(var loopcontent = 0;loopcontent < content.length;loopcontent++)
+			{
+				if(Unknown(content[loopcontent][0])) content[loopcontent][0] = "";
+				if(Unknown(content[loopcontent][1])) content[loopcontent][1] = 0;
+				if(Unknown(content[loopcontent][2])) content[loopcontent][2] = 0;
+				if(Unknown(content[loopcontent][3])) content[loopcontent][3] = 0;
+				if(Unknown(content[loopcontent][4])) content[loopcontent][4] = 0;
+				if(Unknown(content[loopcontent][5])) content[loopcontent][5] = 1;
+				content[loopcontent][6] = new Image();
+				content[loopcontent][6].src = content[loopcontent][0];
+				cakepen.globalAlpha = content[loopcontent][5];
+				cakepen.drawImage(content[loopcontent][6],content[loopcontent][1],content[loopcontent][2],content[loopcontent][3],content[loopcontent][4]);
+			}
+		}
+		if(type == TEXTS)
+		{
+			for(var loopcontent = 0;loopcontent < content.length;loopcontent++)
+			{
+				if(Unknown(content[loopcontent][0])) content[loopcontent][0] = 0;
+				if(Unknown(content[loopcontent][1])) content[loopcontent][1] = 0;
+				if(Unknown(content[loopcontent][2])) content[loopcontent][2] = "";
+				if(Unknown(content[loopcontent][3])) content[loopcontent][3] = "black";
+				if(Unknown(content[loopcontent][4])) content[loopcontent][4] = "black";
+				if(Unknown(content[loopcontent][5])) content[loopcontent][5] = "center";
+				if(Unknown(content[loopcontent][6])) content[loopcontent][6] = 1;
+				cakepen.fillStyle = content[loopcontent][3];
+				cakepen.strokeStyle = content[loopcontent][4];
+				cakepen.globalAlpha = content[loopcontent][6];
+				if(mode == "fill") cakepen.fillText(content[loopcontent][2],content[loopcontent][0],content[loopcontent][1]);
+			    if(mode == "stroke") cakepen.strokeText(content[loopcontent][2],content[loopcontent][0],content[loopcontent][1]);
+				if(mode == "custom")
+				{
+					cakepen.fillText(content[loopcontent][2],content[loopcontent][0],content[loopcontent][1]);
+					cakepen.strokeText(content[loopcontent][2],content[loopcontent][0],content[loopcontent][1]);
+				}	
+			}
+		}
+		if(type == ROUNDED_RECTANGLES)
+		{
+			for(var loopcontent = 0;loopcontent < content.length;loopcontent++)
+			{
+				if(Unknown(content[loopcontent][0])) content[loopcontent][0] = 0;
+				if(Unknown(content[loopcontent][1])) content[loopcontent][1] = 0;
+				if(Unknown(content[loopcontent][2])) content[loopcontent][2] = 0;
+				if(Unknown(content[loopcontent][3])) content[loopcontent][3] = 0;
+				if(Unknown(content[loopcontent][4])) content[loopcontent][4] = 0;
+				if(Unknown(content[loopcontent][5])) content[loopcontent][5] = "black";
+				if(Unknown(content[loopcontent][6])) content[loopcontent][6] = "black";
+				if(Unknown(content[loopcontent][7])) content[loopcontent][7] = 1;
+				cakepen.fillStyle = content[loopcontent][5];
+				cakepen.strokeStyle = content[loopcontent][6];
+				cakepen.globalAlpha = content[loopcontent][7];
+				cakepen.beginPath();
+				cakepen.moveTo(content[loopcontent][0] + content[loopcontent][4],content[loopcontent][1]);
+				cakepen.lineTo(content[loopcontent][0] + content[loopcontent][2] - content[loopcontent][4],content[loopcontent][1]);
+				cakepen.quadraticCurveTo(content[loopcontent][0] + content[loopcontent][2],content[loopcontent][1],content[loopcontent][0] + content[loopcontent][2],content[loopcontent][1] + content[loopcontent][4]);
+				cakepen.lineTo(content[loopcontent][0] + content[loopcontent][2],content[loopcontent][1] + content[loopcontent][3] - content[loopcontent][4]);
+				cakepen.quadraticCurveTo(content[loopcontent][0] + content[loopcontent][2],content[loopcontent][1] + content[loopcontent][3],content[loopcontent][0] + content[loopcontent][2] - content[loopcontent][4],content[loopcontent][1] + content[loopcontent][3]);
+				cakepen.lineTo(content[loopcontent][0] + content[loopcontent][4],content[loopcontent][1] + content[loopcontent][3]);
+				cakepen.quadraticCurveTo(content[loopcontent][0],content[loopcontent][1] + content[loopcontent][3],content[loopcontent][0],content[loopcontent][1] + content[loopcontent][3] - content[loopcontent][4]);
+				cakepen.lineTo(content[loopcontent][0],content[loopcontent][1] + content[loopcontent][4]);
+				cakepen.quadraticCurveTo(content[loopcontent][0],content[loopcontent][1],content[loopcontent][0] + content[loopcontent][4],content[loopcontent][1]);
+				cakepen.closePath();
+				if(mode == "fill") cakepen.fill();			
+				if(mode == "stroke") cakepen.stroke();
+				if(mode == "custom")
+				{
+					cakepen.fill();
+					cakepen.stroke();
+				}
+			}
+		}
+		cakepen.globalAlpha = 1;
 	};
