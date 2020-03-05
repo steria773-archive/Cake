@@ -30,7 +30,7 @@ var radgrad = new RadialGradient(200,200,1000,1000,50,
 DrawRect(100,100,150,75,"blue");
 DrawSquare(300,100,80,"cyan");
 DrawCircle(480,140,50,"red");
-DrawTexture("CAKE_APP_ICON.png",600,300,100,100);
+DrawTexture("CAKE_APP_ICON.png",800,200,100,100);
 SetFont("40px Cambria");
 DrawText(570,150,"HELLO CAKE","blue",u);
 DrawLine([ 850,140 ],[ 1200,140 ],20,ligrad.gradient);
