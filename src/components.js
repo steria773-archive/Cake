@@ -223,7 +223,6 @@ this.alpha = 1;
 this.width = width;
 this.h = this.height;
 this.w = this.width;
-this.color = color;	
 this.destroyed = false;
 this.rotated = false;
 this.collidable = true;
