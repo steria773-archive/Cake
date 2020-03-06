@@ -17,6 +17,5 @@ var Import = (script_source) =>
   script.src  = script_source; 
   script.type = 'text/javascript'; 
   script.defer = true; 
-  document.getElementsByTagName('head').item(0).appendChild(script); 
-  
+  document.getElementsByTagName('head').appendChild(script); 
 };
