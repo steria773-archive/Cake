@@ -1,0 +1,152 @@
+<!-- Created By Rabia Alhaffar In 16/February/2020 -->
+<!-- Still In Development,Continue From Line 83-->
+<!-- Cake Official Website Source Code -->
+<!-- 
+    3rd Party Used:
+    highlight.pack.js
+-->
+<!DOCTYPE html>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+<script src="js/highlightjs/highlight.pack.js"></script>
+<script src="js/superscript.js"></script>
+<link rel="stylesheet" href="css/sitecontent.css">
+<link rel="stylesheet" href="js/highlightjs/styles/vs2015.css">
+<link href="https://fonts.googleapis.com/css?family=Baloo+Bhaijaan|Bungee|Cairo|Iceland|Jura|Lalezar|Press+Start+2P|Russo+One|Saira|Michroma|Special+Elite|Tenor+Sans&display=swap" rel="stylesheet"> 
+<title>Cake Engine - Homepage</title>
+</head>
+<body>
+<div id="main">
+<div id="menu">
+    <a href="index.html"><img onclick="home()" id="logo" src="imgs/CAKE_APP_ICON.png" height="75" width="75"></a>
+    <select id="engine">
+        <option>WEBSITE</option>
+        <option onclick="backhome()">HOMEPAGE</option>
+        <option onclick="openapi()">API DOCUMENTATION</option>
+        <option onclick="openwiki()">WIKI</option>
+        <option onclick="openeditor()">TRY IT ONLINE</option>
+    </select>
+    <select id="showcase">
+        <option>SHOWCASE</option>
+        <option onclick="opengames()">GAMES</option>
+        <option onclick="openexperiments()">EXPERIMENTS</option>
+        <option onclick="openapps()">APPS</option>
+    </select>
+    <select id="download">
+        <option>DOWNLOAD</option>
+        <option onclick="downloadengine()">DOWNLOAD DIRECTLY(CDN)</option>
+        <option onclick="fulldownload()">FULL DOWNLOAD</option>
+        <option onclick="getcdn()">ONLINE CDN</option>
+        <option onclick="githubsource()">SOURCE CODE</option>
+    </select>
+    <select id="about">
+        <option>MORE</option>
+        <option onclick="openabout()">ABOUT DEVELOPERS</option>
+        <option onclick="githubrepo()">CAKE ON GITHUB</option>
+    </select>
+    <a href="https://github.com/Rabios/Cake"><img src="imgs/GitHub-Mark-64px.png" style="
+    position:absolute;
+    top: 28px;
+    right: 30px;
+    "></a>
+</div>
+<center>
+<h1>CAKE</h1>
+<p>A Fully-Featured <b>Game Engine</b> That Is Suitable <b> For Developing Video Games Easily And Rapidly!!!</b></p>
+<img src="imgs/CAKE.png" width="1000"><br><br>
+<button id="dldirbtn" onclick="fulldownload()">DOWNLOAD</button>   
+<button id="trybtn" onclick="openeditor()">TRY ONLINE</button>
+<br><br>
+<hr>
+<h2>HOW MUCH IS CAKE EASY?</h2>
+<p>Cake Uses <b>JavaScript</b> In <b>PascalCase</b> Style,Allowing Developers <b>To Write Very Clear Code Without Confusions</b></p>
+</center>
+<pre>
+<code class="javascript">
+Initialize(0); //Index Of Canvas Is 0,So First Canvas Will Drawn On
+SetCanvasBackgroundColor("black");
+SetDrawingMode("fill");
+DrawGradientRect(0,0,CanvasWidth,CanvasHeight,
+[
+[ 0.0,"lightblue" ],
+[ 0.25,"aqua" ],
+[ 0.50,"cyan" ],
+[ 0.75,"blue" ],
+[ 1.0,"darkblue" ]
+]);
+</code>
+</pre>
+<center>
+<h3>RESULT</h3>
+<canvas height="400" width="400"></canvas> <!-- First Canvas -->
+<hr>
+<h1>FEATURES</h1>
+</center>
+<div id="features">
+<center>
+    <h2>HTML5</h2>
+    <img src="imgs/HTML5_Badge_512.png" height="150" width="150">
+    <p><b>Create And Make HTML5 Games Easily</b></p><br><br>
+    <img src="imgs/cordova-logo-8FC11C05F0-seeklogo.com.png" height="150" width="150"> <img src="imgs/phonegap-logo-F08BC61D36-seeklogo.com.png" height="150" width="150"> <img height="150" width="150" src="imgs/nwjs-aka-nodewebkit-logo-8B8DF3F5A5-seeklogo.com.png">
+    <p><b>Use The Tools You Always Use To Build Native Applications From HTML5 Game Code</b></p><br><br>
+    <hr>
+    <h2>COMPATIBILITY</h2>
+    <img src="imgs/intro-web-browsers.jpg" height="250">
+    <p><b>Works On Modern Browsers</b>,Cross Platform Code <b>Without Problems</b></p>
+    <small>NOTES: Support Of Microsoft <small style="color:red;">Internet Explorer 11 Dropped </small>After Using ES6</small><br><br><hr>
+    <h2>GRAPHICS</h2>
+    <img src="imgs/WebGL_100px_June16.jpg">
+    <p>Fast 2D <b>Canvas</b> And <b>WebGL</b> 3D Graphics <b>Powered By CanvasRenderingContext2D</b> And <b>WebGLRenderingContext2D</b></p>
+    <p>Also,Cake <b>Can Integrate With Some HTML5 Game Engines Or Frameworks</b>,List <a href="list_integration.html">Here</a></p><br><br><hr>
+    <h2>GAME SCRIPTING</h2>
+    <img height="150" width="150" src="imgs/javascript-js-logo-2949701702-seeklogo.com.png">    <img src="imgs/coffeescript-logo-3BFDF9D06C-seeklogo.com.png" height="150" width="150">    <img src="imgs/typescript-logo-B29A3F462D-seeklogo.com.png" height="150" width="150"> <img src="imgs/py.png" height="150" width="150">
+    <p>Use <b>JavaScript</b> As Default Or Use Any Other Programming Languages That Compiles To JavaScript Like <b> CoffeeScript </b> And <b> TypeScript </b>,Also <b>Python</b> Supported Via <b><a href="https://www.transcrypt.org/">Transcrypt</a></b></p><br><br>
+    <img src="imgs/perl_102623.png" height="150" width="150"> 
+    <img src="imgs/py.png" height="150" width="150"> 
+    <img src="imgs/ruby.png" height="150" width="150">
+    <img src="imgs/janet-language_144746.png" height="150" width="150">
+    <img src="imgs/pascal.jpg" height="150" width="150">
+    <img src="imgs/haxe.png" height="150" width="150">
+    <img src="imgs/logo.png" height="150" width="150">
+    <p>With Node.js And <code style="color:white; background-color: silver;">native.js</code>,You Can <b>Run Code From Device In Many Programming Languages</b>(More Than 20 Programming Languages)</p><br><br>
+    <img src="imgs/mod.png">
+    <p>You Can <b>Modify The Engine In-Game To Add New Functions</b> Or <b>Modify Existing Engine Functions</b>,All Via Game's Code Or Web Developer Console From Browser</p><br><br>
+    <img src="imgs/safe.png">
+    <p><b>Safe Type Checking,No Errors For Missing Parameters When Calling Functions,Cause Cake Engine Can Solve Type Errors</b></p><br><br>
+    <hr>
+    <h2>INPUT AND AUDIO</h2>
+    <img src="imgs/973178.png" height="150" width="150">
+    <img src="imgs/973176.png" height="150" width="150">
+    <img src="imgs/gamepad.png" height="150" width="150">
+    <img src="imgs/touch.png" height="150" width="150">
+    <p><b>Cross-Platform Input Controls</b>,Made From Pure JavaScript With No Third Party Libraries</p><br><br>
+    <img src="imgs/500px-Speaker_Icon.svg.png" height="150" width="150">
+    <p><b>Cross-Platform Audio</b> Based On WebAudio,With Ability <b>To Play,Pause And Resuming Audio</b></p><br><br>
+    <hr>
+    <h2>PHYSICS</h2>
+    <img src="imgs/physics.png">
+    <p><b>Advanced Physics Based On Collision Detection,With Many Ways</b> For Detecting Collision</p><br><br>
+    <hr>
+    <p>API Documentation And Wiki Coming Soon...</p><br>
+</center>
+</div>
+</div>
+</body>
+<script src="js/cake.js"></script>
+<script>
+hljs.initHighlightingOnLoad();
+//Example 1
+Initialize();
+SetCanvasBackgroundColor("black");
+SetDrawingMode("fill");
+DrawGradientRect(0,0,CanvasWidth,CanvasHeight,
+[
+[ 0.0,"lightblue" ],
+[ 0.25,"aqua" ],
+[ 0.50,"cyan" ],
+[ 0.75,"blue" ],
+[ 1.0,"darkblue" ]
+]);
+</script>
+</html>
