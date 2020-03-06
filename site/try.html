@@ -1,0 +1,96 @@
+<!-- Created By Rabia Alhaffar In 17/February/2020 -->
+<!-- Try Cake Code Editor Page -->
+<!-- Cake Official Website Source Code -->
+<!-- 
+    3rd Party Used:
+    highlight.pack.js
+    codemirror.js
+    code-blast.js
+-->
+<!DOCTYPE html>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+<script src="js/codemirror/codemirror.js"></script>
+<script src="js/codemirror/css.js"></script>
+<script src="js/codemirror/htmlmixed.js"></script>
+<script src="js/codemirror/javascript.js"></script>
+<script src="js/codemirror/xml.js"></script>
+<script src="js/codemirror/match-highlighter.js"></script>
+<script src="js/codemirror/code-blast.js"></script>
+<script src="js/codemirror/closetag.js"></script>
+<script src="js/codemirror/closebrackets.js"></script>
+<script src="js/codemirror/fullscreen.js"></script>
+<script src="js/codemirror/simplescrollbars.js"></script>
+<script src="js/highlightjs/highlight.pack.js"></script>
+<script src="js/mousetrap/mousetrap.min.js"></script>
+<link rel="stylesheet" href="css/sitecontent.css">
+<link rel="stylesheet" href="js/codemirror/codemirror.css">
+<link rel="stylesheet" href="js/codemirror/monokai.css">
+<link rel="stylesheet" href="js/codemirror/fullscreen.css">
+<link rel="stylesheet" href="js/codemirror/simplescrollbars.css">
+<link href="https://fonts.googleapis.com/css?family=Baloo+Bhaijaan|Bungee|Cairo|Iceland|Jura|Lalezar|Press+Start+2P|Russo+One|Saira|Michroma|Special+Elite|Tenor+Sans&display=swap" rel="stylesheet"> 
+<title>Cake Engine - Try Online</title>
+</head>
+<body>
+<div id="main">
+<div id="menu">
+    <a href="index.html"><img id="logo" src="imgs/CAKE_APP_ICON.png" height="75" width="75"></a>
+    <select id="engine">
+        <option>WEBSITE</option>
+        <option onclick="backhome()">HOMEPAGE</option>
+        <option onclick="openapi()">API DOCUMENTATION</option>
+        <option onclick="openwiki()">WIKI</option>
+        <option onclick="openeditor()">TRY IT ONLINE</option>
+    </select>
+    <select id="showcase">
+        <option>SHOWCASE</option>
+        <option onclick="opengames()">GAMES</option>
+        <option onclick="openexperiments()">EXPERIMENTS</option>
+        <option onclick="openapps()">APPS</option>
+    </select>
+    <select id="download">
+        <option>DOWNLOAD</option>
+        <option onclick="downloadengine()">DOWNLOAD DIRECTLY</option>
+        <option onclick="fulldownload()">FULL DOWNLOAD</option>
+        <option onclick="getcdn()">ONLINE CDN</option>
+        <option onclick="githubsource()">SOURCE CODE</option>
+    </select>
+    <select id="about">
+        <option>MORE</option>
+        <option onclick="openabout()">ABOUT DEVELOPERS</option>
+        <option onclick="githubrepo()">CAKE ON GITHUB</option>
+    </select>
+    <a href="https://github.com/Rabios/Cake"><img src="imgs/GitHub-Mark-64px.png" style="
+        position:absolute;
+        top: 28px;
+        right: 30px;
+        "></a>
+</div>
+<center>
+    <h1>CODE</h1>
+    <small>NOTE: Press <kbd style="color: white; background-color: silver;">Home</kbd> Key While In Editor To Toggle Editor In Fullscreen Mode</small><br><br>
+</center>
+<select class="editor-button">
+    <option>EDITOR TOOLS</option>
+    <option onclick="editor_help()">HELP</option>
+    <option>EXPORT GAME</option>
+    <option>API DOCUMENTATION</option>
+</select>
+<select class="editor-button">
+    <option onclick="setExample(0)">EXAMPLES</option>
+    <option onclick="setExample(1)">GRADIENT</option>
+    <option onclick="setExample(2)">COLORFUL</option>
+    <option onclick="setExample(3)">EMPTY</option>
+    <option onclick="setExample(4)">SKETCH WITH MOUSE</option>
+    <option onclick="setExample(5)">DRAWING SHAPES</option>
+</select>
+<textarea id="code" name="code"></textarea><br>
+<center><h1>GAME</h1></center>
+<iframe id="preview"></iframe>
+</div>
+</body>
+<script src="js/cake.js"></script>
+<script src="js/superscript.js"></script>
+<script src="js/tryeditor.js"></script> <!-- Online Editor Source Code -->
+</html>
