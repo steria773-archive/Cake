@@ -1,6 +1,6 @@
 //Copyright (c)2019-Present Rabia Alhaffar,All Rights Reserved!!!
 //Cake Canvas (2D And 3D) And WebGL(2D And 3D) HTML5 Game Framework!!!
-//Date: 1/March/2020
+//Date: 6/March/2020
 //The Engine/Framework Code Starts Here!!!
 //Variables:
 var Opera = (!!window.opr && !!opr.addons) || !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0,
@@ -313,7 +313,7 @@ var CanvasHeight,CanvasWidth,mode,texture,RandomX,RandomY,HalfCanvasHeight,HalfC
 			if(Unknown(color)) color = "black";
 			if(Unknown(stroke_color)) stroke_color = color;
 			if(Unknown(textAlign)) textAlign = "";
-			if(Unknown(alpha)) alpha = 1.0;
+			if(Unknown(alpha)) alpha = 1;
 			cakepen.globalAlpha = alpha,cakepen.fillStyle = color,cakepen.strokeStyle = stroke_color,cakepen.textAlign = textAlign;
 			if(mode == "fill") cakepen.fillText(text,x,y);
 			if(mode == "stroke") cakepen.strokeText(text,x,y);
@@ -344,7 +344,7 @@ var CanvasHeight,CanvasWidth,mode,texture,RandomX,RandomY,HalfCanvasHeight,HalfC
 			if(Unknown(color)) cakepen.fillStyle = "black";
 			if(!Unknown(stroke_color)) cakepen.strokeStyle = stroke_color;
 			if(Unknown(stroke_color)) cakepen.strokeStyle = color;
-			if(Unknown(alpha)) alpha = 1.0;
+			if(Unknown(alpha)) alpha = 1;
 			cakepen.globalAlpha = alpha;			
 			if(mode == "fill") cakepen.fillRect(x,y,width,height);
 			if(mode == "stroke") cakepen.strokeRect(x,y,width,height);
@@ -358,7 +358,7 @@ var CanvasHeight,CanvasWidth,mode,texture,RandomX,RandomY,HalfCanvasHeight,HalfC
 			if(Unknown(pos2[0])) pos2[0] = 0;
 			if(Unknown(pos2[1])) pos2[1] = 0;
 			if(Unknown(line_size)) line_size = 1;
-			if(Unknown(alpha)) alpha = 1.0;
+			if(Unknown(alpha)) alpha = 1;
 			cakepen.globalAlpha = alpha,cakepen.lineHeight = line_size,cakepen.lineWidth = line_size;
 			cakepen.beginPath();
 			if(Unknown(color)) color = "black";
@@ -373,7 +373,7 @@ var CanvasHeight,CanvasWidth,mode,texture,RandomX,RandomY,HalfCanvasHeight,HalfC
 		{
 			if(Unknown(gridsize)) gridsize = 10;
 			if(Unknown(color)) color = "black";
-			if(Unknown(alpha)) alpha = 1.0;
+			if(Unknown(alpha)) alpha = 1;
 			cakepen.globalAlpha = alpha,cakepen.fillStyle = color;
 			var grid_loop_width = cakecanvas.width / gridsize,grid_loop_height = cakecanvas.height / gridsize;
 			var x = 0,y = 0;
@@ -395,7 +395,7 @@ var CanvasHeight,CanvasWidth,mode,texture,RandomX,RandomY,HalfCanvasHeight,HalfC
                     if(Unknown(radius)) radius = 1;
 					if(Unknown(color)) color = "black";
 					if(Unknown(stroke_color)) stroke_color = "black";
-					if(Unknown(alpha)) alpha = 1.0;
+					if(Unknown(alpha)) alpha = 1;
 					cakepen.globalAlpha = alpha,cakepen.fillStyle = color,cakepen.strokeStyle = stroke_color;
 					cakepen.beginPath();
                     cakepen.arc(x, y, radius, 90, 180 * Math.PI);
@@ -413,7 +413,7 @@ var CanvasHeight,CanvasWidth,mode,texture,RandomX,RandomY,HalfCanvasHeight,HalfC
 						if(Unknown(endAngle)) endAngle = 180;				
 						if(Unknown(color)) color = "black";
 						if(Unknown(stroke_color)) stroke_color = "black";
-						if(Unknown(alpha)) alpha = 1.0;
+						if(Unknown(alpha)) alpha = 1;
 						cakepen.globalAlpha = alpha,cakepen.fillStyle = color,cakepen.strokeStyle = stroke_color;
 						cakepen.beginPath();
 						cakepen.arc(x, y, radius, startAngle, endAngle);
@@ -431,7 +431,7 @@ var CanvasHeight,CanvasWidth,mode,texture,RandomX,RandomY,HalfCanvasHeight,HalfC
 			if(Unknown(size)) size = 0;
 			if(Unknown(color)) color = "black";
 			if(Unknown(stroke_color)) stroke_color = color;
-			if(Unknown(alpha)) alpha = 1.0;
+			if(Unknown(alpha)) alpha = 1;
 			cakepen.globalAlpha = alpha,cakepen.fillStyle = color,cakepen.strokeStyle = stroke_color;
 			cakepen.beginPath();
 		    cakepen.moveTo(a,b);
@@ -454,7 +454,7 @@ var CanvasHeight,CanvasWidth,mode,texture,RandomX,RandomY,HalfCanvasHeight,HalfC
 			if(Unknown(pos3[1])) pos3[1] = 0;
 			if(Unknown(color)) color = "black";
 			if(Unknown(stroke_color)) stroke_color = color;
-			if(Unknown(alpha)) alpha = 1.0;
+			if(Unknown(alpha)) alpha = 1;
 			cakepen.globalAlpha = alpha,cakepen.fillStyle = color,cakepen.strokeStyle = stroke_color;
 			cakepen.beginPath();
 		    cakepen.moveTo(pos1[0],pos1[1]);
@@ -476,7 +476,7 @@ var CanvasHeight,CanvasWidth,mode,texture,RandomX,RandomY,HalfCanvasHeight,HalfC
 		{
 		 if(Unknown(color)) color = "black";
 		 if(Unknown(stroke_color)) stroke_color = color; 
-		 if(Unknown(alpha)) alpha = 1.0;
+		 if(Unknown(alpha)) alpha = 1;
 		 cakepen.globalAlpha = alpha,cakepen.fillStyle = color,cakepen.strokeStyle = stroke_color;
 		 if (points.length <= 0) return;
 		 cakepen.beginPath();
@@ -498,7 +498,7 @@ var CanvasHeight,CanvasWidth,mode,texture,RandomX,RandomY,HalfCanvasHeight,HalfC
 		if(Unknown(start_angle)) start_angle = 90;
 		if(Unknown(end_angle)) end_angle = 180 * Math.PI;
 		if(Unknown(stroke_color)) stroke_color = color;
-		if(Unknown(alpha)) alpha = 1.0;
+		if(Unknown(alpha)) alpha = 1;
 		cakepen.globalAlpha = alpha,cakepen.fillStyle = color,cakepen.strokeStyle = stroke_color;
 		cakepen.beginPath();
         var a = 360 / sides;
@@ -516,7 +516,7 @@ var CanvasHeight,CanvasWidth,mode,texture,RandomX,RandomY,HalfCanvasHeight,HalfC
 		if(Unknown(y)) y = 0;
 		if(Unknown(height)) height = 0;
 		if(Unknown(width)) width = 0;
-		if(Unknown(alpha)) alpha = 1.0;
+		if(Unknown(alpha)) alpha = 1;
 		cakepen.globalAlpha = alpha;
 		cakepen.drawImage(texture,x,y,width,height);
 		};
@@ -549,7 +549,7 @@ var CanvasHeight,CanvasWidth,mode,texture,RandomX,RandomY,HalfCanvasHeight,HalfC
 			if(Unknown(gridsize)) gridsize = 10;
 			if(Unknown(color)) color = "black";
 			if(Unknown(stroke_color)) stroke_color = color;
-			if(Unknown(alpha)) alpha = 1.0;
+			if(Unknown(alpha)) alpha = 1;
 			cakepen.globalAlpha = alpha,cakepen.strokeStyle = stroke_color,cakepen.fillStyle = color;
 			var grid_loop_width = cakecanvas.width / gridsize,grid_loop_height = cakecanvas.height / gridsize,x = 0,y = 0;
 			for(var i = 0;i < grid_loop_height;i++)
@@ -569,7 +569,7 @@ var CanvasHeight,CanvasWidth,mode,texture,RandomX,RandomY,HalfCanvasHeight,HalfC
         var DrawSuperFilledGrid = (gridsize,alpha) =>
 		{
 			if(Unknown(gridsize)) gridsize = 0;
-			if(Unknown(alpha)) alpha = 1.0;
+			if(Unknown(alpha)) alpha = 1;
 			cakepen.globalAlpha = alpha;
 			var grid_loop_width = cakecanvas.width / gridsize,grid_loop_height = cakecanvas.height / gridsize,x = 0,y = 0;
 			for(var i = 0;i < grid_loop_height;i++)
@@ -615,7 +615,7 @@ var CanvasHeight,CanvasWidth,mode,texture,RandomX,RandomY,HalfCanvasHeight,HalfC
 		if(Unknown(y)) y = 0;
 		if(Unknown(size)) size = 5;
 		if(Unknown(show_grid)) show_grid = true;
-		if(Unknown(alpha)) alpha = 1.0;
+		if(Unknown(alpha)) alpha = 1;
 		cakepen.globalAlpha = alpha,cakepen.fillStyle = color,cakepen.strokeStyle = "black";
 		cakepen.fillRect(x,y,size,size);
 		if(show_grid) cakepen.strokeRect(x,y,size,size);	
@@ -676,7 +676,7 @@ var CanvasHeight,CanvasWidth,mode,texture,RandomX,RandomY,HalfCanvasHeight,HalfC
 		if(Unknown(size)) size = 0;
 		if(Unknown(color)) color = "black";
 		if(Unknown(stroke_color)) stroke_color = color;
-		if(Unknown(alpha)) alpha = 1.0;
+		if(Unknown(alpha)) alpha = 1;
         cakepen.globalAlpha = alpha,cakepen.fillStyle = color,cakepen.strokeStyle = stroke_color;
         if(mode == "fill") cakepen.fillRect(x,y,size,size);			
 		if(mode == "stroke") cakepen.strokeRect(x,y,size,size);	
@@ -690,7 +690,7 @@ var CanvasHeight,CanvasWidth,mode,texture,RandomX,RandomY,HalfCanvasHeight,HalfC
 		if(Unknown(length)) length = 0;
 		if(Unknown(color)) color = "black";
 		if(Unknown(stroke_color)) stroke_color = color;
-		if(Unknown(alpha)) alpha = 1.0;
+		if(Unknown(alpha)) alpha = 1;
 		cakepen.globalAlpha = alpha,cakepen.fillStyle = color,cakepen.strokeStyle = stroke_color;
 		var deg = Math.PI / 180; 
         cakepen.translate(x,y); 
@@ -727,7 +727,7 @@ var CanvasHeight,CanvasWidth,mode,texture,RandomX,RandomY,HalfCanvasHeight,HalfC
 		if(Unknown(height)) height = 0;
 		if(Unknown(color)) color = "black";
 		if(Unknown(stroke_color)) stroke_color = color;
-		if(Unknown(alpha)) alpha = 1.0;
+		if(Unknown(alpha)) alpha = 1;
 		cakepen.globalAlpha = alpha,cakepen.fillStyle = color,cakepen.strokeStyle = stroke_color;
         if (typeof radius === "undefined") radius = 5;
         cakepen.beginPath();
@@ -791,7 +791,7 @@ var CanvasHeight,CanvasWidth,mode,texture,RandomX,RandomY,HalfCanvasHeight,HalfC
 		if(Unknown(radius)) radius = 1;
 		if(Unknown(color)) color = "black";
 		if(Unknown(stroke_color)) stroke_color = color;
-		if(Unknown(alpha)) alpha = 1.0;
+		if(Unknown(alpha)) alpha = 1;
 		cakepen.globalAlpha = alpha,cakepen.fillStyle = color,cakepen.strokeStyle = stroke_color;
 		cakepen.ellipse(x,y,radius,radius,rotation,start_angle,end_angle * Math.PI,false);
 		};
@@ -856,7 +856,7 @@ var CanvasHeight,CanvasWidth,mode,texture,RandomX,RandomY,HalfCanvasHeight,HalfC
 		if(Unknown(y)) y = 0;
 		if(Unknown(height)) height = 0;
 		if(Unknown(width)) width = 0
-		if(Unknown(alpha)) alpha = 1.0;
+		if(Unknown(alpha)) alpha = 1;
 		cakepen.globalAlpha = alpha;
 		cakepen.drawImage(source_x,source_y,source_width,source_height,x,y,width,height);	
 	};	
@@ -895,7 +895,7 @@ var CanvasHeight,CanvasWidth,mode,texture,RandomX,RandomY,HalfCanvasHeight,HalfC
 		if(Unknown(h)) h = 0;
 		if(Unknown(s)) s = 0;
 		if(Unknown(l)) l = 0;
-		if(Unknown(a)) a = 1.0;
+		if(Unknown(a)) a = 1;
 		return `hsla(${r},${g},${b},${a})`;
 	};
 	var RGBA = (r,g,b,a) =>
@@ -903,7 +903,7 @@ var CanvasHeight,CanvasWidth,mode,texture,RandomX,RandomY,HalfCanvasHeight,HalfC
 		if(Unknown(r)) r = 0;
 		if(Unknown(g)) g = 0;
 		if(Unknown(b)) b = 0;
-		if(Unknown(a)) a = 1.0;
+		if(Unknown(a)) a = 1;
 		return `rgba(${r},${g},${b},${a})`;
 	};
 	var MakeCanvasCompatible = () => { cakecanvas.width = WindowWidth,cakecanvas.height = WindowHeight; };
@@ -913,7 +913,7 @@ var CanvasHeight,CanvasWidth,mode,texture,RandomX,RandomY,HalfCanvasHeight,HalfC
 		if(Unknown(y)) y = 0;
 		if(Unknown(w)) w = 0;
 		if(Unknown(h)) h = 0;
-		if(Unknown(alpha)) alpha = 1.0;
+		if(Unknown(alpha)) alpha = 1;
 		var linear = cakepen.createLinearGradient(x, y, w, h);
 		for(var loopdlg = 0;loopdlg < content.length;loopdlg++) linear.addColorStop(content[loopdlg][0], content[loopdlg][1]);
 		cakepen.fillStyle = linear;
@@ -2241,7 +2241,7 @@ this.pos2 = pos2;
 this.size = size;
 this.color = color;
 this.destroyed = false;
-this.alpha = 1.0;
+this.alpha = 1;
 if(Unknown(this.pos1[0])) this.pos1[0] = 0;
 if(Unknown(this.pos1[1])) this.pos1[1] = 0;
 if(Unknown(this.pos2[0])) this.pos2[0] = 0;
@@ -2288,7 +2288,7 @@ this.color = color;
 this.destroyed = false;
 this.rotated = false;
 this.rotationAngle = 0;
-this.alpha = 1.0;
+this.alpha = 1;
 if(Unknown(this.pos1[0])) this.pos1[0] = 0;
 if(Unknown(this.pos1[1])) this.pos1[1] = 0;
 if(Unknown(this.pos2[0])) this.pos2[0] = 0;
@@ -2406,7 +2406,7 @@ var Import = (script_source) =>
 	script.src = script_source;
 	script.type = 'text/javascript';
 	script.defer = true;
-	document.getElementsByTagName('head').item(0).appendChild(script);
+	document.getElementsByTagName('head').appendChild(script);
 
 };
 //Module: FPS And Levels
@@ -2634,11 +2634,11 @@ var FixValuesFromArray = (values, type) =>
 	for (x in values)
 	{
 		if ((type == undefined) || (type == NaN)) type = "bool";
-		if ((values[x++] == undefined) || (values[x++] == NaN) && type == "string") values[x++] = "";
-		if ((values[x++] == undefined) || (values[x++] == NaN) && type == "int") values[x++] = 0;
-		if ((values[x++] == undefined) || (values[x++] == NaN) && type == "bool") values[x++] = false;
-		if ((values[x++] == undefined) || (values[x++] == NaN) && type == "char") values[x++] = '';
-		if ((values[x++] == undefined) || (values[x++] == NaN) && type == "array") values[x++] = [];
+		if ((values[x] == undefined) || (values[x] == NaN) && type == "string") values[x] = "";
+		if ((values[x] == undefined) || (values[x] == NaN) && type == "int") values[x] = 0;
+		if ((values[x] == undefined) || (values[x] == NaN) && type == "bool") values[x] = false;
+		if ((values[x] == undefined) || (values[x] == NaN) && type == "char") values[x] = '';
+		if ((values[x] == undefined) || (values[x] == NaN) && type == "array") values[x] = [];
 	}
 };
 var Unknown = (x) => ((x == undefined) || (x == NaN));
@@ -3973,7 +3973,7 @@ var GetWebGLErrors = () => cakepen.getError();
 var ClearCanvasFully = () =>
 {
 cakepen.clearColor(0,0,0,0);
-cakepen.clearDepth(1.0);
+cakepen.clearDepth(1);
 cakepen.clear(cakepen.COLOR_BUFFER_BIT | cakepen.DEPTH_BUFFER_BIT);
 };
 var WebGLClearCanvas = (r,g,b,a) =>
