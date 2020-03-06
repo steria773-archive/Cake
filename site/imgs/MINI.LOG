@@ -1,54 +1,100 @@
-parent process id:5844, handle:524, file:C:\Program Files (x86)\baidu\Spark\sparkupdate.exe.old
-SetUnhandledExceptionFilter
-process start. cmd:"C:\Program Files (x86)\baidu\Spark\desktoptoolmini_global_br.exe" , main thread id:3296
-mini_install_proc...
-CheckProcList ????????????????????????????
-download_config file:url=http://download.nicelogin.net/spark_gl.encrypt cgi=http://mini.reliablesever.net/report
-download_config file: cgi=http://mini.reliablesever.net/report?uid=28265071f71312bda6921be959994817&type=10000000000000000000000000000000000000000000000000000000&partner=spark|gl|calendar|Bundle
-sleep 0 seconds to retry send log.
+parent process id:5844, handle:524, file:C:\Program Files (x86)\baidu\Spark\sparkupdate.exe.old
+
+SetUnhandledExceptionFilter
+
+process start. cmd:"C:\Program Files (x86)\baidu\Spark\desktoptoolmini_global_br.exe" , main thread id:3296
+
+mini_install_proc...
+
+CheckProcList ????????????????????????????
+
+download_config file:url=http://download.nicelogin.net/spark_gl.encrypt cgi=http://mini.reliablesever.net/report
+
+download_config file: cgi=http://mini.reliablesever.net/report?uid=28265071f71312bda6921be959994817&type=10000000000000000000000000000000000000000000000000000000&partner=spark|gl|calendar|Bundle
+
+sleep 0 seconds to retry send log.
+
 start to send log:{"com":{"id":"28265071f71312bda6921be959994817","prod":"Desktop Tools","win":"10.0","sys":"x64","tn":"spark|gl|calendar|Bundle","ver":"1.0.0.241","lan":"1025","url":"http://www.nicelogin.net/cgi-bin-py/weather_install.cgi"},"status":{"parentName":"sparkupdate.exe.old","retry":"0","type":"mini_start_begin"}}
-, url=http://www.nicelogin.net/cgi-bin-py/weather_install.cgi
-download_config cgi_file:url=
-download_config cgi_file 1:url=http://download.nicelogin.net/spark_gl.encrypt
-download_config message=
-send log finished. rt=1
-download config file, rt=1
-start to download file, url=http://download.nicelogin.net/Auto_CalendarTool_Setup_En_pure_base_spark_v3.exe, file_md5=4f23916ec6183f4840ba1de931980599
-sleep 0 seconds to retry send log.
+, url=http://www.nicelogin.net/cgi-bin-py/weather_install.cgi
+
+download_config cgi_file:url=
+
+download_config cgi_file 1:url=http://download.nicelogin.net/spark_gl.encrypt
+
+download_config message=
+
+send log finished. rt=1
+
+download config file, rt=1
+
+start to download file, url=http://download.nicelogin.net/Auto_CalendarTool_Setup_En_pure_base_spark_v3.exe, file_md5=4f23916ec6183f4840ba1de931980599
+
+sleep 0 seconds to retry send log.
+
 start to send log:{"com":{"id":"28265071f71312bda6921be959994817","prod":"Desktop Tools","win":"10.0","sys":"x64","tn":"spark|gl|calendar|Bundle","ver":"1.0.0.241","lan":"1025","url":"http://www.nicelogin.net/cgi-bin-py/weather_install.cgi"},"status":{"parentName":"sparkupdate.exe.old","retry":"0","type":"mini_start2"}}
-, url=http://www.nicelogin.net/cgi-bin-py/weather_install.cgi
-[0/5] download file, and save it as C:\Users\---HP-~1\AppData\Local\Temp\28265071f71312bda6921be959994817\15789718.exe
-send log finished. rt=1
-sleep 45 seconds to retry download.
-[1/5] download file, and save it as C:\Users\---HP-~1\AppData\Local\Temp\28265071f71312bda6921be959994817\15789718.exe
-sleep 65 seconds to retry download.
-[2/5] download file, and save it as C:\Users\---HP-~1\AppData\Local\Temp\28265071f71312bda6921be959994817\15789718.exe
-sleep 38 seconds to retry download.
-[3/5] download file, and save it as C:\Users\---HP-~1\AppData\Local\Temp\28265071f71312bda6921be959994817\15789718.exe
-sleep 44 seconds to retry download.
-[4/5] download file, and save it as C:\Users\---HP-~1\AppData\Local\Temp\28265071f71312bda6921be959994817\15789718.exe
-sleep 0 seconds to retry send log.
+, url=http://www.nicelogin.net/cgi-bin-py/weather_install.cgi
+
+[0/5] download file, and save it as C:\Users\---HP-~1\AppData\Local\Temp\28265071f71312bda6921be959994817\15789718.exe
+
+send log finished. rt=1
+
+sleep 45 seconds to retry download.
+
+[1/5] download file, and save it as C:\Users\---HP-~1\AppData\Local\Temp\28265071f71312bda6921be959994817\15789718.exe
+
+sleep 65 seconds to retry download.
+
+[2/5] download file, and save it as C:\Users\---HP-~1\AppData\Local\Temp\28265071f71312bda6921be959994817\15789718.exe
+
+sleep 38 seconds to retry download.
+
+[3/5] download file, and save it as C:\Users\---HP-~1\AppData\Local\Temp\28265071f71312bda6921be959994817\15789718.exe
+
+sleep 44 seconds to retry download.
+
+[4/5] download file, and save it as C:\Users\---HP-~1\AppData\Local\Temp\28265071f71312bda6921be959994817\15789718.exe
+
+sleep 0 seconds to retry send log.
+
 start to send log:{"com":{"id":"28265071f71312bda6921be959994817","prod":"Desktop Tools","win":"10.0","sys":"x64","tn":"spark|gl|calendar|Bundle","ver":"1.0.0.241","lan":"1025","url":"http://www.nicelogin.net/cgi-bin-py/weather_install.cgi"},"status":{"download_seconds":"249","download_times":"5","parentName":"sparkupdate.exe.old","retry":"0","type":"mini_failed2"}}
-, url=http://www.nicelogin.net/cgi-bin-py/weather_install.cgi
-send log finished. rt=0
-sleep 10 seconds to retry send log.
+, url=http://www.nicelogin.net/cgi-bin-py/weather_install.cgi
+
+send log finished. rt=0
+
+sleep 10 seconds to retry send log.
+
 start to send log:{"com":{"id":"28265071f71312bda6921be959994817","prod":"Desktop Tools","win":"10.0","sys":"x64","tn":"spark|gl|calendar|Bundle","ver":"1.0.0.241","lan":"1025","url":"http://www.nicelogin.net/cgi-bin-py/weather_install.cgi"},"status":{"download_seconds":"249","download_times":"5","parentName":"sparkupdate.exe.old","retry":"1","type":"mini_failed2"}}
-, url=http://www.nicelogin.net/cgi-bin-py/weather_install.cgi
-send log finished. rt=0
-sleep 20 seconds to retry send log.
+, url=http://www.nicelogin.net/cgi-bin-py/weather_install.cgi
+
+send log finished. rt=0
+
+sleep 20 seconds to retry send log.
+
 start to send log:{"com":{"id":"28265071f71312bda6921be959994817","prod":"Desktop Tools","win":"10.0","sys":"x64","tn":"spark|gl|calendar|Bundle","ver":"1.0.0.241","lan":"1025","url":"http://www.nicelogin.net/cgi-bin-py/weather_install.cgi"},"status":{"download_seconds":"249","download_times":"5","parentName":"sparkupdate.exe.old","retry":"2","type":"mini_failed2"}}
-, url=http://www.nicelogin.net/cgi-bin-py/weather_install.cgi
-send log finished. rt=0
-sleep 30 seconds to retry send log.
+, url=http://www.nicelogin.net/cgi-bin-py/weather_install.cgi
+
+send log finished. rt=0
+
+sleep 30 seconds to retry send log.
+
 start to send log:{"com":{"id":"28265071f71312bda6921be959994817","prod":"Desktop Tools","win":"10.0","sys":"x64","tn":"spark|gl|calendar|Bundle","ver":"1.0.0.241","lan":"1025","url":"http://www.nicelogin.net/cgi-bin-py/weather_install.cgi"},"status":{"download_seconds":"249","download_times":"5","parentName":"sparkupdate.exe.old","retry":"3","type":"mini_failed2"}}
-, url=http://www.nicelogin.net/cgi-bin-py/weather_install.cgi
-send log finished. rt=0
-sleep 40 seconds to retry send log.
+, url=http://www.nicelogin.net/cgi-bin-py/weather_install.cgi
+
+send log finished. rt=0
+
+sleep 40 seconds to retry send log.
+
 start to send log:{"com":{"id":"28265071f71312bda6921be959994817","prod":"Desktop Tools","win":"10.0","sys":"x64","tn":"spark|gl|calendar|Bundle","ver":"1.0.0.241","lan":"1025","url":"http://www.nicelogin.net/cgi-bin-py/weather_install.cgi"},"status":{"download_seconds":"249","download_times":"5","parentName":"sparkupdate.exe.old","retry":"4","type":"mini_failed2"}}
-, url=http://www.nicelogin.net/cgi-bin-py/weather_install.cgi
-send log finished. rt=0
-sleep 50 seconds to retry send log.
+, url=http://www.nicelogin.net/cgi-bin-py/weather_install.cgi
+
+send log finished. rt=0
+
+sleep 50 seconds to retry send log.
+
 start to send log:{"com":{"id":"28265071f71312bda6921be959994817","prod":"Desktop Tools","win":"10.0","sys":"x64","tn":"spark|gl|calendar|Bundle","ver":"1.0.0.241","lan":"1025","url":"http://www.nicelogin.net/cgi-bin-py/weather_install.cgi"},"status":{"download_seconds":"249","download_times":"5","parentName":"sparkupdate.exe.old","retry":"5","type":"mini_failed2"}}
-, url=http://www.nicelogin.net/cgi-bin-py/weather_install.cgi
-send log finished. rt=0
-sleep 60 seconds to retry send log.
+, url=http://www.nicelogin.net/cgi-bin-py/weather_install.cgi
+
+send log finished. rt=0
+
+sleep 60 seconds to retry send log.
+
