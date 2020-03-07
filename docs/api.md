@@ -50,6 +50,13 @@ Help(f)                           //Gives Function Source Code
 ## GUI
 ## Levels
 ## Loading And Splashscreen
+```javascript
+SetLoadingImage(image_src,level,time)       //Sets Loading Image Then Go To Level After Time In Milliseconds
+SetLoadingLevel(loading_level,level,time)   //Sets Loading Level Then Go To A Level After Time In Milliseconds
+SetSplashscreen(image_src,level,time)       //Sets Background Image As Splashscreen Then Go To Level After Time In Milliseconds
+
+```
+
 ## Native
 ## Physics
 ## XBOX
@@ -101,11 +108,16 @@ AddContent(src,width,height)          //Add Content (JAR,SWF) With Width And Hei
 ```
 ## Native Code
 ## Browser
+```javascript 
+ReloadHistory()             //Reloads Window
+NextHistory()               //Go Next (In History)
+BackHistory()               //Go Back (In History)
+```
 ## Cursor
 ```javascript
 HideCursor()                //Hides The Cursor (In Canvas)
 ShowCursor()                //Shows The Cursor
-SetCursor(src,type,size)  
+SetCursor(src,type,size)    //Sets Cursor
 /*
 type Can Be:
 
@@ -125,6 +137,7 @@ ExitFullscreen()            //Exit From Fullscreen Mode
 ```javascript
 
 ```
+
 ## Pointer
 ```javascript
 LockPointer()               //Locks Pointer In Canvas
@@ -142,6 +155,14 @@ ViewSourceCode(index)       //View Source Code Of A File (From Index)
 ViewGameSourceCode()        //Show Game Source Code (If Game Only Consisted Of .html File And .js File)
 ```
 ## Utilities
+```javascript
+u                                                //Variable Made As Shortcut Of undefined
+RandomColor()                                    //Returns Random Color (In RGB)
+RandomAlpha()                                    //Returns Random Alpha
+Swap(variable_or_value,variable_or_value)        //Swap Variable's Values
+
+```
+
 ## Input
 Keyboard,Mouse,And Touch Can Be Done With `addEventListener()`,But That Doesn't Means That Functions Made
 ```javascript
