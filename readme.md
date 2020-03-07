@@ -1,7 +1,6 @@
 # Cake
 A HTML5 Game Framework/Engine To Make HTMl5 Games Rapidly!!!
 <img src="CAKE.png">
-> This Readme Is Needed To Be Completed!!!
 
 ## How Much Is It Easy?
 ```javascript
