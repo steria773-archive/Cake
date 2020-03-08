@@ -91,6 +91,7 @@ Cake Can Be Used For Huge HTML5 Games,Altough There Is Some Simple Games And Exa
 3. [Rotator](https://rabios.github.io/Cake/games/rotator.html)
 4. [Dash](https://rabios.github.io/Cake/games/dash.html)
 5. [Evada](https://rabios.github.io/Cake/games/evada.html)
+6. [Apple Catcher](https://rabios.github.io/Apple-Catcher/applecatcher.html)
 
 ### Examples
 
