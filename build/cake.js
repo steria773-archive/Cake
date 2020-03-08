@@ -271,8 +271,8 @@ var CheckCollisionCircleBottomCanvas = (c1) => { return c1.y + c1.speedY > cakec
 var CheckCollisionCircleTopCanvas = (c1) => { return c1.y + c1.speedY < c1.radius; };
 var CheckCollisionCircleTopCanvasAdvanced = (c1_y,c1_speedY,c1_r) => { return c1_y + c1_speedY < c1_r; }; 
 var CheckCollisionCircleBottomCanvasAdvanced = (c1_y,c1_speedY,c1_r) => { return c1_y + c1_speedY > cakecanvas.height - c1_r; };
-var CheckCollisionCircleLeftCanvas = (c1_x,c1_speedX,c1_r) => { return c1_x + c1_speedX < c1_r; };
-var CheckCollisionCircleRightCanvas = (c1_x,c1_speedX,c1_r) => { return c1_x + c1_speedX > cakecanvas.width - c1_r; };
+var CheckCollisionCircleLeftCanvasAdvanced = (c1_x,c1_speedX,c1_r) => { return c1_x + c1_speedX < c1_r; };
+var CheckCollisionCircleRightCanvasAdvanced = (c1_x,c1_speedX,c1_r) => { return c1_x + c1_speedX > cakecanvas.width - c1_r; };
 
 //Module: Mobile
 //Created By Rabia Alhaffar In 23/April/2019
@@ -301,9 +301,9 @@ Position Could Be:
 //Always Needs More Additions And Updates!!!
 //If You Calling A Function With Undefined Values You Defined,Use u Instead Of undefined Or NaN
 //Defined Values
-var WindowHeight = window.innerHeight,WindowWidth = window.innerWidth,ScreenHeight = screen.height,ScreenWidth = screen.width,RandomAlpha = Math.random(),RandomColor = `rgb(${Math.floor(Math.random() * 256)},${Math.floor(Math.random() * 256)},${Math.floor(Math.random() * 256)})`;
+var mode = "fill",WindowHeight = window.innerHeight,WindowWidth = window.innerWidth,ScreenHeight = screen.height,ScreenWidth = screen.width,RandomAlpha = Math.random(),RandomColor = `rgb(${Math.floor(Math.random() * 256)},${Math.floor(Math.random() * 256)},${Math.floor(Math.random() * 256)})`;
 //Undefined Values(Defined It's Value When You Initialize The Engine In-Game Code!!!)
-var CanvasHeight,CanvasWidth,mode,texture,RandomX,RandomY,HalfCanvasHeight,HalfCanvasWidth,cakecanvas,cakepen;
+var CanvasHeight,CanvasWidth,texture,RandomX,RandomY,HalfCanvasHeight,HalfCanvasWidth,cakecanvas,cakepen;
 //Game Graphics Functions!!!
 		var DrawText = (x,y,text,color,stroke_color,textAlign,alpha) =>
 		{
@@ -2752,7 +2752,7 @@ var SetLoadingLevel = (loading_level, level, time) =>
 //Module: Splashscreen
 //Created By Rabia Alhaffar In 26/December/2019
 //For Splash Screen Creation
-var SetSplashscreen = (src, time, level) =>
+var SetSplashscreen = (src, level, time) =>
 {
 	cakecanvas.style.backgroundImage = `url(${src.toString()})`;
 	setTimeout(() =>
