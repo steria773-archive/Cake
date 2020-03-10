@@ -92,7 +92,7 @@ Cake Can Be Used For Huge HTML5 Games,Altough There Is Some Simple Games And Exa
 4. [Dash](https://rabios.github.io/Cake/games/dash.html)
 5. [Evada](https://rabios.github.io/Cake/games/evada.html)
 6. [Apple Catcher](https://rabios.github.io/Apple-Catcher/applecatcher.html)
-7. [Duet(Clone)](https://rabios.github.io/Cake/games/duet.html)
+7. [DUET(Clone)](https://rabios.github.io/Cake/games/duet.html)
 
 ### Examples
 
@@ -117,7 +117,6 @@ Cake Can Be Used For Huge HTML5 Games,Altough There Is Some Simple Games And Exa
 3. [Gradients](https://rabios.github.io/Cake/experiments/experiment_03.html)
 4. [Integration With Other HTML5 Game Engines](https://rabios.github.io/Cake/experiments/experiment_04.html)
 5. [Artboard(Which Led To Create Akizami)](https://rabios.github.io/Cake/experiments/experiment_05.html)
-6. [Accelerometer Test](https://rabios.github.io/Cake/experiments/experiment_06.html)
 7. [Multiple Canvases](https://rabios.github.io/Cake/experiments/experiment_07.html)
 
 ## Soon
