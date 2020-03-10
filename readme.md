@@ -122,7 +122,7 @@ Cake Can Be Used For Huge HTML5 Games,Altough There Is Some Simple Games And Exa
 ## Links
 1. [History And Updates List](https://github.com/Rabios/Cake/blob/master/docs/history.md)
 2. [Memorabilia](https://github.com/Rabios/Cake/blob/master/docs/memorabilia.md)
-3. [Documentation(In Development)](https://github.com/Rabios/Cake/docs)
+3. [Documentation(In Development)](https://github.com/Rabios/Cake/blob/master/docs)
 
 ## Soon
 1. Updating Wiki/Documentation
