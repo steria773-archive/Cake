@@ -1,4 +1,19 @@
 # Release History
+## 10/March/2020
+New Update
+### Bug Fixes
+
+1. Typo Error In Physics Functions Names
+2. Problem When Drawing FPS On Multiple Canvases,It Drawing Only On One Canvas
+
+### Additions
+1. Added Controls Handling Functions
+2. Added Ability To Check More Browsers (Samsung Internet Browser,Edge)
+
+### Improvements
+1. Improved `DrawFPS()`
+2. Improved Physics Functions
+
 ## 6/March/2020
 New Update
 ### Bug Fixes

@@ -1,7 +1,6 @@
 # Cake
 A HTML5 Game Framework/Engine To Make HTMl5 Games Rapidly!!!
 <img src="CAKE.png">
-> This Readme Is Needed To Be Completed!!!
 
 ## How Much Is It Easy?
 ```javascript
@@ -36,8 +35,7 @@ Result Can Be Found [Here](https://rabios.github.io/Cake/examples/input_03.html)
   - Ability To Take Screenshots(PC Browsers)
   - A 3D System Called Space To Make 3D Polygons And Shapes With 2D Graphics
 - WebGL
-  - Built On The Top Of [`lightgl.js`](https://github.com/evanw/lightgl.js)
-  - A Customized Version Coming Soon(Made From Pure WebGL)
+  - Made From Pure WebGL
 
 ### Physics
 - A Lightweight Physics Engine Based On Collision Detection(Size Of 4kb)
@@ -45,8 +43,7 @@ Result Can Be Found [Here](https://rabios.github.io/Cake/examples/input_03.html)
 
 ### Input
 - Event Creation Made Easy
-- Keyboard: Using Event Listeners Or [`mousetrap.js`](https://craig.is/killing/mice)
-- Gamepad: Using Event Listeners Or [`gamepad.js`](https://github.com/neogeek/gamepad.js/)
+- Gamepad,Mouse,Touch Events Functions Pre-made For Easy Use
 
 ### Audio
 - Powered By WebAudio API
@@ -84,6 +81,9 @@ Most Of Cake Game Framework/Engine Functions Written As Variables With Arrow Fun
 ## Showcase
 Cake Can Be Used For Huge HTML5 Games,Altough There Is Some Simple Games And Examples Developed And Made By The Same Framework/Engine Developer
 
+### Apps
+1. [Akizami](https://rabios.github.io/Cake/apps/akizami.html)
+
 ### Games
 
 1. [Treasure Island](https://rabios.github.io/Cake/games/treasure_island.html)
@@ -91,6 +91,8 @@ Cake Can Be Used For Huge HTML5 Games,Altough There Is Some Simple Games And Exa
 3. [Rotator](https://rabios.github.io/Cake/games/rotator.html)
 4. [Dash](https://rabios.github.io/Cake/games/dash.html)
 5. [Evada](https://rabios.github.io/Cake/games/evada.html)
+6. [Apple Catcher](https://rabios.github.io/Apple-Catcher/applecatcher.html)
+7. [DUET(Clone)](https://rabios.github.io/Cake/games/duet.html)
 
 ### Examples
 
@@ -107,14 +109,21 @@ Cake Can Be Used For Huge HTML5 Games,Altough There Is Some Simple Games And Exa
 11. [Controlling Components](https://rabios.github.io/Cake/examples/component_01.html)
 12. [Safe Type Checking](https://rabios.github.io/Cake/examples/compiler_01.html)
 13. [3D Graphics(Taken And Forked/Modified From explorercanvas Repo)](https://rabios.github.io/Cake/examples/graphics_04.html)
-14. [2D Graphics](https://rabios.github.io/Cake/examples/graphics_05.html)
+14. [Shapes](https://rabios.github.io/Cake/examples/graphics_05.html)
+### Experiments
+
+1. [Component Interaction With Mouse And Touch](https://rabios.github.io/Cake/experiments/experiment_01.html)
+2. [Interactive Canvas](https://rabios.github.io/Cake/experiments/experiment_02.html)
+3. [Gradients](https://rabios.github.io/Cake/experiments/experiment_03.html)
+4. [Integration With Other HTML5 Game Engines](https://rabios.github.io/Cake/experiments/experiment_04.html)
+5. [Artboard(Which Led To Create Akizami)](https://rabios.github.io/Cake/experiments/experiment_05.html)
+7. [Multiple Canvases](https://rabios.github.io/Cake/experiments/experiment_07.html)
 
 ## Soon
 1. Updating Wiki/Documentation
 2. More New Examples And Features
 3. New Tests For Other Programming Languages
 4. More Bug Fixes
-5. Adding Events To Components
 6. Adding Cheatsheets And Full Manual
 7. Adding Tools To Framework/Engine
 
