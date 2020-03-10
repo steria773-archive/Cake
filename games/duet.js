@@ -1,9 +1,9 @@
-//Created By Rabia Alhaffar In 9/March/2020
+//Created By Rabia Alhaffar In 10/March/2020
 //Duet Game Example
 CreateCanvas(300,600,"black","3px silver solid");
 Initialize();
-var ball_speed = 0,ball_angle = 0,ring_size = 100,score = 0,rotateLeftPressed = false,rotateRightPressed = false,fall_speed = 8;
-var white_rect_x = Math.floor(Math.random() * 50) * 6,white_rect_y = Math.floor(Math.random() * 100) + 50,white_rect_w = 80,white_rect_h = 80;
+var ball_speed = 0,ball_angle = 0,ring_size = 100,score = 0,rotateLeftPressed = false,rotateRightPressed = false,fall_speed = 5;
+var white_rect_x = Math.floor(Math.random() * 50) * 6,white_rect_y = 0,white_rect_w = 80,white_rect_h = 80;
 
 var Menu = new Level(() =>
 {
@@ -91,39 +91,44 @@ var Duet = new Level(() =>
        CheckCanvasCollisionLeftAdvanced(white_rect_x,white_rect_w) ||
        CheckCanvasCollisionRightAdvanced(white_rect_x,white_rect_w))
        {
-           white_rect_x = Math.floor(Math.random() * 4) * 80;
-           white_rect_y = -(white_rect_h);
-           white_rect_w = Math.floor(Math.random() * 10) * 40;
-           white_rect_h = 100;
+           white_rect_x = Math.floor(Math.random() * 80) * 2;
+           white_rect_y = 0;
+           white_rect_w = Math.floor(Math.random() * 80) * 3;
+           white_rect_h = Math.floor(Math.random() * 20) * 5;
         }
 
-    if(white_rect_x > CanvasWidth) white_rect_x = white_rect_x - white_rect_w;
+    if(white_rect_x > CanvasWidth) white_rect_x = CanvasWidth;
+    if(white_rect_w == 0 || white_rect_h == 0 || white_rect_h <= 60 || white_rect_w <= 60)
+    {
+        white_rect_w = Math.floor(Math.random() * 80) * 3; 
+        white_rect_h = Math.floor(Math.random() * 20) * 5;
+    } 
     if(white_rect_x < 0) white_rect_x = 0;
-
     if(rotateLeftPressed) ball_angle -= 0.1;
     if(rotateRightPressed) ball_angle += 0.1;
 
     score += 0.01;
+
 },1000);
 
 //Controls Library
 document.addEventListener("keydown", keydown, false);
 document.addEventListener("keyup", keyup, false);
 
-function keydown(e) {
+function keydown(e) 
+{
     if (e.key == "Right" || e.key == "ArrowRight" || e.keyCode == 39) rotateRightPressed = true;
     if (e.key == "d") rotateRightPressed = true;   
     if (e.key == "Left" || e.key == "ArrowLeft" || e.keyCode == 37) rotateLeftPressed = true;
     if (e.key == "a") rotateLeftPressed = true;
-    
 }
 
-function keyup(e) {
+function keyup(e) 
+{
     if (e.key == "Right" || e.key == "ArrowRight" || e.keyCode == 39) rotateRightPressed = false;
     if (e.key == "d") rotateRightPressed = false;
     if (e.key == "Left" || e.key == "ArrowLeft" || e.keyCode == 37) rotateLeftPressed = false;
     if (e.key == "a") rotateLeftPressed = false;
-    
 }
 
 Menu.Start();
