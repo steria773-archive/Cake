@@ -1,6 +1,6 @@
 //Copyright (c)2019-Present Rabia Alhaffar,All Rights Reserved!!!
 //Cake Canvas (2D And 3D) And WebGL(2D And 3D) HTML5 Game Framework!!!
-//Date: 6/March/2020
+//Date: 10/March/2020
 //The Engine/Framework Code Starts Here!!!
 //Variables:
 var Opera = (!!window.opr && !!opr.addons) || !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0,
@@ -2448,8 +2448,6 @@ this.Unlimit = function() { this.fps = 1; };
 }
 var DrawFPS = (Level) =>
 {
-	cakecanvas = document.getElementsByTagName("canvas")[0];
-	cakepen = cakecanvas.getContext("2d");
 	cakepen.font = "20px arial";
 	cakepen.fillStyle = "black";
 	cakepen.fillText("FPS: " + Level.fps,30,30);
@@ -4788,3 +4786,13 @@ var OnRotate = (obj,f) =>
 {
     if(obj.rotated) setTimeout(f,0);
 };
+
+//Module: Handlers
+//Created By Rabia Alhaffar In 10/March/2020
+var AddKeyDownHandler = (f) => window.addEventListener("keydown",f);
+var AddKeyUpHandler = (f) => window.addEventListener("keyup",f);
+var AddKeyHitHandler = (f) => window.addEventListener("keypress",f);
+var AddMouseDownHandler = (f) => window.addEventListener("mousedown",f);
+var AddClickHandler = (f) => window.addEventListener("click",f);
+var AddTouchHandler = (f) => window.addEventListener("touchstart",f);
+var AddSwipeHandler = (f) => window.addEventListener("touchmove",f);
