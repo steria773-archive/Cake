@@ -46,7 +46,7 @@ var Menu = new Level(() =>
             "red","red", //Colors
             0,2 * Math.PI); //Angles
 
-    ball_speed = 0.01; //Balls Speed In Menu
+    ball_speed = 0.005; //Balls Speed In Menu
 
 },1000);
 
