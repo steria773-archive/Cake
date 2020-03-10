@@ -3,16 +3,21 @@
 CreateCanvas(300,600,"black","3px silver solid");
 Initialize();
 var ball_speed = 0,ball_angle = 0,ring_size = 100,score = 0,rotateLeftPressed = false,rotateRightPressed = false,fall_speed = 5;
-var white_rect_x = Math.floor(Math.random() * 50) * 6,white_rect_y = 0,white_rect_w = 80,white_rect_h = 80;
+var white_rect_x = Math.floor(Math.random() * CanvasWidth),white_rect_y = 0,white_rect_w = 80,white_rect_h = 80;
 
 var Menu = new Level(() =>
 {
 
     ClearCanvas();
+
+    //Drawing Title
     SetFont("40px Jura");
     DrawText(CanvasWidth / 2,60,"DUET","white","white","center");
+
+    //Drawing "Press X To Start Game"
     SetFont("20px Jura");
     DrawText(CanvasWidth / 2,CanvasHeight - 40,"Press X To Start Game","white","white","center");
+
     window.addEventListener("keydown",(e) =>
     {
         if(e.key == "x" && !Duet.started) 
@@ -41,7 +46,7 @@ var Menu = new Level(() =>
             "red","red", //Colors
             0,2 * Math.PI); //Angles
 
-    ball_speed = 0.01;
+    ball_speed = 0.01; //Balls Speed In Menu
 
 },1000);
 
@@ -87,23 +92,28 @@ var Duet = new Level(() =>
                                   white_rect_x,white_rect_y,white_rect_w,white_rect_h)) RestartGame();
                                 
     //Collision (Rect With Bottom Of The Canvas) With Generating New Squares
-    if(CheckCanvasCollisionBottomAdvanced(white_rect_y,white_rect_h) ||
-       CheckCanvasCollisionLeftAdvanced(white_rect_x,white_rect_w) ||
-       CheckCanvasCollisionRightAdvanced(white_rect_x,white_rect_w))
+    if(CheckCanvasCollisionBottomAdvanced(white_rect_y,white_rect_h))
        {
-           white_rect_x = Math.floor(Math.random() * 80) * 2;
+           white_rect_x = Math.floor(Math.random() * CanvasWidth) - white_rect_w / 2;
            white_rect_y = 0;
-           white_rect_w = Math.floor(Math.random() * 80) * 3;
+           white_rect_w = Math.floor(Math.random() * 60) * 3;
            white_rect_h = Math.floor(Math.random() * 20) * 5;
         }
 
-    if(white_rect_x > CanvasWidth) white_rect_x = CanvasWidth;
-    if(white_rect_w == 0 || white_rect_h == 0 || white_rect_h <= 60 || white_rect_w <= 60)
-    {
-        white_rect_w = Math.floor(Math.random() * 80) * 3; 
-        white_rect_h = Math.floor(Math.random() * 20) * 5;
-    } 
+    //Case Game Is Impossible To Complete!!!
+    if(white_rect_h <= 60 ||
+       white_rect_w <= 60 ||
+       white_rect_w >= CanvasWidth / 2 ||
+       white_rect_h >= 100)
+       {
+           white_rect_w = Math.floor(Math.random() * 60) * 3; 
+           white_rect_h = Math.floor(Math.random() * 20) * 5;
+       } 
+
+    if(white_rect_x >= CanvasWidth) white_rect_x = CanvasWidth - Math.floor(Math.random() * white_rect_w);
     if(white_rect_x < 0) white_rect_x = 0;
+
+    //Controls And Speed
     if(rotateLeftPressed) ball_angle -= 0.1;
     if(rotateRightPressed) ball_angle += 0.1;
 
