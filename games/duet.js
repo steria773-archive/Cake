@@ -2,7 +2,7 @@
 //Duet Game Example
 CreateCanvas(300,600,"black","3px silver solid");
 Initialize();
-var ball_speed = 0,ball_angle = 0,ring_size = 100,score = 0,rotateLeftPressed = false,rotateRightPressed = false,fall_speed = 2;
+var ball_speed = 0,ball_angle = 0,ring_size = 100,score = 0,rotateLeftPressed = false,rotateRightPressed = false,fall_speed = 8;
 var white_rect_x = Math.floor(Math.random() * CanvasWidth),white_rect_y = 0,white_rect_w = 80,white_rect_h = 80;
 
 var Menu = new Level(() =>
@@ -114,12 +114,12 @@ var Duet = new Level(() =>
     if(white_rect_x < 0) white_rect_x = 0;
 
     //Controls And Speed
-    if(rotateLeftPressed) ball_angle -= 0.05;
-    if(rotateRightPressed) ball_angle += 0.05;
+    if(rotateLeftPressed) ball_angle -= 0.1;
+    if(rotateRightPressed) ball_angle += 0.1;
 
     score += 0.01;
 
-},240);
+},1000);
 
 //Controls Library
 document.addEventListener("keydown", keydown, false);
