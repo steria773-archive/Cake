@@ -2,7 +2,7 @@
 //Duet Game Example
 CreateCanvas(300,600,"black","3px silver solid");
 Initialize();
-var ball_speed = 0,ball_angle = 0,ring_size = 100,score = 0,rotateLeftPressed = false,rotateRightPressed = false,fall_speed = 8;
+var ball_speed = 0,ball_angle = 0,ring_size = 100,score = 0,rotateLeftPressed = false,rotateRightPressed = false,fall_speed = 5;
 var white_rect_x = Math.floor(Math.random() * CanvasWidth),white_rect_y = 0,white_rect_w = 80,white_rect_h = 80;
 
 var Menu = new Level(() =>
