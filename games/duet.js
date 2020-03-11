@@ -141,4 +141,6 @@ function keyup(e)
     if (e.key == "a") rotateLeftPressed = false;
 }
 
+if(Chrome || Opera || Safari) Duet.fps = 120,fall_speed = 3;
+    
 Menu.Start();
