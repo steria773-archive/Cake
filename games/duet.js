@@ -114,8 +114,10 @@ var Duet = new Level(() =>
     if(white_rect_x < 0) white_rect_x = 0;
 
     //Controls And Speed
-    if(rotateLeftPressed) ball_angle -= 0.1;
-    if(rotateRightPressed) ball_angle += 0.1;
+    if(rotateLeftPressed && (Chrome || Opera || Safari)) ball_angle -= 0.01;
+    if(rotateRightPressed && (Chrome || Opera || Safari)) ball_angle += 0.01;
+    if(rotateLeftPressed && !(Chrome || Opera || Safari)) ball_angle -= 0.1;
+    if(rotateRightPressed && !(Chrome || Opera || Safari)) ball_angle += 0.1;
 
     score += 0.01;
 
