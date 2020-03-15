@@ -11,6 +11,7 @@ New Update
 2. Fixed Error In Physics Functions (Collision Of Circle With Rectangle)
 3. Problems In Y8 SDK (Not Quite Good Code)
 4. Problems In Facebook Instant Games SDK (Initialization Functions For The SDK Were Not Made)
+5. Problems In WebGL Initialization
 
 ## 10/March/2020
 New Update
