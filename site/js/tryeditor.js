@@ -49,7 +49,7 @@ var setExample = (e) =>
 <canvas height="400" width="400"></canvas>
 </body>
 <script>
-Initialize(0);
+Initialize(1);
 SetCanvasBackgroundColor("black");
 SetDrawingMode("fill");
 DrawGradientRect(0,0,CanvasWidth,CanvasHeight,
@@ -72,7 +72,7 @@ if(e == 2) editor.setOption("value",
 var Random_X = Math.floor(Math.random() * 400);
 var Random_Y = Math.floor(Math.random() * 400);
 CreateCanvas(400,400,u,"black 3px solid");
-Initialize(0);
+Initialize();
 SetDrawingMode("custom");
 var Scene_1 = new Level(() =>
 {  
@@ -105,7 +105,7 @@ if(e == 4) editor.setOption("value",
   <body></body>
   <script>
   CreateCanvas(window.innerWidth,window.innerHeight,"black");
-  Initialize(0);
+  Initialize();
   SetDrawingMode("fill");
   cakecanvas.onmousemove = (e) =>
   {
@@ -122,7 +122,7 @@ if(e == 5) editor.setOption("value",
 //Created By Rabia Alhaffar In 18/February/2020
 //Example About Drawing Shapes
 CreateCanvas(window.innerWidth,window.innerHeight,"black");
-Initialize(0);
+Initialize();
 SetDrawingMode("fill");
 var ligrad = new LinearGradient(850,140,800,800,
     [

@@ -15,7 +15,7 @@ var openapps = () => window.open("apps.html");
 var openexperiments = () => window.open("experiments.html");
 bubbly({
   colorStart: 'pink',
-  colorStop: 'purple',
+  colorStop: 'darkmagenta',
   blur: 0.5,
   bubbles: 50,
   bubbleFunc:() => `hsla(${Math.random() * 360}, 100%, 100%, ${Math.random() * 0.25})`

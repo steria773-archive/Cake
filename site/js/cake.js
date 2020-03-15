@@ -1,6 +1,6 @@
 //Copyright (c)2019-Present Rabia Alhaffar,All Rights Reserved!!!
 //Cake Canvas (2D And 3D) And WebGL(2D And 3D) HTML5 Game Framework!!!
-//Date: 10/March/2020
+//Date: 15/March/2020
 //The Engine/Framework Code Starts Here!!!
 //Variables:
 var Opera = (!!window.opr && !!opr.addons) || !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0,
@@ -237,7 +237,7 @@ var TrackWebGL = () =>
 		ext = gl.getExtension("WEBGL_debug_renderer_info");
 	console.info(`WebGL Properties:\nWebGL Version: ${gl.getParameter(gl.VERSION)}\nWebGL GLSL Version: ${gl.getParameter(gl.SHADING_LANGUAGE_VERSION)}\nWebGL Vendor/Provider: ${gl.getParameter(gl.VENDOR)}\nWebGL GPU Vendor: ${gl.getParameter(ext.UNMASKED_VENDOR_WEBGL)}\nPC GPU: ${gl.getParameter(ext.UNMASKED_RENDERER_WEBGL)}\n`);
 };
-var TrackDevice = () => console.info(`Device Info:\n Device OS: ${window.navigator.userAgent}\nDevice Browser OS: ${navigator.platform}\nDevice Language: ${navigator.language}\nJava Enabled: ${navigator.javaEnabled()}\nIs The Device Online: ${navigator.onLine}\nDevice RAM: ${navigator.deviceMemory} GB\nOperating System Real Name: ${window.navigator.oscpu}\nDevice Location: ${navigator.geolocation}\nLanguages List: ${navigator.languages}\n`);
+var TrackDevice = () => console.info(`Device Info:\nDevice OS: ${window.navigator.userAgent}\nDevice Browser OS: ${navigator.platform}\nDevice Language: ${navigator.language}\nJava Enabled: ${navigator.javaEnabled()}\nIs The Device Online: ${navigator.onLine}\nDevice RAM: ${navigator.deviceMemory} GB\nOperating System Real Name: ${window.navigator.oscpu}\nDevice Location: ${navigator.geolocation}\nLanguages List: ${navigator.languages}\n`);
 var TrackCanvas = () => console.info(`Game Canvas Info:\nCanvas Height: ${cakecanvas.height}\nCanvas Width: ${cakecanvas.width}\n`);
 
 //Module: Physics
@@ -255,7 +255,7 @@ var CheckCollisionCircleRect = (c1,r1) =>
 {
 	if (Math.abs(c1.x - r1.x - r1.width / 2) > (r1.width / 2 + c1.radius) || Math.abs(c1.y - r1.y - r1.height / 2) > (r1.height / 2 + c1.radius)) { return false; }
 	if (Math.abs(c1.x - r1.x - r1.width / 2) <= (r1.width / 2) || Math.abs(c1.y - r1.y - r1.height / 2) <= (r1.height / 2)) { return true; }
-	return (Math.abs(c1.x - r1.x - r1.width / 2) - r1.width / 2 * Math.abs(c1.x - r1.x - r1.width / 2) - r1.width / 2 + Math.abs(c1.y - r1.y - r1.height / 2) - r1.height / 2 * Math.abs(c1.y - r1.y - r1.height / 2) - r1.height / 2 <= (c1.radius * c1.radius) && c1.collidable && c2.collidable);
+	return (Math.abs(c1.x - r1.x - r1.width / 2) - r1.width / 2 * Math.abs(c1.x - r1.x - r1.width / 2) - r1.width / 2 + Math.abs(c1.y - r1.y - r1.height / 2) - r1.height / 2 * Math.abs(c1.y - r1.y - r1.height / 2) - r1.height / 2 <= (c1.radius * c1.radius) && c1.collidable && r1.collidable);
 };
 var CheckCanvasCollisionLeft = (object) => { return(object.x <= object.width * 0.5); };
 var CheckCanvasCollisionLeftAdvanced = (o_x,o_w) => { return(o_x <= o_w * 0.5); };		
@@ -298,6 +298,7 @@ Position Could Be:
 
 //Module: Graphics(2D)
 //Cake 2D Graphics Library!!!
+//Cake Next Is Coming!!!
 //Always Needs More Additions And Updates!!!
 //If You Calling A Function With Undefined Values You Defined,Use u Instead Of undefined Or NaN
 //Defined Values
@@ -312,14 +313,14 @@ var CanvasHeight,CanvasWidth,texture,RandomX,RandomY,HalfCanvasHeight,HalfCanvas
 			if(Unknown(text)) text = "";
 			if(Unknown(color)) color = "black";
 			if(Unknown(stroke_color)) stroke_color = color;
-			if(Unknown(textAlign)) textAlign = "";
+			if(Unknown(textAlign)) textAlign = "left";
 			if(Unknown(alpha)) alpha = 1;
 			cakepen.globalAlpha = alpha,cakepen.fillStyle = color,cakepen.strokeStyle = stroke_color,cakepen.textAlign = textAlign;
 			if(mode == "fill") cakepen.fillText(text,x,y);
 			if(mode == "stroke") cakepen.strokeText(text,x,y);
 			if(mode == "custom") { cakepen.fillText(text,x,y); cakepen.strokeText(text,x,y); }	
 		};
-		var SetFont = (textfont) => { if(Unknown(textfont)) cakepen.font = "12px arial"; cakepen.font = textfont; };
+		var SetFont = (textfont) => { if(Unknown(textfont)) textfont = "20px arial"; cakepen.font = textfont; };
 		var SetShadowProperties = (shadowOffsetX,shadowOffsetY,shadowcolor,shadowblur) =>
 		{
 			if(Unknown(shadowOffsetX)) cakepen.shadowOffsetX = 0;
@@ -330,8 +331,8 @@ var CanvasHeight,CanvasWidth,texture,RandomX,RandomY,HalfCanvasHeight,HalfCanvas
 		};
 	    var SetLineProperties = (line_width,line_height) =>
 		{
-			if(Unknown(line_h)) line_height = 1;
-			if(Unknown(line_w)) line_width = 1;
+			if(Unknown(line_height)) line_height = 1;
+			if(Unknown(line_width)) line_width = 1;
 			cakepen.lineHeight = line_height,cakepen.lineWidth = line_width;
 		};
 		var DrawRect = (x,y,width,height,color,stroke_color,alpha) =>
@@ -340,12 +341,10 @@ var CanvasHeight,CanvasWidth,texture,RandomX,RandomY,HalfCanvasHeight,HalfCanvas
 			if(Unknown(y)) y = 0;
 			if(Unknown(height)) height = 0;
 			if(Unknown(width)) width = 0;
-			if(!Unknown(color)) cakepen.fillStyle = color;
 			if(Unknown(color)) cakepen.fillStyle = "black";
-			if(!Unknown(stroke_color)) cakepen.strokeStyle = stroke_color;
 			if(Unknown(stroke_color)) cakepen.strokeStyle = color;
 			if(Unknown(alpha)) alpha = 1;
-			cakepen.globalAlpha = alpha;			
+			cakepen.fillStyle = color,cakepen.globalAlpha = alpha,cakepen.strokeStyle = stroke_color;			
 			if(mode == "fill") cakepen.fillRect(x,y,width,height);
 			if(mode == "stroke") cakepen.strokeRect(x,y,width,height);
 			if(mode == "custom") { cakepen.fillRect(x,y,width,height); cakepen.strokeRect(x,y,width,height); }
@@ -657,11 +656,11 @@ var CanvasHeight,CanvasWidth,texture,RandomX,RandomY,HalfCanvasHeight,HalfCanvas
 			if(Unknown(height)) height = 150;
 			if(Unknown(width)) width = 150;
 			var gamecanvas = document.createElement("canvas");
-            gamecanvas.id = "cakegamecanvas",gamecanvas.height = height,canvas.width = width;
+            gamecanvas.id = "cakegamecanvas",gamecanvas.height = height,gamecanvas.width = width;
 			document.body.appendChild(gamecanvas);
 			var cakecanvas = document.getElementById("cakegamecanvas");
 		    var cakepen	= cakecanvas.getContext("2d");
-		    if(cakepen) console.info("CAKE GAME ENGINE INITIALIZED...");
+		    if(cakepen) console.info("CAKE GAME ENGINE: INITIALIZING CanvasRenderingContext2D...");
 		    if(!cakepen) 
 		    {
 			RemoveCanvas();
@@ -681,44 +680,7 @@ var CanvasHeight,CanvasWidth,texture,RandomX,RandomY,HalfCanvasHeight,HalfCanvas
         if(mode == "fill") cakepen.fillRect(x,y,size,size);			
 		if(mode == "stroke") cakepen.strokeRect(x,y,size,size);	
 		if(mode == "custom") { cakepen.fillRect(x,y,size,size); cakepen.strokeRect(x,y,size,size); }
-		};
-
-		var DrawSnowflake = (x,y,length,color,stroke_color,m,alpha) =>
-		{
-		if(Unknown(x)) x = 0;
-		if(Unknown(y)) y = 0;
-		if(Unknown(length)) length = 0;
-		if(Unknown(color)) color = "black";
-		if(Unknown(stroke_color)) stroke_color = color;
-		if(Unknown(alpha)) alpha = 1;
-		cakepen.globalAlpha = alpha,cakepen.fillStyle = color,cakepen.strokeStyle = stroke_color;
-		var deg = Math.PI / 180; 
-        cakepen.translate(x,y); 
-        cakepen.moveTo(x,y); 
-        Leg(m);
-        cakepen.rotate(-120 * deg);
-        Leg(m);
-        cakepen.rotate(-120 * deg);
-        Leg(m);
-        cakepen.closePath();
-		};
-		var Leg = (l) =>
-		{
-		var deg = Math.PI / 180;
-        if (l == 0) cakepen.lineTo(length, 0);
-        else 
-		{ 
-        cakepen.scale(1 / 3,1 / 3); 
-        Leg(l - 1); 
-        cakepen.rotate(60 * deg); 
-        Leg(l - 1);
-        cakepen.rotate(-120 * deg);
-        Leg(l - 1); 
-        cakepen.rotate(60 * deg); 
-        Leg(l - 1);
-        } 
-        cakepen.translate(length, 0);
-        };		
+		};	
 		var DrawRoundedRect = (x,y,width,height,radius,color,stroke_color,alpha) => 
 		{
 		if(Unknown(x)) x = 0;
@@ -751,7 +713,7 @@ var CanvasHeight,CanvasWidth,texture,RandomX,RandomY,HalfCanvasHeight,HalfCanvas
 		if(Unknown(c)) c = 0;
 		cakecanvas = document.getElementsByTagName("canvas")[c];
 		cakepen	= cakecanvas.getContext("2d");
-		if(cakepen) console.info("CAKE GAME ENGINE INITIALIZED...");
+		if(cakepen) console.info("CAKE GAME ENGINE: INITIALIZING CanvasRenderingContext2D...");
 		if(!cakepen) 
 		{
 			RemoveCanvas();
@@ -760,7 +722,8 @@ var CanvasHeight,CanvasWidth,texture,RandomX,RandomY,HalfCanvasHeight,HalfCanvas
 		}
 		CanvasHeight = cakecanvas.height,CanvasWidth = cakecanvas.width,HalfCanvasHeight = CanvasHeight * 0.5,HalfCanvasWidth = CanvasWidth * 0.5,RandomX = Math.floor(Math.random() * CanvasWidth),RandomY = Math.floor(Math.random() * CanvasHeight);
 		};
-		var ResizeCanvas = (canvas_width,canvas_height) => { cakecanvas.height = canvas_height,cakecanvas.width = canvas_width;	};
+		var ResizeCanvasFully = (canvas_width,canvas_height) => { cakecanvas.height = canvas_height,cakecanvas.width = canvas_width,cakecanvas.style.height = canvas_height,cakecanvas.style.width = canvas_width; };
+		var ResizeCanvas = (canvas_width,canvas_height) => { cakecanvas.height = canvas_height,cakecanvas.width = canvas_width; };
 		var SetResolution = (canvas_width,canvas_height) => { cakecanvas.style.height = canvas_height,cakecanvas.style.width = canvas_width; };
 		var SetAntialiasing = (enabled,quality) =>
 		{
@@ -1162,6 +1125,16 @@ var CanvasHeight,CanvasWidth,texture,RandomX,RandomY,HalfCanvasHeight,HalfCanvas
 			}
 		}
 		cakepen.globalAlpha = 1;
+	};
+	var FlipHorizontally = () => cakepen.scale(-1,1);
+	var FlipVertically = () => cakepen.scale(1,-1);
+	var FlipContent = () => cakepen.scale(-1,-1);
+	var ResetFlipping = () => cakepen.scale(1,1);
+	var Shear = (x,y) => 
+	{
+		if(Unknown(x)) x = 0;
+		if(Unknown(y)) y = 0;
+		cakepen.shear(x,y);
 	};
 //Module: Game
 //Cake Game Library!!!
@@ -2336,9 +2309,14 @@ this.Destroy = function(){ this.destroyed = true; };
 //Module: Input Tracking
 //Cake Keyboard Keys,Mouse Buttons,Touch Recording API
 //This Is For Recording
-var Keycode,MouseX,MouseY,MouseButton,MouseButtonName,TouchX,TouchY;
+var KeyCode,Key,MouseX,MouseY,MouseButton,MouseButtonName,TouchX,TouchY;
 var Log = (log) => console.log(log);
-var RecordKeyboard = (KeyboardKey) => console.info(`Key Pressed: ${KeyboardKey.key} , Key Code: ${KeyboardKey.keyCode}`);		
+var RecordKeyboard = (KeyboardKey) =>
+{
+	Key = KeyboardKey.key;
+	KeyCode = KeyboardKey.keyCode;
+	console.info(`Key Pressed: ${Key} , Key Code: ${KeyCode}`);	
+};		
 var RecordMouse = (event) =>
 {
 		MouseX = event.clientX,MouseY = event.clientY,MouseButton = event.button;
@@ -2535,115 +2513,65 @@ var UnlockPointer = () => document.exitPointerLock();
 //A Library To Change Cursor Shape To Image!!!
 var HideCursor = () => cakecanvas.style.cursor = "none";
 var ShowCursor = () => cakecanvas.style.cursor = "auto";
-var SetCursor = (img_src, type, cursor_size) =>
+var SetCursor = (img_src,type,cursor_size) =>
 {
-	var cursor_image;
-	if (Unknown(cursor_size)) cursor_size = 10;
-	if (type == "color")
-	{
-		cakepen.fillStyle = img_src;
-		//Part 1: Hide Mouse Cursor If Mouse Cursor Enters Game Canvas
-		cakecanvas.addEventListener("mouseenter", () =>
-		{
-			HideCursor();
-		});
-		cakecanvas.addEventListener("click", () =>
-		{
-			HideCursor();
-		});
-		//Part 2: Draw Mouse Cursor Shape As Circle
-		cakecanvas.addEventListener("mousemove", (e) =>
-		{
-			cakepen.arc(e.clientX, e.clientY, cursor_size, 90, 180 * Math.PI);
-			cakepen.fill();
-		});
-		cakecanvas.addEventListener("mouseover", (e) =>
-		{
-			cakepen.arc(e.clientX, e.clientY, cursor_size, 90, 180 * Math.PI);
-			cakepen.fill();
-		});
-		cakecanvas.addEventListener("mousedown", (e) =>
-		{
-			cakepen.arc(e.clientX, e.clientY, cursor_size, 90, 180 * Math.PI);
-			cakepen.fill();
-		});
-		cakecanvas.addEventListener("touchmove", (e) =>
-		{
-			cakepen.arc(e.pageX, e.pageY, cursor_size, 90, 180 * Math.PI);
-			cakepen.fill();
-		});
-		cakecanvas.addEventListener("touchstart", (e) =>
-		{
-			cakepen.arc(e.pageX, e.pageY, cursor_size, 90, 180 * Math.PI);
-			cakepen.fill();
-		});
-	}
-	if (type == "image")
-	{
-		//Part 1: Hide Mouse Cursor If Mouse Cursor Enters Game Canvas
-		cakecanvas.addEventListener("mouseenter", () =>
-		{
-			HideCursor();
-		});
-		cakecanvas.addEventListener("click", () =>
-		{
-			HideCursor();
-		});
-		//Part 2: Draw Mouse Cursor Shape/Icon From Image
-		cursor_image = new Image(), cursor_image.src = img_src, cursor_image.height = cursor_size, cursor_image.width = cursor_size;
-		cakecanvas.addEventListener("mousemove", (e) =>
-		{
-			cakepen.drawImage(cursor_image, e.clientX, e.clientY);
-		});
-		cakecanvas.addEventListener("mouseover", (e) =>
-		{
-			cakepen.drawImage(cursor_image, e.clientX, e.clientY);
-		});
-		cakecanvas.addEventListener("mousedown", (e) =>
-		{
-			cakepen.drawImage(cursor_image, e.clientX, e.clientY);
-		});
-		cakecanvas.addEventListener("touchmove", (e) =>
-		{
-			cakepen.drawImage(cursor_image, e.pageX, e.pageY);
-		});
-		cakecanvas.addEventListener("touchstart", (e) =>
-		{
-			cakepen.drawImage(cursor_image, e.pageX, e.pageY);
-		});
-
-	}
-	if (type == "icon") cakecanvas.style.cursor = img_src; //CSS Style,Your Call ;)
+var cursor_image;
+if(Unknown(cursor_size)) cursor_size = 10;
+if(type == "color") 
+{ 
+    cakepen.fillStyle = img_src; 
+    //Part 1: Hide Mouse Cursor If Mouse Cursor Enters Game Canvas
+    cakecanvas.addEventListener("mouseenter",() => { HideCursor(); });
+    cakecanvas.addEventListener("click",() => { HideCursor(); });
+    //Part 2: Draw Mouse Cursor Shape As Circle
+    cakecanvas.addEventListener("mousemove",(e) => { cakepen.arc(e.clientX, e.clientY, cursor_size, 90, 180 * Math.PI); cakepen.fill(); }); 
+    cakecanvas.addEventListener("mouseover",(e) => { cakepen.arc(e.clientX, e.clientY, cursor_size, 90, 180 * Math.PI); cakepen.fill(); }); 
+    cakecanvas.addEventListener("mousedown",(e) => { cakepen.arc(e.clientX, e.clientY, cursor_size, 90, 180 * Math.PI); cakepen.fill(); });
+    cakecanvas.addEventListener("touchmove",(e) => { cakepen.arc(e.clientX || e.pageX, e.clientY || e.pageY, cursor_size, 90, 180 * Math.PI); cakepen.fill(); });
+    cakecanvas.addEventListener("touchstart",(e) => { cakepen.arc(e.clientX || e.pageX, e.clientY || e.pageY, cursor_size, 90, 180 * Math.PI); cakepen.fill(); });  
+}
+if(type == "image")
+{
+    //Part 1: Hide Mouse Cursor If Mouse Cursor Enters Game Canvas
+    cakecanvas.addEventListener("mouseenter",() => { HideCursor(); }); 
+    cakecanvas.addEventListener("click",() => { HideCursor(); });
+    //Part 2: Draw Mouse Cursor Shape/Icon From Image
+    cursor_image = new Image(),cursor_image.src = img_src,cursor_image.height = cursor_size,cursor_image.width = cursor_size;
+    cakecanvas.addEventListener("mousemove",(e) => { cakepen.drawImage(cursor_image,e.clientX,e.clientY); }); 
+    cakecanvas.addEventListener("mouseover",(e) => { cakepen.drawImage(cursor_image,e.clientX,e.clientY); }); 
+    cakecanvas.addEventListener("mousedown",(e) => { cakepen.drawImage(cursor_image,e.clientX,e.clientY); });
+    cakecanvas.addEventListener("touchmove",(e) => { cakepen.drawImage(cursor_image,e.clientX || e.pageX,e.clientY || e.pageY); });
+    cakecanvas.addEventListener("touchstart",(e) => { cakepen.drawImage(cursor_image,e.clientX || e.pageX,e.clientY || e.pageY); });  
+       
+}
+if(type == "icon") cakecanvas.style.cursor = img_src; //CSS Style,Your Call ;)
 };
 
 //Module: Compiler Fixing For Values
 //Written By Rabia Alhaffar In 16/December/2019
-var FixValue = (x, type) =>
+var FixValue = (x,type) =>
 {
-	if ((type == undefined) || (type == NaN)) type = "bool";
-	if ((x == undefined) || (x == isNaN) && (type == "string")) x = "";
-	if ((x == undefined) || (x == NaN) && (type == "int")) x = 0;
-	if ((x == undefined) || (x == NaN) && (type == "bool")) x = false;
-	if ((x == undefined) || (x == NaN) && (type == "char")) x = '';
-	if ((x == undefined) || (x == NaN) && (type == "array")) x = [];
+if((type == undefined) || (type == NaN) || (type == null)) type = "bool";
+if((x == undefined) || (x == NaN) || (x == null) && (type == "string")) x = "";
+if((x == undefined) || (x == NaN) || (x == null) && (type == "int")) x = 0;
+if((x == undefined) || (x == NaN) || (x == null) && (type == "bool")) x = false;
+if((x == undefined) || (x == NaN) || (x == null) && (type == "char")) x = '';
+if((x == undefined) || (x == NaN) || (x == null) && (type == "array")) x = [];
 };
-var FixValuesFromArray = (values, type) =>
+var FixValuesFromArray = (values,type) =>
 {
-	for (x in values)
-	{
-		if ((type == undefined) || (type == NaN)) type = "bool";
-		if ((values[x] == undefined) || (values[x] == NaN) && type == "string") values[x] = "";
-		if ((values[x] == undefined) || (values[x] == NaN) && type == "int") values[x] = 0;
-		if ((values[x] == undefined) || (values[x] == NaN) && type == "bool") values[x] = false;
-		if ((values[x] == undefined) || (values[x] == NaN) && type == "char") values[x] = '';
-		if ((values[x] == undefined) || (values[x] == NaN) && type == "array") values[x] = [];
-	}
-};
-var Unknown = (x) => ((x == undefined) || (x == NaN));
-var Help = (f) =>
+for(x in values)
 {
-	if (typeof f == "function") console.log(f);
+if((type == undefined) || (type == NaN) || (type == null)) type = "bool";
+if((values[x] == undefined) || (values[x] == NaN) || (values[x] == null) && type == "string") values[x] = "";
+if((values[x] == undefined) || (values[x] == NaN) || (values[x] == null) && type == "int") values[x] = 0;
+if((values[x] == undefined) || (values[x] == NaN) || (values[x] == null) && type == "bool") values[x] = false;
+if((values[x] == undefined) || (values[x] == NaN) || (values[x] == null) && type == "char") values[x] = '';
+if((values[x] == undefined) || (values[x] == NaN) || (values[x] == null) && type == "array") values[x] = [];
+}		
 };
+var Unknown = (x) => ((x == undefined) || (x == NaN) || (x == null));
+var Help = (f) => { if(typeof f == "function") console.log(f); };
 var Do = (c) => eval(c);
 
 //Module: Support
@@ -3952,7 +3880,9 @@ var InitializeWebGL = () =>
 {
 cakecanvas = document.getElementsByName("canvas")[0];
 cakepen = cakecanvas.getContext('webgl');
+if(cakepen) console.info("CAKE GAME ENGINE: INITIALIZING WebGLRenderingContext...");
 if(!cakepen) console.error("WEBGL NOT SUPPORTED!!!");
+EnableDebugger();
 TRIANGLES = cakepen.TRIANGLES;
 LINES = cakepen.LINES;
 POINTS = cakepen.POINTS;
@@ -3960,10 +3890,10 @@ TRIFAN = cakepen.TRIANGLE_FAN;
 TRISTRIP = cakepen.TRIANGLE_STRIP;
 LINELOOP = cakepen.LINE_LOOP;
 LINESTRIP = cakepen.LINE_STRIP;
-GPU = cakepen.getParameter(cakepen_debugger.UNMASKED_VENDOR_WEBGL);
+GPU = cakepen.getParameter(cake_webgl_debugger.UNMASKED_VENDOR_WEBGL);
 GL_VER = cakepen.getExtension(cakepen.VERSION);
 GLSL_VER = cakepen.getParameter(cakepen.SHADING_LANGUAGE_VERSION);
-UNMASKED = cakepen.getParameter(cakepen_debugger.UNMASKED_RENDERER_WEBGL);
+UNMASKED = cakepen.getParameter(cake_webgl_debugger.UNMASKED_RENDERER_WEBGL);
 VENDOR = cakepen.getParameter(cakepen.VENDOR);
 };
 var GetWebGLFullInfo = () => console.info(`GPU: ${GPU}\nWEBGL VERSION: ${GL_VER}\nGLSL VERSION: ${GLSL_VER}\nVENDOR: ${VENDOR}\nUNMASKED RENDERER: ${UNMASKED}\n`);
@@ -4034,7 +3964,7 @@ cakepen.bindBuffer(cakepen.ARRAY_BUFFER, color_buffer);
 cakepen.bufferData(cakepen.ARRAY_BUFFER,new Float32Array(color_arr),cakepen.STATIC_DRAW);
 cakepen.enableVertexAttribArray(cakepen.getAttribLocation(program, "a_color"));
 cakepen.bindBuffer(cakepen.ARRAY_BUFFER, color_buffer);
-cakepen.vertexAttribPointer(cakepen.getAttribLocation(program, "a_color"), 4, cakepen.FLOAT, false, 0,);
+cakepen.vertexAttribPointer(cakepen.getAttribLocation(program, "a_color"), 4, cakepen.FLOAT, false, 0);
 };
 var EnableDebugger = () => cake_webgl_debugger = (cakepen.getExtension("WEBGL_debug_renderer_info") || cakepen.getExtension("WEBGL_debug_shaders"));
 var SetLineSize = (size) => cakepen.lineWidth(size);
@@ -4080,7 +4010,7 @@ var SHADER = (shader) => cakepen.isShader(shader);
 var BUFFER = (buffer) => cakepen.isBuffer(buffer);
 var SetClearDepth = (d) => cakepen.clearDepth(d);
 var DrawContent = (mode,pos_arr) => cakepen.drawArrays(mode,0,pos_arr.length / 2);
-var END = () => cakepen.finish();
+var FINISH = () => cakepen.finish();
 var Avoid = (x,y,w,h) => cakepen.scissor(x,y,w,h);
 var DisableAttribute = (program,att) => cakepen.disableVertexAttribArray(cakepen.getAttribLocation(program,att));
 var EnableAttribute = (program,att) => cakepen.enableVertexAttribArray(cakepen.getAttribLocation(program, att));
@@ -4093,7 +4023,7 @@ if(enabled)
 }
 if(!enabled) cakepen.disable(cakepen.SAMPLE_COVERAGE);
 };
-var BindBufferContent = (content,buffer,size) =>
+var BindBufferContent = (content,buffer,size,start) =>
 {
 cakepen.enableVertexAttribArray(content);
 cakepen.bindBuffer(cakepen.ARRAY_BUFFER, buffer);
@@ -4271,6 +4201,7 @@ console[_0x6de9('0x1', 'Valu')](_0x6de9('0x0', 'YKpn'));
 //Module: CanvasRenderingContext2D
 //Created By Rabia Alhaffar In 9/February/2020
 //A Additions To CanvasRenderingContext2D That Adds More Functions!!!
+//New: Added CanvasRenderingContext2D.shear() Function
 if(!CanvasRenderingContext2D.prototype.cc) 
 {
     CanvasRenderingContext2D.prototype.cc = function() 
@@ -4606,6 +4537,17 @@ CanvasRenderingContext2D.prototype.removeCanvas = function()
 {
     this.rocco();
 };
+if(!CanvasRenderingContext2D.prototype.sxsy)
+{
+    CanvasRenderingContext2D.prototype.sxsy = function(sx,sy)
+    {
+        this.transform(1,sy,sx,1,0,0);
+    };
+}
+CanvasRenderingContext2D.prototype.shear = function(shear_x,shear_y)
+{
+    this.sxsy(shear_x,shear_y);
+};
 
 //Module: requestAnimationFrame
 //Created By Rabia Alhaffar In 8/February/2020
@@ -4797,3 +4739,115 @@ var AddMouseMoveHandler = (f) => window.addEventListener("mousemove",f);
 var AddClickHandler = (f) => window.addEventListener("click",f);
 var AddTapHandler = (f) => window.addEventListener("touchstart",f);
 var AddSwipeHandler = (f) => window.addEventListener("touchmove",f);
+
+//Module: Y8 SDK
+//Created By Rabia Alhaffar In 20/April/2019
+//Rewritten By Rabia Alhaffar In 15/March/2020
+var Y8_CloseSDKMenus = () => ID.closeMenu();
+var Y8_ShowProfile = () => ID.OpenProfile();
+var Y8_SDKMenusVisible = () => ID.isVisible();
+var Y8_OpenAD = (after_ad_finished) => 
+{
+	ID.gameBreak(() => {
+		window.setTimeout(after_ad_finished,0);
+	});
+};
+var Y8_Register = () => ID.register();
+var Y8_Login = () => ID.login();
+var Y8_ShowAchievements = () => ID.GameAPI.Achievements.list({ embedded: false });
+var Y8_UnlockAchievement = (title,key) =>
+{
+	ID.GameAPI.Achievements.save({
+		achievement: title,
+		achievementKey: key,
+		overwrite: false,
+		allowduplicates: false
+	});
+};
+var Y8_ShowLeaderboards = (table_name) => 
+{
+	ID.GameAPI.Leaderboards.list({
+		table: table_name,
+		mode: "alltime",
+		highest: true,
+		useMilli: false,
+		embedded: false
+	});
+};
+var Y8_SaveScore = (score,player_name,table_name) =>
+{
+	ID.GameAPI.Leaderboards.save({
+		table: table_name,
+		points: score,
+		allowduplicates: false,
+		highest: true,
+		playername: player_name
+	});
+};
+var Y8_Share = (name,description,caption,picture,link) => 
+{
+	ID.ui({
+		method: "feed",
+		link: link,
+		description: description,
+		name: name,
+		caption: caption,
+		picture: picture,
+	  });
+};
+var Y8_DomainBlacklisted = () => ID.Protection.isBlacklisted();
+var Y8_DomainSponsored = () => ID.Protection.isSponsor();
+var Y8_SaveData = (data,datakey) =>
+{
+	ID.api('user_data/submit','POST', 
+	{
+		key: datakey,
+		value: JSON.stringify(data)
+	});
+};
+var Y8_RetrieveData = (datakey) => ID.api('user_data/retrieve','POST',{ key: datakey });
+var Y8_RemoveData = (datakey) => ID.api('user_data/remove','POST',{ key: datakey });
+var Y8_Initialize = (app_id) => ID.init({ appId: app_id,status: true });
+var Y8_GetPlayerLoginStatus = () => ID.getLoginStatus();
+var Y8_RequestFriend = (friend_id,uri) =>
+{
+	ID.ui({
+		method: "friends",
+		redirect_uri: uri,
+		id: friend_id
+	});
+};
+var Y8_SubmitImage = (base64_imagestring) => ID.submit_image(base64_imagestring);
+var Y8_GetRoomsList = (lobby_or_game,room_id) => ID.Multiplayer.roomList(lobby_or_game, room_id,{},"00000000000000");
+var Y8_CreateRoom = (lobby_or_game,room_id,is_open,is_visible,max_players) => 
+{
+	ID.Multiplayer.roomCreate(lobby_or_game,room_id,{}," ",{
+		isOpen: is_open,
+		isVisible: is_visible,
+		maxPlayers: max_players
+	});
+}
+var Y8_JoinRoom = (room_id) => ID.Multiplayer.roomJoin(room_id);
+var Y8_LeaveRoom = () => ID.Multiplayer.roomLeave(" ");
+var Y8_MessagePlayers = (msg) => ID.Multiplayer.broadcastAll(msg);
+var Y8_MessagePlayer = (player_id,msg) => ID.Multiplayer.sendTo(player_id,msg);
+var Y8_SetDebuggerLevel = (level) => id.multiplayer.debuglevel = level;
+var Y8_AutoJoinGame = () => ID.Matchmaking.autoJoinGame();
+
+//Module: Facebook Instant Games
+//Created By Rabia Alhaffar In 20/April/2019
+//Rewritten By Rabia Alhaffar In 15/March/2020
+var FB_Initialize = () => FBInstant.initializeAsync();
+var FB_PlayerID = () => FBInstant.player.getID();
+var FB_PlayerName = () => FBInstant.player.getName();
+var FB_PlayerPhoto = () => FBInstant.player.getPhoto();	
+var FB_ContextID = () => FBInstant.context.getID();
+var FB_ContextType = () => FBInstant.context.getType();
+var FB_OS = () => FBInstant.getPlatform();
+var FB_SDKVersion = () => FBInstant.getSDKVersion();
+var FB_Localization = () => FBInstant.getLocale();
+var FB_SetProgress = (x) => FBInstant.setLoadingProgress(x);
+var FB_ExitGame = () => FBInstant.quit();
+var FB_APIS = () => FBInstant.getSupportedAPIs();
+var FB_LeaderboardName = () => FBInstant.leaderboard.getName();
+var FB_PostScore = (x) => FBInstant.postSessionScore(x);
