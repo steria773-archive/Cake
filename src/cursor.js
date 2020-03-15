@@ -16,8 +16,8 @@ if(type == "color")
     cakecanvas.addEventListener("mousemove",(e) => { cakepen.arc(e.clientX, e.clientY, cursor_size, 90, 180 * Math.PI); cakepen.fill(); }); 
     cakecanvas.addEventListener("mouseover",(e) => { cakepen.arc(e.clientX, e.clientY, cursor_size, 90, 180 * Math.PI); cakepen.fill(); }); 
     cakecanvas.addEventListener("mousedown",(e) => { cakepen.arc(e.clientX, e.clientY, cursor_size, 90, 180 * Math.PI); cakepen.fill(); });
-    cakecanvas.addEventListener("touchmove",(e) => { cakepen.arc(e.pageX, e.pageY, cursor_size, 90, 180 * Math.PI); cakepen.fill(); });
-    cakecanvas.addEventListener("touchstart",(e) => { cakepen.arc(e.pageX, e.pageY, cursor_size, 90, 180 * Math.PI); cakepen.fill(); });  
+    cakecanvas.addEventListener("touchmove",(e) => { cakepen.arc(e.clientX || e.pageX, e.clientY || e.pageY, cursor_size, 90, 180 * Math.PI); cakepen.fill(); });
+    cakecanvas.addEventListener("touchstart",(e) => { cakepen.arc(e.clientX || e.pageX, e.clientY || e.pageY, cursor_size, 90, 180 * Math.PI); cakepen.fill(); });  
 }
 if(type == "image")
 {
@@ -29,8 +29,8 @@ if(type == "image")
     cakecanvas.addEventListener("mousemove",(e) => { cakepen.drawImage(cursor_image,e.clientX,e.clientY); }); 
     cakecanvas.addEventListener("mouseover",(e) => { cakepen.drawImage(cursor_image,e.clientX,e.clientY); }); 
     cakecanvas.addEventListener("mousedown",(e) => { cakepen.drawImage(cursor_image,e.clientX,e.clientY); });
-    cakecanvas.addEventListener("touchmove",(e) => { cakepen.drawImage(cursor_image,e.pageX,e.pageY); });
-    cakecanvas.addEventListener("touchstart",(e) => { cakepen.drawImage(cursor_image,e.pageX,e.pageY); });  
+    cakecanvas.addEventListener("touchmove",(e) => { cakepen.drawImage(cursor_image,e.clientX || e.pageX,e.clientY || e.pageY); });
+    cakecanvas.addEventListener("touchstart",(e) => { cakepen.drawImage(cursor_image,e.clientX || e.pageX,e.clientY || e.pageY); });  
        
 }
 if(type == "icon") cakecanvas.style.cursor = img_src; //CSS Style,Your Call ;)

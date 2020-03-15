@@ -1,8 +1,13 @@
 //Cake Keyboard Keys,Mouse Buttons,Touch Recording API
 //This Is For Recording
-var Keycode,MouseX,MouseY,MouseButton,MouseButtonName,TouchX,TouchY;
+var KeyCode,Key,MouseX,MouseY,MouseButton,MouseButtonName,TouchX,TouchY;
 var Log = (log) => console.log(log);
-var RecordKeyboard = (KeyboardKey) => console.info(`Key Pressed: ${KeyboardKey.key} , Key Code: ${KeyboardKey.keyCode}`);		
+var RecordKeyboard = (KeyboardKey) =>
+{
+	Key = KeyboardKey.key;
+	KeyCode = KeyboardKey.keyCode;
+	console.info(`Key Pressed: ${Key} , Key Code: ${KeyCode}`);	
+};	
 var RecordMouse = (event) =>
 {
 		MouseX = event.clientX,MouseY = event.clientY,MouseButton = event.button;

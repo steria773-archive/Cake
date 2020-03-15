@@ -36,8 +36,6 @@ this.Unlimit = function() { this.fps = 1; };
 }
 var DrawFPS = (Level) =>
 {
-	cakecanvas = document.getElementsByTagName("canvas")[0];
-	cakepen = cakecanvas.getContext("2d");
 	cakepen.font = "20px arial";
 	cakepen.fillStyle = "black";
 	cakepen.fillText("FPS: " + Level.fps,30,30);

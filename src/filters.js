@@ -5,7 +5,7 @@ var AddFilters = (filters) => cakecanvas.style.filter += filters;
 var SetBlur = (pixels) => cakecanvas.style.filter += ` blur(${pixels}px) `;
 var SetBrightness = (percentage) => cakecanvas.style.filter += ` brightness(${percentage}%) `;
 var SetContrast = (percentage) => cakecanvas.style.filter += ` contrast(${percentage}%) `;
-var SetGrayscale = (percentage) => akecanvas.style.filter += ` grayscale(${percentage}%) `;
+var SetGrayscale = (percentage) => cakecanvas.style.filter += ` grayscale(${percentage}%) `;
 var SetInvert = (percentage) => cakecanvas.style.filter += ` invert(${percentage}%) `;
 var SetOpacity = (percentage) => cakecanvas.style.filter += ` opacity${percentage}%) `;
 var SetSaturation = (percentage) => cakecanvas.style.filter += ` saturate(${percentage}%) `;

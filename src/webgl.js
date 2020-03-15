@@ -23,11 +23,13 @@ var cakecanvas,
     VENDOR,
     GL_VER,
     UNMASKED;
-var InitializeWebGL = () =>
-{
+    var InitializeWebGL = () =>
+    {
     cakecanvas = document.getElementsByName("canvas")[0];
     cakepen = cakecanvas.getContext('webgl');
+    if(cakepen) console.info("CAKE GAME ENGINE: INITIALIZING WebGLRenderingContext...");
     if(!cakepen) console.error("WEBGL NOT SUPPORTED!!!");
+    EnableDebugger();
     TRIANGLES = cakepen.TRIANGLES;
     LINES = cakepen.LINES;
     POINTS = cakepen.POINTS;
@@ -35,12 +37,12 @@ var InitializeWebGL = () =>
     TRISTRIP = cakepen.TRIANGLE_STRIP;
     LINELOOP = cakepen.LINE_LOOP;
     LINESTRIP = cakepen.LINE_STRIP;
-    GPU = cakepen.getParameter(cakepen_debugger.UNMASKED_VENDOR_WEBGL);
+    GPU = cakepen.getParameter(cake_webgl_debugger.UNMASKED_VENDOR_WEBGL);
     GL_VER = cakepen.getExtension(cakepen.VERSION);
     GLSL_VER = cakepen.getParameter(cakepen.SHADING_LANGUAGE_VERSION);
-    UNMASKED = cakepen.getParameter(cakepen_debugger.UNMASKED_RENDERER_WEBGL);
+    UNMASKED = cakepen.getParameter(cake_webgl_debugger.UNMASKED_RENDERER_WEBGL);
     VENDOR = cakepen.getParameter(cakepen.VENDOR);
-};
+    };
 var GetWebGLFullInfo = () => console.info(`GPU: ${GPU}\nWEBGL VERSION: ${GL_VER}\nGLSL VERSION: ${GLSL_VER}\nVENDOR: ${VENDOR}\nUNMASKED RENDERER: ${UNMASKED}\n`);
 var GetWebGLErrors = () => cakepen.getError();
 var ClearCanvasFully = () =>
@@ -109,7 +111,7 @@ var SetColor = (program,color_buffer,color_arr) =>
   cakepen.bufferData(cakepen.ARRAY_BUFFER,new Float32Array(color_arr),cakepen.STATIC_DRAW);
   cakepen.enableVertexAttribArray(cakepen.getAttribLocation(program, "a_color"));
   cakepen.bindBuffer(cakepen.ARRAY_BUFFER, color_buffer);
-  cakepen.vertexAttribPointer(cakepen.getAttribLocation(program, "a_color"), 4, cakepen.FLOAT, false, 0,);
+  cakepen.vertexAttribPointer(cakepen.getAttribLocation(program, "a_color"), 4, cakepen.FLOAT, false, 0);
 };
 var EnableDebugger = () => cake_webgl_debugger = (cakepen.getExtension("WEBGL_debug_renderer_info") || cakepen.getExtension("WEBGL_debug_shaders"));
 var SetLineSize = (size) => cakepen.lineWidth(size);
@@ -155,7 +157,7 @@ var SHADER = (shader) => cakepen.isShader(shader);
 var BUFFER = (buffer) => cakepen.isBuffer(buffer);
 var SetClearDepth = (d) => cakepen.clearDepth(d);
 var DrawContent = (mode,pos_arr) => cakepen.drawArrays(mode,0,pos_arr.length / 2);
-var END = () => cakepen.finish();
+var FINISH = () => cakepen.finish();
 var Avoid = (x,y,w,h) => cakepen.scissor(x,y,w,h);
 var DisableAttribute = (program,att) => cakepen.disableVertexAttribArray(cakepen.getAttribLocation(program,att));
 var EnableAttribute = (program,att) => cakepen.enableVertexAttribArray(cakepen.getAttribLocation(program, att));
@@ -168,7 +170,7 @@ var Multisample = (enabled,value,invert) =>
     }
     if(!enabled) cakepen.disable(cakepen.SAMPLE_COVERAGE);
 };
-var BindBufferContent = (content,buffer,size) =>
+var BindBufferContent = (content,buffer,size,start) =>
 {
     cakepen.enableVertexAttribArray(content);
     cakepen.bindBuffer(cakepen.ARRAY_BUFFER, buffer);

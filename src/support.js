@@ -10,6 +10,6 @@ var OGG = () => { return(document.createElement('audio').canPlayType('audio/ogg'
 var WAV = () => { return(document.createElement('audio').canPlayType('audio/wav'));	};
 var WEBM = () => { return(document.createElement('video').canPlayType('video/webm')); };
 var WEBXR = () => { return("xr" in window.navigator); };  
-var WEBVR = () => { return(navigator.getVRDisplays); };
+var WEBVR = () => { return(navigator.getVRDisplays()); };
 var JAVA = () => { return(navigator.javaEnabled()); };
 var ONLINE = () => { return(navigator.onLine); };

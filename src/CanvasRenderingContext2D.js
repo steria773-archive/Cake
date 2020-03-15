@@ -1,5 +1,6 @@
 //Created By Rabia Alhaffar In 9/February/2020
 //A Additions To CanvasRenderingContext2D That Adds More Functions!!!
+//New: Added CanvasRenderingContext2D.shear() Function
 if(!CanvasRenderingContext2D.prototype.cc) 
 {
     CanvasRenderingContext2D.prototype.cc = function() 
@@ -334,4 +335,15 @@ if(!CanvasRenderingContext2D.prototype.rocco)
 CanvasRenderingContext2D.prototype.removeCanvas = function()
 {
     this.rocco();
+};
+if(!CanvasRenderingContext2D.prototype.sxsy)
+{
+    CanvasRenderingContext2D.prototype.sxsy = function(sx,sy)
+    {
+        this.transform(1,sy,sx,1,0,0);
+    };
+}
+CanvasRenderingContext2D.prototype.shear = function(shear_x,shear_y)
+{
+    this.sxsy(shear_x,shear_y);
 };

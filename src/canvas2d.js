@@ -3,9 +3,9 @@
 //Always Needs More Additions And Updates!!!
 //If You Calling A Function With Undefined Values You Defined,Use u Instead Of undefined Or NaN
 //Defined Values
-var WindowHeight = window.innerHeight,WindowWidth = window.innerWidth,ScreenHeight = screen.height,ScreenWidth = screen.width,RandomAlpha = Math.random(),RandomColor = `rgb(${Math.floor(Math.random() * 256)},${Math.floor(Math.random() * 256)},${Math.floor(Math.random() * 256)})`;
+var mode = "fill",WindowHeight = window.innerHeight,WindowWidth = window.innerWidth,ScreenHeight = screen.height,ScreenWidth = screen.width,RandomAlpha = Math.random(),RandomColor = `rgb(${Math.floor(Math.random() * 256)},${Math.floor(Math.random() * 256)},${Math.floor(Math.random() * 256)})`;
 //Undefined Values(Defined It's Value When You Initialize The Engine In-Game Code!!!)
-var CanvasHeight,CanvasWidth,mode,texture,RandomX,RandomY,HalfCanvasHeight,HalfCanvasWidth,cakecanvas,cakepen;
+var CanvasHeight,CanvasWidth,texture,RandomX,RandomY,HalfCanvasHeight,HalfCanvasWidth,cakecanvas,cakepen;
 //Game Graphics Functions!!!
 		var DrawText = (x,y,text,color,stroke_color,textAlign,alpha) =>
 		{
@@ -14,14 +14,14 @@ var CanvasHeight,CanvasWidth,mode,texture,RandomX,RandomY,HalfCanvasHeight,HalfC
 			if(Unknown(text)) text = "";
 			if(Unknown(color)) color = "black";
 			if(Unknown(stroke_color)) stroke_color = color;
-			if(Unknown(textAlign)) textAlign = "";
+			if(Unknown(textAlign)) textAlign = "left";
 			if(Unknown(alpha)) alpha = 1;
 			cakepen.globalAlpha = alpha,cakepen.fillStyle = color,cakepen.strokeStyle = stroke_color,cakepen.textAlign = textAlign;
 			if(mode == "fill") cakepen.fillText(text,x,y);
 			if(mode == "stroke") cakepen.strokeText(text,x,y);
 			if(mode == "custom") { cakepen.fillText(text,x,y); cakepen.strokeText(text,x,y); }	
 		};
-		var SetFont = (textfont) => { if(Unknown(textfont)) cakepen.font = "12px arial"; cakepen.font = textfont; };
+		var SetFont = (textfont) => { if(Unknown(textfont)) textfont = "20px arial"; cakepen.font = textfont; };
 		var SetShadowProperties = (shadowOffsetX,shadowOffsetY,shadowcolor,shadowblur) =>
 		{
 			if(Unknown(shadowOffsetX)) cakepen.shadowOffsetX = 0;
@@ -32,8 +32,8 @@ var CanvasHeight,CanvasWidth,mode,texture,RandomX,RandomY,HalfCanvasHeight,HalfC
 		};
 	    var SetLineProperties = (line_width,line_height) =>
 		{
-			if(Unknown(line_h)) line_height = 1;
-			if(Unknown(line_w)) line_width = 1;
+			if(Unknown(line_height)) line_height = 1;
+			if(Unknown(line_width)) line_width = 1;
 			cakepen.lineHeight = line_height,cakepen.lineWidth = line_width;
 		};
 		var DrawRect = (x,y,width,height,color,stroke_color,alpha) =>
@@ -42,12 +42,10 @@ var CanvasHeight,CanvasWidth,mode,texture,RandomX,RandomY,HalfCanvasHeight,HalfC
 			if(Unknown(y)) y = 0;
 			if(Unknown(height)) height = 0;
 			if(Unknown(width)) width = 0;
-			if(!Unknown(color)) cakepen.fillStyle = color;
 			if(Unknown(color)) cakepen.fillStyle = "black";
-			if(!Unknown(stroke_color)) cakepen.strokeStyle = stroke_color;
 			if(Unknown(stroke_color)) cakepen.strokeStyle = color;
 			if(Unknown(alpha)) alpha = 1;
-			cakepen.globalAlpha = alpha;			
+			cakepen.fillStyle = color,cakepen.globalAlpha = alpha,cakepen.strokeStyle = stroke_color;			
 			if(mode == "fill") cakepen.fillRect(x,y,width,height);
 			if(mode == "stroke") cakepen.strokeRect(x,y,width,height);
 			if(mode == "custom") { cakepen.fillRect(x,y,width,height); cakepen.strokeRect(x,y,width,height); }
@@ -359,11 +357,11 @@ var CanvasHeight,CanvasWidth,mode,texture,RandomX,RandomY,HalfCanvasHeight,HalfC
 			if(Unknown(height)) height = 150;
 			if(Unknown(width)) width = 150;
 			var gamecanvas = document.createElement("canvas");
-            gamecanvas.id = "cakegamecanvas",gamecanvas.height = height,canvas.width = width;
+            gamecanvas.id = "cakegamecanvas",gamecanvas.height = height,gamecanvas.width = width;
 			document.body.appendChild(gamecanvas);
 			var cakecanvas = document.getElementById("cakegamecanvas");
 		    var cakepen	= cakecanvas.getContext("2d");
-		    if(cakepen) console.info("CAKE GAME ENGINE INITIALIZED...");
+		    if(cakepen) console.info("CAKE GAME ENGINE: INITIALIZING CanvasRenderingContext2D...");
 		    if(!cakepen) 
 		    {
 			RemoveCanvas();
@@ -383,44 +381,7 @@ var CanvasHeight,CanvasWidth,mode,texture,RandomX,RandomY,HalfCanvasHeight,HalfC
         if(mode == "fill") cakepen.fillRect(x,y,size,size);			
 		if(mode == "stroke") cakepen.strokeRect(x,y,size,size);	
 		if(mode == "custom") { cakepen.fillRect(x,y,size,size); cakepen.strokeRect(x,y,size,size); }
-		};
-
-		var DrawSnowflake = (x,y,length,color,stroke_color,m,alpha) =>
-		{
-		if(Unknown(x)) x = 0;
-		if(Unknown(y)) y = 0;
-		if(Unknown(length)) length = 0;
-		if(Unknown(color)) color = "black";
-		if(Unknown(stroke_color)) stroke_color = color;
-		if(Unknown(alpha)) alpha = 1;
-		cakepen.globalAlpha = alpha,cakepen.fillStyle = color,cakepen.strokeStyle = stroke_color;
-		var deg = Math.PI / 180; 
-        cakepen.translate(x,y); 
-        cakepen.moveTo(x,y); 
-        Leg(m);
-        cakepen.rotate(-120 * deg);
-        Leg(m);
-        cakepen.rotate(-120 * deg);
-        Leg(m);
-        cakepen.closePath();
-		};
-		var Leg = (l) =>
-		{
-		var deg = Math.PI / 180;
-        if (l == 0) cakepen.lineTo(length, 0);
-        else 
-		{ 
-        cakepen.scale(1 / 3,1 / 3); 
-        Leg(l - 1); 
-        cakepen.rotate(60 * deg); 
-        Leg(l - 1);
-        cakepen.rotate(-120 * deg);
-        Leg(l - 1); 
-        cakepen.rotate(60 * deg); 
-        Leg(l - 1);
-        } 
-        cakepen.translate(length, 0);
-        };		
+		};	
 		var DrawRoundedRect = (x,y,width,height,radius,color,stroke_color,alpha) => 
 		{
 		if(Unknown(x)) x = 0;
@@ -453,7 +414,7 @@ var CanvasHeight,CanvasWidth,mode,texture,RandomX,RandomY,HalfCanvasHeight,HalfC
 		if(Unknown(c)) c = 0;
 		cakecanvas = document.getElementsByTagName("canvas")[c];
 		cakepen	= cakecanvas.getContext("2d");
-		if(cakepen) console.info("CAKE GAME ENGINE INITIALIZED...");
+		if(cakepen) console.info("CAKE GAME ENGINE: INITIALIZING CanvasRenderingContext2D...");
 		if(!cakepen) 
 		{
 			RemoveCanvas();
@@ -462,7 +423,8 @@ var CanvasHeight,CanvasWidth,mode,texture,RandomX,RandomY,HalfCanvasHeight,HalfC
 		}
 		CanvasHeight = cakecanvas.height,CanvasWidth = cakecanvas.width,HalfCanvasHeight = CanvasHeight * 0.5,HalfCanvasWidth = CanvasWidth * 0.5,RandomX = Math.floor(Math.random() * CanvasWidth),RandomY = Math.floor(Math.random() * CanvasHeight);
 		};
-		var ResizeCanvas = (canvas_width,canvas_height) => { cakecanvas.height = canvas_height,cakecanvas.width = canvas_width;	};
+		var ResizeCanvasFully = (canvas_width,canvas_height) => { cakecanvas.height = canvas_height,cakecanvas.width = canvas_width,cakecanvas.style.height = canvas_height,cakecanvas.style.width = canvas_width; };
+		var ResizeCanvas = (canvas_width,canvas_height) => { cakecanvas.height = canvas_height,cakecanvas.width = canvas_width; };
 		var SetResolution = (canvas_width,canvas_height) => { cakecanvas.style.height = canvas_height,cakecanvas.style.width = canvas_width; };
 		var SetAntialiasing = (enabled,quality) =>
 		{
@@ -546,7 +508,7 @@ var CanvasHeight,CanvasWidth,mode,texture,RandomX,RandomY,HalfCanvasHeight,HalfC
 	var SwitchContext = (c) => { if(Unknown(c)) c = "2d"; cakepen = cakecanvas.getContext(c); };
 	var SwitchContent = (canvas,c) => { cakecanvas = document.getElementsByTagName("canvas")[canvas]; cakepen = cakecanvas.getContext(c); };
 	//For SpriteSheets Drawing!!!
-	var DrawImageAdvanced = (source_x,source_y,source_width,source_height,x,y,width,height,alpha) =>
+	var DrawImageAdvanced = (url,source_x,source_y,source_width,source_height,x,y,width,height,alpha) =>
 	{
 	    texture = new Image();
 		texture.src = url;
@@ -817,6 +779,7 @@ var CanvasHeight,CanvasWidth,mode,texture,RandomX,RandomY,HalfCanvasHeight,HalfC
 				if(Unknown(content[loopcontent][7])) content[loopcontent][7] = "12px arial";
 				cakepen.fillStyle = content[loopcontent][3];
 				cakepen.strokeStyle = content[loopcontent][4];
+				cakepen.textAlign = content[loopcontent][5];
 				cakepen.globalAlpha = content[loopcontent][6];
 				cakepen.font = content[loopcontent][7];
 				if(mode == "fill") cakepen.fillText(content[loopcontent][2],content[loopcontent][0],content[loopcontent][1]);
@@ -864,4 +827,14 @@ var CanvasHeight,CanvasWidth,mode,texture,RandomX,RandomY,HalfCanvasHeight,HalfC
 			}
 		}
 		cakepen.globalAlpha = 1;
+	};
+	var FlipHorizontally = () => cakepen.scale(-1,1);
+	var FlipVertically = () => cakepen.scale(1,-1);
+	var FlipContent = () => cakepen.scale(-1,-1);
+	var ResetFlipping = () => cakepen.scale(1,1);
+	var Shear = (x,y) => 
+	{
+		if(Unknown(x)) x = 0;
+		if(Unknown(y)) y = 0;
+		cakepen.shear(x,y);
 	};

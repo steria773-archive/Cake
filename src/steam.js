@@ -8,7 +8,12 @@ if(page == "Help") window.open("https://help.steampowered.com/");
 if(page == "Community") window.open("https://steamcommunity.com/");
 if(page == "News") window.open("https://store.steampowered.com/news/");
 };
-var DownloadSteamDirectly = () => window.open("https://steamcdn-a.akamaihd.net/client/installer/SteamSetup.exe");	
+var DownloadSteamDirectly = () => 
+{
+    if(Windows) window.open("https://steamcdn-a.akamaihd.net/client/installer/SteamSetup.exe");	
+    if(Mac) window.open("https://steamcdn-a.akamaihd.net/client/installer/SteamSetup.dmg");
+    if(!(Windows || Mac)) window.open("https://steamcdn-a.akamaihd.net/client/installer/SteamSetup.deb");
+}
 //id_as_number Must Be Number,The Number Consists Of Over 6 Or More Numbers!!!
 var OpenSteamAppPage = (id_as_number) => window.open("https://store.steampowered.com/app/" + id_as_number.toString());	
 var Steam_LogIn = () => window.open("https://store.steampowered.com/login/");	
