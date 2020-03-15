@@ -1,4 +1,17 @@
 # Release History
+## 15/March/2020
+New Update
+
+### Additions
+1. Facebook Instant Games And Y8 SDK Integration
+2. Upcoming Binding To Lua
+
+### Bug Fixes
+1. Fixed Errors In webgl.js And canvas2d.js (Parameters,Type Errors)
+2. Fixed Error In Physics Functions (Collision Of Circle With Rectangle)
+3. Problems In Y8 SDK (Not Quite Good Code)
+4. Problems In Facebook Instant Games SDK (Initialization Functions For The SDK Were Not Made)
+
 ## 10/March/2020
 New Update
 ### Bug Fixes
