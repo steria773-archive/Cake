@@ -650,17 +650,17 @@ var CanvasHeight,CanvasWidth,texture,RandomX,RandomY,HalfCanvasHeight,HalfCanvas
         canvas.id = "cake-canvas",canvas.height = height,canvas.width = width,canvas.style.backgroundColor = bgcolor,canvas.style.border = border_style;
 		document.body.appendChild(canvas);
 		};
-		var CreateGame = (width,height,gametitle) =>
+		var CreateGame = (width,height,gametitle,context) =>
 		{
 			document.title = gametitle;
 			if(Unknown(height)) height = 150;
 			if(Unknown(width)) width = 150;
 			var gamecanvas = document.createElement("canvas");
-            gamecanvas.id = "cakegamecanvas",gamecanvas.height = height,gamecanvas.width = width;
+			gamecanvas.id = gametitle.toString().toLowerCase() + "-game-canvas",gamecanvas.height = height,gamecanvas.width = width;
 			document.body.appendChild(gamecanvas);
 			var cakecanvas = document.getElementById("cakegamecanvas");
-		    var cakepen	= cakecanvas.getContext("2d");
-		    if(cakepen) console.info("CAKE GAME ENGINE: INITIALIZING CanvasRenderingContext2D...");
+		    var cakepen	= cakecanvas.getContext(context);
+		    if(cakepen) console.info(context == "2d" ? "CAKE GAME ENGINE: INITIALIZING CanvasRenderingContext2D..." : "CAKE GAME ENGINE: INITIALIZING WebGLRenderingContext...");
 		    if(!cakepen) 
 		    {
 			RemoveCanvas();
