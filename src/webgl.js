@@ -25,6 +25,7 @@ var cakecanvas,
     UNMASKED;
     var InitializeWebGL = (c) =>
     {
+    if(Unknown(c)) c = 0;
     cakecanvas = document.getElementsByTagName("canvas")[c];
     cakepen = cakecanvas.getContext('webgl');
     if(cakepen) console.info("CAKE GAME ENGINE: INITIALIZING WebGLRenderingContext...");

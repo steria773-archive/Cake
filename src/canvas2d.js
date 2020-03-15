@@ -359,7 +359,7 @@ var CanvasHeight,CanvasWidth,texture,RandomX,RandomY,HalfCanvasHeight,HalfCanvas
 			var gamecanvas = document.createElement("canvas");
 			gamecanvas.id = gametitle.toString().toLowerCase() + "-game-canvas",gamecanvas.height = height,gamecanvas.width = width;
 			document.body.appendChild(gamecanvas);
-			var cakecanvas = document.getElementById("cakegamecanvas");
+			var cakecanvas = document.getElementById(gametitle.toString().toLowerCase() + "-game-canvas");
 		    var cakepen	= cakecanvas.getContext(context);
 		    if(cakepen) console.info(context == "2d" ? "CAKE GAME ENGINE: INITIALIZING CanvasRenderingContext2D..." : "CAKE GAME ENGINE: INITIALIZING WebGLRenderingContext...");
 		    if(!cakepen) 
