@@ -23,9 +23,9 @@ var cakecanvas,
     VENDOR,
     GL_VER,
     UNMASKED;
-    var InitializeWebGL = () =>
+    var InitializeWebGL = (c) =>
     {
-    cakecanvas = document.getElementsByName("canvas")[0];
+    cakecanvas = document.getElementsByTagName("canvas")[c];
     cakepen = cakecanvas.getContext('webgl');
     if(cakepen) console.info("CAKE GAME ENGINE: INITIALIZING WebGLRenderingContext...");
     if(!cakepen) console.error("WEBGL NOT SUPPORTED!!!");
