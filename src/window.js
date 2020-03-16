@@ -1,5 +1,5 @@
 //Created By Rabia Alhaffar In 4/January/2020
-function Window(s,h,w,l,t)
+function Window(l,t,w,h,s)
 {
 this.src = s;
 this.h = h,this.w = w;
@@ -28,17 +28,17 @@ if(Unknown(x)) x = 0;
 if(Unknown(y)) y = 0;
 this.Win.moveBy(x,y);
 };
-this.Resize = function(h,w)
+this.Resize = function(w,h)
 {
 if(Unknown(h)) h = 0;
 if(Unknown(w)) w = 0;
-this.Win.resizeTo(h,w);
+this.Win.resizeTo(w,h);
 };
-this.Scale = function(h,w)
+this.Scale = function(w,h)
 {
 if(Unknown(h)) h = 0;
 if(Unknown(w)) w = 0;
-this.Win.resizeBy(h,w);
+this.Win.resizeBy(w,h);
 };
 this.Close = function() { this.Win.close(); };
 this.Pause = function() { this.Win.stop(); };

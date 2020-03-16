@@ -49,7 +49,7 @@ var Y8_Share = (name,description,caption,picture,link) =>
 		description: description,
 		name: name,
 		caption: caption,
-		picture: picture,
+		picture: picture
 	  });
 };
 var Y8_DomainBlacklisted = () => ID.Protection.isBlacklisted();
@@ -88,5 +88,5 @@ var Y8_JoinRoom = (room_id) => ID.Multiplayer.roomJoin(room_id);
 var Y8_LeaveRoom = () => ID.Multiplayer.roomLeave(" ");
 var Y8_MessagePlayers = (msg) => ID.Multiplayer.broadcastAll(msg);
 var Y8_MessagePlayer = (player_id,msg) => ID.Multiplayer.sendTo(player_id,msg);
-var Y8_SetDebuggerLevel = (level) => id.multiplayer.debuglevel = level;
+var Y8_SetDebuggerLevel = (level) => ID.multiplayer.debuglevel = level;
 var Y8_AutoJoinGame = () => ID.Matchmaking.autoJoinGame();

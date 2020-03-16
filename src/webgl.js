@@ -71,7 +71,7 @@ var CreateShader = (shader_variable,type,src) =>
     shader_variable = cakepen.createShader(type);
     cakepen.shaderSource(shader_variable,src);
     cakepen.compileShader(shader_variable);
-    console.info(cakepen.getShaderParameter(shader_variable,cakepen.COMPILE_STATUS) ? "Shader Compiled Successfully!!!" : "Shader Compilation Failed!!!");
+    console.info(cakepen.getShaderParameter(shader_variable,cakepen.COMPILE_STATUS) ? "CAKE GAME ENGINE: SHADER COMPILED SUCCESSFULLY!!!" : "CAKE GAME ENGINE: SHADER COMPILATION FAILED!!!");
     console.info(cakepen.getShaderInfoLog(shader_variable));
     console.info(cakepen.getShaderSource(shader_variable));
     cakepen.deleteShader(shader_variable);
@@ -88,7 +88,7 @@ var CreateProgram = (program,vertex,frag) =>
     console.info(cakepen.getShaderSource(frag));
     console.info(cakepen.getShaderInfoLog(vertex));
     console.info(cakepen.getShaderInfoLog(frag));
-    console.info(cakepen.getProgramParameter(cakepen.LINK_STATUS) ? "Program Created Successfully!!!" : "Program Creation Failed!!!");
+    console.info(cakepen.getProgramParameter(cakepen.LINK_STATUS) ? "CAKE GAME ENGINE: PROGRAM CREATED SUCCESSFULLY!!!" : "CAKE GAME ENGINE: PROGRAM CREATION FAILED!!!");
     console.info(cakepen.getProgramInfoLog(program));
     cakepen.deleteProgram(program);
 };
@@ -127,9 +127,10 @@ var RemoveRenderBuffer = (buffer) => cakepen.deleteRenderBuffer(buffer);
 var CreateFrameBuffer = (buffer) => buffer = cakepen.createFrameBuffer();
 var CreateRenderBuffer = (buffer) => buffer = cakepen.createRenderBuffer();
 var ShaderSourceCode = (shader) => cakepen.getShaderSource(shader);
-var GLTranslate = (x,y,z) => cakepen.translate(x,y,z);
-var GLRotate = (angle,x,y,z) => cakepen.rotate(angle,x,y,z);
-var GLScale = (x,y,z) => cakepen.scale(x,y,z);
+var WebGLTranslate = (x,y,z) => cakepen.translate(x,y,z);
+var WebGLRotate = (angle,x,y,z) => cakepen.rotate(angle,x,y,z);
+var WebGLScale = (x,y,z) => cakepen.scale(x,y,z);
+var WebGLViewport = (x,y,width,height) => cakepen.viewport(x,y,width,height);
 var BEGIN = (mode) => cakepen.begin(mode);
 var END = () =>
 {
