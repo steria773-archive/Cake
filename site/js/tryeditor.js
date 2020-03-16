@@ -26,7 +26,7 @@ var editor = CodeMirror.fromTextArea(document.getElementById('code'),
 editor.on("change", () => 
 {
     clearTimeout(delay);
-    delay = setTimeout(UpdateEditor, 1);
+    delay = setTimeout(UpdateEditor, 3000);
 });
 var UpdateEditor = () => 
 {
@@ -36,7 +36,7 @@ var UpdateEditor = () =>
     preview.write(editor.getValue());
     preview.close();
 }
-setTimeout(UpdateEditor, 1);
+setTimeout(UpdateEditor, 3000);
 
 var setExample = (e) =>
 {
