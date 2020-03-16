@@ -6,7 +6,7 @@ var openabout = () => window.open("about.html");
 var openapi = () => window.open("api.html");
 var getcdn = () => window.open("https://cdn.jsdelivr.net/gh/Rabios/Cake/build/cake.js");
 var githubrepo = () => window.open("https://github.com/Rabios/Cake");
-var githubsource = () => window.open("https://github.com/Rabios/Cake/tree/src");
+var githubsource = () => window.open("https://github.com/Rabios/Cake/tree/master/src");
 var openeditor = () => window.open("try.html");
 var opengames = () => window.open("games.html");
 var fulldownload = () => window.open("https://github.com/Rabios/Cake/archive/master.zip");
