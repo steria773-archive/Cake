@@ -34,7 +34,7 @@ Result Can Be Found [Here](https://rabios.github.io/Cake/examples/input_03.html)
   - Ability To Control Canvas(Resizing,Destroying,Hiding,Showing)
   - Ability To Take Screenshots(PC Browsers)
   - A 3D System Called Space To Make 3D Polygons And Shapes With 2D Graphics
-- WebGL
+- WebGLRenderingContext
   - Made From Pure WebGL
 
 ### Physics
