@@ -4,12 +4,12 @@
 
 1. Unminifed
 ```html
-<script src="https://cdn.jsdelivr.net/gh/Rabios/Cake/build/cake.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/Cake-Engine/Cake/build/cake.js"></script>
 ```
 2. Minimifed
 ```html
-<script src="https://cdn.jsdelivr.net/gh/Rabios/Cake/build/cake.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/Cake-Engine/Cake/build/cake.min.js"></script>
 ```
 
 ## Offline
-Download It [Here](https://github.com/Rabios/Cake/archive/master.zip)
+Download It [Here](https://github.com/Cake-Engine/Cake/archive/master.zip)
