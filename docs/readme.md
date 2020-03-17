@@ -1,5 +1,5 @@
 # Documentation
-This Is The Documentation Of Cake,Which In Development
+This Is The Documentation Of Cake,Which Is In Development
 
 ## Showcase
 1. [Games](https://github.com/Cake-Engine/Cake/blob/master/docs/games.md)
