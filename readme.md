@@ -22,7 +22,7 @@ RandomColor = `rgb(${Math.floor(Math.random() * 256)},${Math.floor(Math.random()
 cakepen.globalAlpha = Math.random();    
 };
 ```
-Result Can Be Found [Here](https://rabios.github.io/Cake/examples/input_03.html)
+Result Can Be Found [Here](https://cake-engine.github.io/Cake/examples/input_03.html)
 ## Features
 
 ### Graphics
@@ -81,15 +81,15 @@ Most Of Cake Game Framework/Engine Functions Written As Variables With Arrow Fun
 ## Showcase
 Cake Can Be Used For Huge HTML5 Games,Altough There Is Some Simple Games And Examples Developed And Made By The Same Framework/Engine Developer
 
-1. [Games Made With Cake Game Engine](https://github.com/Rabios/Cake/blob/master/docs/games.md)
-2. [Examples Made With Cake Game Engine](https://github.com/Rabios/Cake/blob/master/docs/examples.md)
-3. [Experiments Made With Cake Game Engine](https://github.com/Rabios/Cake/blob/master/docs/experiments.md)
-4. [Apps Made With Cake Game Engine](https://github.com/Rabios/Cake/blob/master/docs/apps.md)
+1. [Games Made With Cake Game Engine](https://github.com/Cake-Engine/Cake/blob/master/docs/games.md)
+2. [Examples Made With Cake Game Engine](https://github.com/Cake-Engine/Cake/blob/master/docs/examples.md)
+3. [Experiments Made With Cake Game Engine](https://github.com/Cake-Engine/Cake/blob/master/docs/experiments.md)
+4. [Apps Made With Cake Game Engine](https://github.com/Cake-Engine/Cake/blob/master/docs/apps.md)
 
 ## Links
-1. [History And Updates List](https://github.com/Rabios/Cake/blob/master/docs/history.md)
-2. [Memorabilia](https://github.com/Rabios/Cake/blob/master/docs/memorabilia.md)
-3. [Documentation(In Development)](https://github.com/Rabios/Cake/blob/master/docs)
+1. [History And Updates List](https://github.com/Cake-Engine/Cake/blob/master/docs/history.md)
+2. [Memorabilia](https://github.com/Cake-Engine/Cake/blob/master/docs/memorabilia.md)
+3. [Documentation(In Development)](https://github.com/Cake-Engine/Cake/blob/master/docs)
 
 ## Soon
 1. Updating Wiki/Documentation
