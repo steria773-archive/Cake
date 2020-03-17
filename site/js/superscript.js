@@ -4,7 +4,7 @@ var openwiki = () => window.open("https://github.com/Cake-Engine/Cake/wiki");
 var backhome = () => window.open("index.html");
 var openabout = () => window.open("about.html");
 var openapi = () => window.open("api.html");
-var getcdn = () => window.open("https://cdn.jsdelivr.net/gh/Cake-Engine/Cake/build/cake.js");
+var getcdn = () => window.open("https://cdn.jsdelivr.net/gh/Cake-Engine/Cake@master/build/cake.js");
 var githubrepo = () => window.open("https://github.com/Cake-Engine/Cake");
 var githubsource = () => window.open("https://github.com/Cake-Engine/Cake/tree/master/src");
 var openeditor = () => window.open("try.html");
