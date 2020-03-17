@@ -1,7 +1,7 @@
 # Memorabilia
 
 ## March 2020
-1st Anniversary Of Cake,With Release Of Game Called "Apple Catcher"
+1st Anniversary Of Cake,With The Release Of A Game Called "Apple Catcher"
 
 ## February 2020
 Cake Used In Many Experiments That Uses HTML5 Canvas
