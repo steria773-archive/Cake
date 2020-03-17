@@ -12,9 +12,10 @@ This Is The Documentation Of Cake,Which In Development
 2. [Setting Up Cake](https://github.com/Rabios/Cake/blob/master/docs/getting_started.md)
 3. [Using CoffeeScript With Cake](https://github.com/Rabios/Cake/blob/master/docs/coffeescript.md)
 4. [Using Python With Cake](https://github.com/Rabios/Cake/blob/master/docs/python.md)
+5. [Integrating Cake With Other HTML5 Game Engines](https://rabios.github.io/Cake/site/list_integration.html)
 
 ## History And More
-1. [History And Updated](https://github.com/Rabios/Cake/blob/master/docs/history.md)
+1. [History And Updates List](https://github.com/Rabios/Cake/blob/master/docs/history.md)
 2. [Memorabilia](https://github.com/Rabios/Cake/blob/master/docs/memorabilia.md)
 3. [Credits](https://github.com/Rabios/Cake/blob/master/docs/credits.md)
 
