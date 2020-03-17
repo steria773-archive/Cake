@@ -1,6 +1,6 @@
 //Copyright (c)2019-Present Rabia Alhaffar,All Rights Reserved!!!
 //Cake Canvas (2D And 3D) And WebGL(2D And 3D) HTML5 Game Framework!!!
-//Date: 15/March/2020
+//Date: 17/March/2020
 //The Engine/Framework Code Starts Here!!!
 //Variables:
 var Opera = (!!window.opr && !!opr.addons) || !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0,
@@ -2367,26 +2367,27 @@ var SetCheatCode = (cheatcode) => cheat = cheatcode;
 //Module: Execution
 //Created By Rabia Alhaffar On 15/November/2019
 //An Library To Debug,Run Scripts In-Game
-var Execute = (code, l, time) =>
+var scripts_added = 0;
+var Execute = (code,l,time) =>
 {
-	if (Unknown(l)) l = 0;
-	if (Unknown(time)) time = 0;
-	if (l == 0) setTimeout(code, 0);
-	if (l == 1) setTimeout(code, time);
-	if (l == 2) setInterval(code, 0);
-	if (l == 3) setInterval(code, time);
+    if(Unknown(l)) l = 0;
+    if(Unknown(time)) time = 0;
+    if(l == 0) setTimeout(code,0);
+    if(l == 1) setTimeout(code,time);
+    if(l == 2) setInterval(code,0);
+    if(l == 3) setInterval(code,time);
 };
 
 var Import = (script_source) =>
 {
-
-	var script = document.createElement('script');
-	script.src = script_source;
-	script.type = 'text/javascript';
-	script.defer = true;
-	document.getElementsByTagName('head').appendChild(script);
-
+  var script = document.createElement('script'); 
+  script.src = script_source; 
+  script.type = 'text/javascript'; 
+  script.defer = true; 
+  document.getElementsByTagName('head')[scripts_added].appendChild(script); 
+  scripts_added++;
 };
+
 //Module: FPS And Levels
 //Created By Rabia Alhaffar On 16/November/2019
 //An Library For Timers,Frames Per Second
@@ -3765,7 +3766,7 @@ function Bar(x, y, width, height, color)
 		cakepen.fillStyle = this.color;
 		if (this.destroyed) cakepen.globalAlpha = 0;
 		cakepen.fillRect(this.x, this.y, this.width, this.height);
-		cakepen.globalAlpha = this.globalAlpha;
+		cakepen.globalAlpha = this.alpha;
 	};
 	this.Destroy = function ()
 	{
@@ -3864,6 +3865,8 @@ var cakecanvas,
     LINELOOP,
     POINTS,
     LINESTRIP,
+    VERTEX,
+    FRAGMENT,
     TRISTRIP,
     program,
     buffer,
@@ -3880,13 +3883,16 @@ var cakecanvas,
     {
     if(Unknown(c)) c = 0;
     cakecanvas = document.getElementsByTagName("canvas")[c];
-    cakepen = cakecanvas.getContext('webgl');
-    if(cakepen) console.info("CAKE GAME ENGINE: INITIALIZING WebGLRenderingContext...");
+    cakepen = cakecanvas.getContext('webgl2');
+    if(cakepen) console.info("CAKE GAME ENGINE: INITIALIZING WebGL2RenderingContext...");
     if(!cakepen) console.error("WEBGL NOT SUPPORTED!!!");
     EnableDebugger();
+    EnableScissor(true);
     TRIANGLES = cakepen.TRIANGLES;
     LINES = cakepen.LINES;
     POINTS = cakepen.POINTS;
+    VERTEX = cakepen.VERTEX_SHADER;
+    FRAGMENT = cakepen.FRAGMENT_SHADER;
     TRIFAN = cakepen.TRIANGLE_FAN;
     TRISTRIP = cakepen.TRIANGLE_STRIP;
     LINELOOP = cakepen.LINE_LOOP;
@@ -3919,19 +3925,19 @@ var WebGLParameter = (param) => cakepen.getParameter(param);
 var LoadGLID = () => cakepen.loadIdentity();
 var ShaderParameter = (shader,param) => cakepen.getShaderParameter(shader,param);
 var ProgramParameter = (program,param) => cakepen.getProgramParameter(program,param);
-var CreateShader = (shader_variable,type,src) =>
+var CreateShader = (shader,type,src) =>
 {
-    shader_variable = cakepen.createShader(type);
-    cakepen.shaderSource(shader_variable,src);
-    cakepen.compileShader(shader_variable);
-    console.info(cakepen.getShaderParameter(shader_variable,cakepen.COMPILE_STATUS) ? "CAKE GAME ENGINE: SHADER COMPILED SUCCESSFULLY!!!" : "CAKE GAME ENGINE: SHADER COMPILATION FAILED!!!");
-    console.info(cakepen.getShaderInfoLog(shader_variable));
-    console.info(cakepen.getShaderSource(shader_variable));
-    cakepen.deleteShader(shader_variable);
+    var shader = cakepen.createShader(type);
+    cakepen.shaderSource(shader,src);
+    cakepen.compileShader(shader);
+    console.info(cakepen.getShaderParameter(shader,cakepen.COMPILE_STATUS) ? "CAKE GAME ENGINE: SHADER COMPILED SUCCESSFULLY!!!" : "CAKE GAME ENGINE: SHADER COMPILATION FAILED!!!");
+    console.info(cakepen.getShaderInfoLog(shader));
+    console.info(cakepen.getShaderSource(shader));
+    cakepen.deleteShader(shader);
 };
 var CreateProgram = (program,vertex,frag) => 
 {
-    program = cakepen.createProgram();
+    var program = cakepen.createProgram();
     cakepen.attachShader(program,vertex);
     cakepen.attachShader(program,frag);
     cakepen.linkProgram(program);
@@ -3947,25 +3953,25 @@ var CreateProgram = (program,vertex,frag) =>
 };
 var CreateBuffer = (buffer,arr) =>
 {
-    buffer = cakepen.createBuffer();
+    var buffer = cakepen.createBuffer();
     cakepen.bindBuffer(cakepen.ARRAY_BUFFER, buffer);
-    cakepen.bufferData(cakepen.ARRAY_BUFFER, new Float32Array(arr), cakepen.STATIC_DRAW);
+    cakepen.bufferData(cakepen.ARRAY_BUFFER, new Float32Array(arr), cakepen.DYNAMIC_DRAW);
 };
-var SetGeometry = (program,pos_buffer,pos_arr) =>
+var SetGeometry = (program,pos_attrib,pos_buffer,pos_arr) =>
 {
-    cakepen.getAttribLocation(program, "a_position");
-    pos_buffer = cakepen.createBuffer();
+    cakepen.getAttribLocation(program,pos_attrib);
+    var pos_buffer = cakepen.createBuffer();
     cakepen.bindBuffer(cakepen.ARRAY_BUFFER,pos_buffer);
-    cakepen.bufferData(cakepen.ARRAY_BUFFER,new Float32Array(pos_arr),cakepen.STATIC_DRAW);
+    cakepen.bufferData(cakepen.ARRAY_BUFFER,new Float32Array(pos_arr),cakepen.DYNAMIC_DRAW);
 };
-var SetColor = (program,color_buffer,color_arr) =>
+var SetColor = (program,color_attribute,color_buffer,color_arr) =>
 {
   var color_buffer = cakepen.createBuffer();
   cakepen.bindBuffer(cakepen.ARRAY_BUFFER, color_buffer);
-  cakepen.bufferData(cakepen.ARRAY_BUFFER,new Float32Array(color_arr),cakepen.STATIC_DRAW);
-  cakepen.enableVertexAttribArray(cakepen.getAttribLocation(program, "a_color"));
+  cakepen.bufferData(cakepen.ARRAY_BUFFER,color_arr,cakepen.DYNAMIC_DRAW);
+  cakepen.enableVertexAttribArray(cakepen.getAttribLocation(program,color_attribute));
   cakepen.bindBuffer(cakepen.ARRAY_BUFFER, color_buffer);
-  cakepen.vertexAttribPointer(cakepen.getAttribLocation(program, "a_color"), 4, cakepen.FLOAT, false, 0);
+  cakepen.vertexAttribPointer(cakepen.getAttribLocation(program,color_attribute), 4, cakepen.FLOAT, false, 0);
 };
 var EnableDebugger = () => cake_webgl_debugger = (cakepen.getExtension("WEBGL_debug_renderer_info") || cakepen.getExtension("WEBGL_debug_shaders"));
 var SetLineSize = (size) => cakepen.lineWidth(size);
@@ -3997,6 +4003,11 @@ var Transform = (mode,a,b,c,d) =>
 	if(mode == "translate") cakepen.translate(a,b,c);
 	if(mode == "rotate") cakepen.rotate(a,b,c,d);
 	if(mode == "scale") cakepen.scale(a,b,c);
+};
+var EnableScissor = (m) =>
+{
+    if(m) cakepen.enable(cakepen.SCISSOR_TEST);
+    if(!m) cakepen.disable(cakepen.SCISSOR_TEST);
 };
 var CompatibleCanvas = () =>
 {
@@ -4030,6 +4041,52 @@ var BindBufferContent = (content,buffer,size,start) =>
     cakepen.enableVertexAttribArray(content);
     cakepen.bindBuffer(cakepen.ARRAY_BUFFER, buffer);
     cakepen.vertexAttribPointer(content, size, cakepen.FLOAT, false, 0, start);
+};
+var WebGLScissor = (x,y,width,height) => cakepen.scissor(x,y,width,height);
+var WebGLSupportedExtensions = () => cakepen.getSupportedExtensions();
+var CreateSolidColorShader = (r,g,b,a) =>
+{
+    var solid_color_shader = CreateShader(solid_color_shader,FRAGMENT,`
+    precision mediump float;
+    void main() {
+        gl_fragColor = vec4(${r},${g},${b},${a});
+    }`);
+};
+
+var Create2DPositionBuffer = (position2d_buffer,pos2d_arr) =>
+{
+    var position2d_buffer = cakepen.createBuffer();
+    cakepen.bindBuffer(cakepen.ARRAY_BUFFER, position2d_buffer);
+    cakepen.bufferData(cakepen.ARRAY_BUFFER,new Float32Array(pos2d_arr),cakepen.DYNAMIC_DRAW);
+};
+
+var CreateColorBuffer = (color_buffer,colors_arr) =>
+{
+      var color_buffer = cakepen.createBuffer();
+      cakepen.bindBuffer(cakepen.ARRAY_BUFFER,color_buffer);
+      cakepen.bufferData(cakepen.ARRAY_BUFFER,new Float32Array(colors_arr),cakepen.DYNAMIC_DRAW);
+};
+
+//NOTES: Resolution Must Be Uniform vec2 If Possible
+var SetResolution = (program,res_loc,width,height) => cakepen.uniform2f(cakepen.getUniformLocation(program,res_loc),width,height);
+
+var ProgramContentLocation = (type,program,content) =>
+{
+    if(type == "uniform") cakepen.getUniformLocation(program,content);
+    if(type == "attribute") cakepen.getAttribLocation(program,content);
+};
+
+var EnableAttributeFromLocation = (location,pos_each,program,content) =>
+{
+    var location = cakepen.getAttribLocation(program,content);
+    cakepen.enableVertexAttribArray(location);
+    cakepen.vertexAttribPointer(location,pos_each,cakepen.FLOAT,false,0,0);
+};
+
+var DisableAttributeFromLocation = (location,program,content) =>
+{
+    var location = cakepen.getAttribLocation(program,content);
+    cakepen.disableVertexAttribArray(location);
 };
 
 //Module: Isometric Graphics
