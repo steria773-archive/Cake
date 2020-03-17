@@ -7,40 +7,41 @@
 <title>Cake Engine - Games</title>
 </head>
 <body>
-<div id="main">
-<div id="menu">
-    <a href="index.html"><img id="logo" src="imgs/CAKE_APP_ICON.png" height="75" width="75"></a>
-    <select id="engine">
-        <option>WEBSITE</option>
-        <option onclick="backhome()">HOMEPAGE</option>
-        <option onclick="openapi()">API DOCUMENTATION</option>
-        <option onclick="openwiki()">WIKI</option>
-        <option onclick="openeditor()">TRY IT ONLINE</option>
-    </select>
-    <select id="showcase">
-        <option>SHOWCASE</option>
-        <option onclick="opengames()">GAMES</option>
-        <option onclick="openexperiments()">EXPERIMENTS</option>
-        <option onclick="openapps()">APPS</option>
-    </select>
-    <select id="download">
-        <option>DOWNLOAD</option>
-        <option onclick="downloadengine()">DOWNLOAD DIRECTLY</option>
-        <option onclick="fulldownload()">FULL DOWNLOAD</option>
-        <option onclick="getcdn()">ONLINE CDN</option>
-        <option onclick="githubsource()">SOURCE CODE</option>
-    </select>
-    <select id="about">
-        <option>MORE</option>
-        <option onclick="openabout()">ABOUT DEVELOPERS</option>
-        <option onclick="githubrepo()">CAKE ON GITHUB</option>
-    </select>
+    <div id="main">
+        <div id="menu">
+        <a href="index.html"><img id="logo" src="imgs/CAKE_APP_ICON.png" height="75" width="75"></a>
+        <select id="engine">
+            <option>WEBSITE</option>
+            <option ontouchstart="backhome()" onclick="backhome()">HOMEPAGE</option>
+            <option ontouchstart="openapi()" onclick="openapi()">API DOCUMENTATION</option>
+            <option ontouchstart="openwiki()" onclick="openwiki()">WIKI</option>
+            <option ontouchstart="openeditor()" onclick="openeditor()">TRY IT ONLINE</option>
+        </select>
+        <select id="showcase">
+            <option>SHOWCASE</option>
+            <option ontouchstart="opengames()" onclick="opengames()">GAMES</option>
+            <option ontouchstart="openexperiments()" onclick="openexperiments()">EXPERIMENTS</option>
+            <option ontouchstart="openapps()" onclick="openapps()">APPS</option>
+        </select>
+        <select id="download">
+            <option>DOWNLOAD</option>
+            <option ontouchstart="downloadengine()" onclick="downloadengine()">DOWNLOAD DIRECTLY</option>
+            <option ontouchstart="fulldownload()" onclick="fulldownload()">FULL DOWNLOAD</option>
+            <option ontouchstart="getcdn()" onclick="getcdn()">ONLINE CDN</option>
+            <option ontouchstart="githubsource()" onclick="githubsource()">SOURCE CODE</option>
+        </select>
+        <select id="about">
+            <option>MORE</option>
+            <option ontouchstart="openabout()" onclick="openabout()">ABOUT DEVELOPERS</option>
+            <option ontouchstart="githubrepo()" onclick="githubrepo()">CAKE ON GITHUB</option>
+        </select>
+    </div>
     <a href="https://github.com/Cake-Engine/Cake"><img src="imgs/GitHub-Mark-64px.png" style="
         position:absolute;
         top: 28px;
         right: 30px;
         "></a>
-</div>
+
 <center>
 <h1>GAMES</h1>
 <h2><a href="https://cake-engine.github.io/Cake/games/treasure_island.html">TREASURE ISLAND</a></h2>
