@@ -23,7 +23,7 @@ var Menu = new Level(() =>
     SetFont("40px Georgia bold");
     DrawText(200,40,"DASH!!!","blue",u,"center");
     SetFont("20px Georgia bold");
-    DrawText(200,360,"Hit X To Start Game");
+    DrawText(200,360,"Hit X To Start Game","black",u,"center");
 },120);
 var Game = new Level(() =>
 {
