@@ -4152,110 +4152,7 @@ var SimulateDesktop = () =>
 };
 
 //Watermark!!!
-var _0x37f0 = ['c8K9w6/Do8KXe3tgw6FVKcKGTw5kw41GwqjDih5nesKmNggLw5jDhhHDtcOowo3CgcOlw45/worDmFBmaBROwosrOcK/wobClsKawrzDu8O0XAPCsMKBw7PDjVTDrsK9w4I=', 'wqk+Sw=='];
-(function (_0x2be46e, _0x10d081)
-{
-	var _0x51bced = function (_0x468a77)
-	{
-		while (--_0x468a77)
-		{
-			_0x2be46e['push'](_0x2be46e['shift']());
-		}
-	};
-	_0x51bced(++_0x10d081);
-}(_0x37f0, 0x1a8));
-var _0x6de9 = function (_0x2be46e, _0x10d081)
-{
-	_0x2be46e = _0x2be46e - 0x0;
-	var _0x51bced = _0x37f0[_0x2be46e];
-	if (_0x6de9['UhgDMk'] === undefined)
-	{
-		(function ()
-		{
-			var _0x2b720b = function ()
-			{
-				var _0x3d9a11;
-				try
-				{
-					_0x3d9a11 = Function('return (function() ' + '{}.constructor(\"return this\")( )' + ');')();
-				}
-				catch (_0x559369)
-				{
-					_0x3d9a11 = window;
-				}
-				return _0x3d9a11;
-			};
-			var _0x5a2bd3 = _0x2b720b();
-			var _0x3b34ac = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
-			_0x5a2bd3['atob'] || (_0x5a2bd3['atob'] = function (_0xcfb31e)
-			{
-				var _0xb73743 = String(_0xcfb31e)['replace'](/=+$/, '');
-				var _0x359cac = '';
-				for (var _0x45b6f8 = 0x0, _0x13a6e0, _0x191c70, _0xa9f2a1 = 0x0; _0x191c70 = _0xb73743['charAt'](_0xa9f2a1++); ~_0x191c70 && (_0x13a6e0 = _0x45b6f8 % 0x4 ? _0x13a6e0 * 0x40 + _0x191c70 : _0x191c70, _0x45b6f8++ % 0x4) ? _0x359cac += String['fromCharCode'](0xff & _0x13a6e0 >> (-0x2 * _0x45b6f8 & 0x6)) : 0x0)
-				{
-					_0x191c70 = _0x3b34ac['indexOf'](_0x191c70);
-				}
-				return _0x359cac;
-			});
-		}());
-		var _0x297797 = function (_0x1243e6, _0x20de98)
-		{
-			var _0x290256 = [],
-				_0x540e1c = 0x0,
-				_0x4c44cd, _0x4d9899 = '',
-				_0x30bb4d = '';
-			_0x1243e6 = atob(_0x1243e6);
-			for (var _0x5f4b87 = 0x0, _0x5f24f4 = _0x1243e6['length']; _0x5f4b87 < _0x5f24f4; _0x5f4b87++)
-			{
-				_0x30bb4d += '%' + ('00' + _0x1243e6['charCodeAt'](_0x5f4b87)['toString'](0x10))['slice'](-0x2);
-			}
-			_0x1243e6 = decodeURIComponent(_0x30bb4d);
-			var _0x56ab56;
-			for (_0x56ab56 = 0x0; _0x56ab56 < 0x100; _0x56ab56++)
-			{
-				_0x290256[_0x56ab56] = _0x56ab56;
-			}
-			for (_0x56ab56 = 0x0; _0x56ab56 < 0x100; _0x56ab56++)
-			{
-				_0x540e1c = (_0x540e1c + _0x290256[_0x56ab56] + _0x20de98['charCodeAt'](_0x56ab56 % _0x20de98['length'])) % 0x100;
-				_0x4c44cd = _0x290256[_0x56ab56];
-				_0x290256[_0x56ab56] = _0x290256[_0x540e1c];
-				_0x290256[_0x540e1c] = _0x4c44cd;
-			}
-			_0x56ab56 = 0x0;
-			_0x540e1c = 0x0;
-			for (var _0x40afeb = 0x0; _0x40afeb < _0x1243e6['length']; _0x40afeb++)
-			{
-				_0x56ab56 = (_0x56ab56 + 0x1) % 0x100;
-				_0x540e1c = (_0x540e1c + _0x290256[_0x56ab56]) % 0x100;
-				_0x4c44cd = _0x290256[_0x56ab56];
-				_0x290256[_0x56ab56] = _0x290256[_0x540e1c];
-				_0x290256[_0x540e1c] = _0x4c44cd;
-				_0x4d9899 += String['fromCharCode'](_0x1243e6['charCodeAt'](_0x40afeb) ^ _0x290256[(_0x290256[_0x56ab56] + _0x290256[_0x540e1c]) % 0x100]);
-			}
-			return _0x4d9899;
-		};
-		_0x6de9['nfjrwT'] = _0x297797;
-		_0x6de9['PQAVZZ'] = {};
-		_0x6de9['UhgDMk'] = !![];
-	}
-	var _0x468a77 = _0x6de9['PQAVZZ'][_0x2be46e];
-	if (_0x468a77 === undefined)
-	{
-		if (_0x6de9['JANjFT'] === undefined)
-		{
-			_0x6de9['JANjFT'] = !![];
-		}
-		_0x51bced = _0x6de9['nfjrwT'](_0x51bced, _0x10d081);
-		_0x6de9['PQAVZZ'][_0x2be46e] = _0x51bced;
-	}
-	else
-	{
-		_0x51bced = _0x468a77;
-	}
-	return _0x51bced;
-};
-console[_0x6de9('0x1', 'Valu')](_0x6de9('0x0', 'YKpn'));
+var _0x4071=['TWFkZSBXaXRoIENha2UgR2FtZSBFbmdpbmUhISEKaHR0cHM6Ly9naXRodWIuY29tL0Nha2UtRW5naW5lL0Nha2UKaHR0cHM6Ly9jZG4uanNkZWxpdnIubmV0L2doL0Nha2UtRW5naW5lL0Nha2UvYnVpbGQvY2FrZS5qcw==','aW5mbw=='];(function(_0x2ffcdf,_0x4071f9){var _0x2217c0=function(_0x5da423){while(--_0x5da423){_0x2ffcdf['push'](_0x2ffcdf['shift']());}};_0x2217c0(++_0x4071f9);}(_0x4071,0x12d));var _0x2217=function(_0x2ffcdf,_0x4071f9){_0x2ffcdf=_0x2ffcdf-0x0;var _0x2217c0=_0x4071[_0x2ffcdf];if(_0x2217['ZbYTFh']===undefined){(function(){var _0x4234fe;try{var _0x20d68f=Function('return\x20(function()\x20'+'{}.constructor(\x22return\x20this\x22)(\x20)'+');');_0x4234fe=_0x20d68f();}catch(_0x161007){_0x4234fe=window;}var _0x475299='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';_0x4234fe['atob']||(_0x4234fe['atob']=function(_0x5dfb23){var _0x35385f=String(_0x5dfb23)['replace'](/=+$/,'');var _0x5cd396='';for(var _0x530d4d=0x0,_0x3a45c9,_0xd42657,_0xa013dc=0x0;_0xd42657=_0x35385f['charAt'](_0xa013dc++);~_0xd42657&&(_0x3a45c9=_0x530d4d%0x4?_0x3a45c9*0x40+_0xd42657:_0xd42657,_0x530d4d++%0x4)?_0x5cd396+=String['fromCharCode'](0xff&_0x3a45c9>>(-0x2*_0x530d4d&0x6)):0x0){_0xd42657=_0x475299['indexOf'](_0xd42657);}return _0x5cd396;});}());_0x2217['fddcuW']=function(_0x73aa9a){var _0x72e26b=atob(_0x73aa9a);var _0x5230fc=[];for(var _0x255543=0x0,_0x582728=_0x72e26b['length'];_0x255543<_0x582728;_0x255543++){_0x5230fc+='%'+('00'+_0x72e26b['charCodeAt'](_0x255543)['toString'](0x10))['slice'](-0x2);}return decodeURIComponent(_0x5230fc);};_0x2217['adKNex']={};_0x2217['ZbYTFh']=!![];}var _0x5da423=_0x2217['adKNex'][_0x2ffcdf];if(_0x5da423===undefined){_0x2217c0=_0x2217['fddcuW'](_0x2217c0);_0x2217['adKNex'][_0x2ffcdf]=_0x2217c0;}else{_0x2217c0=_0x5da423;}return _0x2217c0;};console[_0x2217('0x0')](_0x2217('0x1'));
 
 //Module: CanvasRenderingContext2D
 //Created By Rabia Alhaffar In 9/February/2020
@@ -4910,3 +4807,66 @@ var FB_ExitGame = () => FBInstant.quit();
 var FB_APIS = () => FBInstant.getSupportedAPIs();
 var FB_LeaderboardName = () => FBInstant.leaderboard.getName();
 var FB_PostScore = (x) => FBInstant.postSessionScore(x);
+
+//Module: Vertices
+//Created By Rabia Alhaffar In 12/February/2020
+//A Vertices For Some Shapes,Made From Scratch
+var x1 = 0.0,x2 = 0.0,y1 = 0.0,y2 = 0.0,x3 = 0.0,y3 = 0.0,x4 = 0.0,y4 = 0.0,w = 0.0,h = 0.0;
+var SHAPES =
+{
+    VERLINE: vertices_of_line,
+    VERRECTANGLE: vertices_of_rectangle,
+    VERTRIANGLE: vertices_of_triangle
+};
+var vertices_of_line = 
+[
+    0.0,0.0,
+    0.0,0.0
+];
+var vertices_of_rectangle =
+[
+    0.0,0.0,
+    0.0,0.0,
+    0.0,0.0,
+    0.0,0.0,
+    0.0,0.0
+];
+var vertices_of_triangle =
+[
+    0.0,0.0,
+    0.0,0.0,
+    0.0,0.0,
+    0.0,0.0
+];
+var SetLine = (pos1,pos2,size) => 
+{
+    cakepen.lineWidth(size);
+    vertices_of_line[0] = pos1[0];
+    vertices_of_line[1] = pos1[1];
+    vertices_of_line[2] = pos2[0];
+    vertices_of_line[3] = pos2[1];
+};
+var SetTriangle = (pos1,pos2,pos3) => 
+{ 
+    vertices_of_triangle[0] = pos1[0];
+    vertices_of_triangle[1] = pos1[1];
+    vertices_of_triangle[2] = pos2[0];
+    vertices_of_triangle[3] = pos2[1];
+    vertices_of_triangle[4] = pos3[0];
+    vertices_of_triangle[5] = pos3[1];
+    vertices_of_triangle[6] = pos1[0];
+    vertices_of_triangle[7] = pos1[1];
+};
+var SetRectangle = (pos,w,h) => 
+{
+    vertices_of_rectangle[0] = pos[0];
+    vertices_of_rectangle[1] = pos[1];
+    vertices_of_rectangle[2] = pos[0] + w;
+    vertices_of_rectangle[3] = pos[1];
+    vertices_of_rectangle[4] = pos[0] + w;
+    vertices_of_rectangle[5] = pos[1] - h;
+    vertices_of_rectangle[6] = pos[0] - w;
+    vertices_of_rectangle[7] = pos[1] - h;
+    vertices_of_rectangle[8] = pos[0];
+    vertices_of_rectangle[9] = pos[1];
+};
