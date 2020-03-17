@@ -10,8 +10,8 @@ This Is The Documentation Of Cake,Which In Development
 ## Getting Started
 1. [Browsers That Supports Running Cake](https://github.com/Rabios/Cake/blob/master/docs/browsers.md)
 2. [Setting Up Cake](https://github.com/Rabios/Cake/blob/master/docs/getting_started.md)
-3. [Using CoffeeScript Instead Of JavaScript](https://github.com/Rabios/Cake/blob/master/docs/coffeescript.md)
-4. [Using Python Instead Of JavaScript](https://github.com/Rabios/Cake/blob/master/docs/python.md)
+3. [Using CoffeeScript With Cake](https://github.com/Rabios/Cake/blob/master/docs/coffeescript.md)
+4. [Using Python With Cake](https://github.com/Rabios/Cake/blob/master/docs/python.md)
 
 ## History And More
 1. [History And Updated](https://github.com/Rabios/Cake/blob/master/docs/history.md)
