@@ -49,7 +49,7 @@ var setExample = (e) =>
 <canvas height="400" width="400"></canvas>
 </body>
 <script>
-Initialize(1);
+Initialize();
 SetCanvasBackgroundColor("black");
 SetDrawingMode("fill");
 DrawGradientRect(0,0,CanvasWidth,CanvasHeight,
