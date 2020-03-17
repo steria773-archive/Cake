@@ -62,7 +62,6 @@ var Opera = (!!window.opr && !!opr.addons) || !!window.opera || navigator.userAg
 	CanvasHeight,
 	CanvasWidth,
 	calltime = performance.now(),
-	RandomColor = `rgb(${Math.floor(Math.random() * 256)},${Math.floor(Math.random() * 256)},${Math.floor(Math.random() * 256)})`,
 	RED = "red",
 	ORANGE = "orange",
 	YELLOW = "yellow",
