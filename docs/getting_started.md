@@ -4,11 +4,11 @@
 
 1. Unminifed
 ```html
-<script src="https://cdn.jsdelivr.net/gh/Cake-Engine/Cake/build/cake.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/Cake-Engine/Cake@master/build/cake.js"></script>
 ```
 2. Minimifed
 ```html
-<script src="https://cdn.jsdelivr.net/gh/Cake-Engine/Cake/build/cake.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/Cake-Engine/Cake@master/build/cake.min.js"></script>
 ```
 
 ## Offline
