@@ -1149,7 +1149,7 @@ var CrashGame = () =>
 var ViewSourceCode = (index) => window.open(document.scripts[index].src);
 var ViewGameSourceCode = () => window.open(document.scripts[2].src);
 var StartProcess = (dir) => window.open("file:///" + dir.toString);
-var UpdateCake = () => Import("https://cdn.jsdelivr.net/gh/Rabios/Cake/build/cake.js");
+var UpdateCake = () => Import("https://cdn.jsdelivr.net/gh/Cake-Engine/Cake@master/build/cake.js");
 var Destroy = (component) =>
 {
     if(!component.destroyed) component.Destroy();
