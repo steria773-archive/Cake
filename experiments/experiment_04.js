@@ -1,6 +1,7 @@
 //Created By Rabia Alhaffar In 21/February/2020
-//A Way Of Integrating Cake With Another Game Engine
-IntegrateWith("tululoo",1);   
+//A Way Of Integrating Cake With Another Game Engine/Framework
+Initialize();
+IntegrateWith("tululoo");   
 var Level_1 = new Level(() =>
 {
 

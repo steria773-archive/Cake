@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Lua With Cake Core</title>
+    </head>
+    <body>
+        <canvas height="600" width="600" id="cakecanvas"></canvas>
+    </body>
+    <script src="fengari-web.js"></script>
+    <script type="application/lua">
+    -- Setup DOM
+    local js = require "js"
+    local window = js.global
+    local document = window.document
+    
+    -- Setup Canvas And CanvasRenderingContext2D
+    cakecanvas = document:getElementsByTagName("canvas")[0]
+    cakecanvas.style.backgroundColor = "black"
+    cakepen = cakecanvas:getContext("2d")
+    
+    -- Draw
+    cakepen.fillStyle = "blue"
+    cakepen:fillRect(200,200,300,100)    
+    </script>
+</html>
