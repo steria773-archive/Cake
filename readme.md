@@ -33,12 +33,11 @@ Result Can Be Found [Here](https://cake-engine.github.io/Cake/examples/input_03.
   - Ability To Switch Context Or Canvas That CanvasRenderingContext2D Or WebGL Is Drawing On
   - Ability To Control Canvas(Resizing,Destroying,Hiding,Showing)
   - Ability To Take Screenshots(PC Browsers)
-  - A 3D System Called Space To Make 3D Polygons And Shapes With 2D Graphics
 - WebGLRenderingContext
   - Made From Pure WebGL
-
+  - Also It Comes With [`lightgl.js`](https://github.com/evanw/lightgl.js) And Functions Makes The Use Of WebGL Fun
 ### Physics
-- A Lightweight Physics Engine Based On Collision Detection(Size Of 4kb)
+- A Lightweight Physics Engine Based On Collision Detection(Size Of 8kb)
 - Physics(Collision Detection) Not Limited Only To Game Objects(Components) But Also For Shapes That Is Drawn
 
 ### Input
@@ -73,6 +72,7 @@ Most Of Cake Game Framework/Engine Functions Written As Variables With Arrow Fun
 6. ToffeeScript
 7. Python(Via Transcrypt)
 8. JS++
+9. Lua
 
 > Formula Here Is: Programming Language -> Compiles To/Is JavaScript Code + `cake.js` = Web Game
 
@@ -81,15 +81,10 @@ Most Of Cake Game Framework/Engine Functions Written As Variables With Arrow Fun
 ## Showcase
 Cake Can Be Used For Huge HTML5 Games,Altough There Is Some Simple Games And Examples Developed And Made By The Same Framework/Engine Developer
 
-1. [Games Made With Cake Game Engine](https://github.com/Cake-Engine/Cake/blob/master/docs/games.md)
-2. [Examples Made With Cake Game Engine](https://github.com/Cake-Engine/Cake/blob/master/docs/examples.md)
-3. [Experiments Made With Cake Game Engine](https://github.com/Cake-Engine/Cake/blob/master/docs/experiments.md)
-4. [Apps Made With Cake Game Engine](https://github.com/Cake-Engine/Cake/blob/master/docs/apps.md)
-
 ## Links
-1. [History And Updates List](https://github.com/Cake-Engine/Cake/blob/master/docs/history.md)
-2. [Memorabilia](https://github.com/Cake-Engine/Cake/blob/master/docs/memorabilia.md)
-3. [Documentation(In Development)](https://github.com/Cake-Engine/Cake/blob/master/docs)
+1. [History And Updates List](https://github.com/Cake-Engine/Documentation/blob/master/history.md)
+2. [Memorabilia](https://github.com/Cake-Engine/Documentation/blob/master/memorabilia.md)
+3. [Documentation(In Development)](https://github.com/Cake-Engine/Documentation)
 
 ## Soon
 1. Updating Wiki/Documentation
