@@ -17,7 +17,8 @@ Notes About Native Calling Here:
 
 This Part Of The Engine Itself Won't Work If Not Used NodeJS To Run It
 */
-var child_process = require("child_process");
+var child_process = undefined;
+var EnableNativeCalls = () => child_process = require("child_process");
 var CallBatch = (script) =>           child_process.exec("start " + script);
 var CallPython = (script) =>          child_process.exec("start python " + script);
 var CallJanet = (script) =>           child_process.exec("start janet " + script);
