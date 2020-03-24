@@ -1,8 +1,8 @@
 //Created By Rabia Alhaffar In 22/March/2020
 //A Prototype For The Next Generation Of Cake 2D Graphics (Can Be Embedded Into canvas2d.js)
 //For Drawing 2D Content Faster And Easier!!!
-//NOTES: This Is A Part Of canvas2d.js Which Is Very Important,Also Note That This Doesn't Replace canvas2d.js
-var DrawGeometry = (content) =>
+//NOTES: This Is Part Of canvas2d.js Which Is Very Important,Note That This Doesn't Replace canvas2d.js
+var DrawShape = (content) =>
 {
     if(Unknown(content.x)) content.x = 0;
     if(Unknown(content.y)) content.y = 0;
@@ -22,7 +22,8 @@ var DrawGeometry = (content) =>
     if(Unknown(content.fill)) content.fill = "black";
     if(Unknown(content.stroke)) content.stroke = "black";
     if(Unknown(content.alpha)) content.alpha = 1;
-    if(Unknown(content.type)) content.type = "rect";
+    if(Unknown(content.shape)) content.shape = "rect";
+    if(Unknown(content.sides)) content.sides = 3;
     if(Unknown(content.mode)) content.mode = "fill";
     if(Unknown(content.src)) content.src = "";
     if(Unknown(content.anticlockwise)) content.anticlockwise = false;
@@ -37,7 +38,7 @@ var DrawGeometry = (content) =>
     cakepen.globalAlpha = content.alpha;
     cakepen.font = content.font;
     cakepen.textAlign = content.textAlign;
-    if(content.type == "rect")
+    if(content.shape == "rect")
     {
         if(content.mode == "fill") cakepen.fillRect(content.x,content.y,content.width,content.height);
         if(content.mode == "stroke") cakepen.strokeRect(content.x,content.y,content.width,content.height);
@@ -47,7 +48,7 @@ var DrawGeometry = (content) =>
             cakepen.strokeRect(content.x,content.y,content.width,content.height);
         }
     }
-    if(content.type == "square")
+    if(content.shape == "square")
     {
         if(content.mode == "fill") cakepen.fillRect(content.x,content.y,content.size,content.size);
         if(content.mode == "stroke") cakepen.strokeRect(content.x,content.y,content.size,content.size);
@@ -57,7 +58,7 @@ var DrawGeometry = (content) =>
             cakepen.strokeRect(content.x,content.y,content.size,content.size);
         }
     }
-    if(content.type == "circle")
+    if(content.shape == "circle")
     {
         cakepen.beginPath();
         cakepen.arc(content.x,content.y,content.size,90,180 * Math.PI,content.anticlockwise);
@@ -66,12 +67,12 @@ var DrawGeometry = (content) =>
         if(content.mode == "stroke") cakepen.stroke();
         if(content.mode == "custom") { cakepen.fill(); cakepen.stroke(); }
     }
-    if(content.type == "image")
+    if(content.shape == "image")
     {
         if(Unknown(content.width) || Unknown(content.height)) cakepen.drawImage(content_image,content.x,content.y);
         else cakepen.drawImage(content_image,content.x,content.y,content.width,content.height);
     }
-    if(content.type == "polygon")
+    if(content.shape == "polygon")
     {
         cakepen.beginPath();
         cakepen.moveTo(content.points[0][0],content.points[0][1]);
@@ -81,7 +82,7 @@ var DrawGeometry = (content) =>
         if(content.mode == "stroke") cakepen.stroke();
 		if(content.mode == "custom") { cakepen.fill(); cakepen.stroke(); }
     }
-    if(content.type == "text")
+    if(content.shape == "text")
     {
         if(content.mode == "fill") cakepen.fillText(content.text,content.x,content.y);
         if(content.mode == "stroke") cakepen.strokeText(content.text,content.x,content.y);
@@ -91,7 +92,7 @@ var DrawGeometry = (content) =>
             cakepen.strokeText(content.text,content.x,content.y);
         }
     }
-    if(content.type == "line")
+    if(content.shape == "line")
     {
         cakepen.beginPath();
 		cakepen.moveTo(content.points[0][0],content.points[0][1]);
@@ -99,7 +100,7 @@ var DrawGeometry = (content) =>
         cakepen.closePath();
         cakepen.stroke();
     }
-    if(content.type == "arc")
+    if(content.shape == "arc")
     {
         cakepen.beginPath();
 		cakepen.arc(content.x, content.y, content.radius, content.startAngle, content.endAngle, content.anticlockwise);
@@ -108,7 +109,7 @@ var DrawGeometry = (content) =>
 		if(content.mode == "stroke") cakepen.stroke();		
         if(content.mode == "custom") { cakepen.stroke(); cakepen.fill(); }
     }
-    if(content.type == "triangle")
+    if(content.shape == "triangle")
     {
         cakepen.beginPath();
 		cakepen.moveTo(content.points[0][0],content.points[0][1]);
@@ -120,7 +121,7 @@ var DrawGeometry = (content) =>
         if(content.mode == "stroke") cakepen.stroke();
         if(content.mode == "custom") { cakepen.stroke(); cakepen.fill(); }
     }
-    if(content.type == "rounded-rect")
+    if(content.shape == "rounded-rect")
     {
         cakepen.beginPath();
         cakepen.moveTo(content.x + content.radius,content.y);
@@ -137,7 +138,7 @@ var DrawGeometry = (content) =>
         if(content.mode == "stroke") cakepen.stroke();
 		if(content.mode == "custom") { cakepen.fill(); cakepen.stroke(); }
     }
-    if(content.type == "linear-gradient-rect")
+    if(content.shape == "linear-gradient-rect")
     {
         content.gradient = cakepen.createLinearGradient(content.x,content.y,content.width,content.height);
         for(var loopdlg = 0;loopdlg < content.gradient.content.length;loopdlg++) gradient.addColorStop(content.gradient.content[loopdlg][0], content.gradient.content[loopdlg][1]);
@@ -149,4 +150,36 @@ var DrawGeometry = (content) =>
 			cakepen.strokeRect(content.x,content.y,content.width,content.height);
 		}
     }
+    if(content.shape == "polygon-line-sides")
+    {
+		cakepen.beginPath();
+        var a = 360 / content.sides;
+		cakepen.moveTo(content.x,content.y);
+        for (var i = 1; i < content.sides; i++) cakepen.lineTo(content.size * Math.cos(a * i),content.size * Math.sin(a * i));
+        cakepen.closePath();
+		if(content.mode == "fill") cakepen.fill();			
+        if(content.mode == "stroke") cakepen.stroke();
+		if(content.mode == "custom") { cakepen.fill(); cakepen.stroke(); }
+    }
+};
+
+var CreateGame = (content) =>
+{
+    if(Unknown(content.title)) content.title = "Cake Game";
+    if(Unknown(content.width)) content.width = 0;
+    if(Unknown(content.height)) content.height = 0;
+    if(Unknown(content.background_color)) content.background_color = "black";
+    if(Unknown(content.background_image)) content.background_image = "none";
+    if(Unknown(content.border_style)) content.border_style = "none";
+    if(Unknown(content.context)) content.context = "2d";
+    document.title = content.title;
+    var gamecanvas = document.createElement("canvas");
+    gamecanvas.width = content.width;
+    gamecanvas.height = content.height;
+    gamecanvas.style.backgroundColor = content.background_color;
+    gamecanvas.style.border = content.border_style;
+    gamecanvas.style.backgroundImage = `url(${content.background_image})`;
+    document.body.appendChild(gamecanvas);
+    cakecanvas = gamecanvas;
+    cakepen = gamecanvas.getContext(content.content);
 };
