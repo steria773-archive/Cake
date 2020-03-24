@@ -1,0 +1,62 @@
+{
+    "webexe_settings": {
+        "linux-x32": false, 
+        "export_dir": "output", 
+        "windows-x64": false, 
+        "uncompressed_folder": true, 
+        "download_dir": "C:\\\\Users\\\\---hp-2017----\\\\AppData\\\\Local\\\\Web2Executable\\\\Web2Executable/files/downloads", 
+        "nw_compression_level": 0, 
+        "mac-x32": false, 
+        "custom_script": "", 
+        "windows-x32": true, 
+        "mac-x64": false, 
+        "nw_version": "0.10.0", 
+        "force_download": false, 
+        "linux-x64": false
+    }, 
+    "description": "", 
+    "nodejs": true, 
+    "additional_trust_anchors": [
+        ""
+    ], 
+    "inject-js-end": "", 
+    "node-remote": "", 
+    "webkit": {
+        "page-cache": false, 
+        "java": false, 
+        "plugin": false
+    }, 
+    "js-flags": "", 
+    "app_name": "cake3d_glsl_cube", 
+    "single-instance": true, 
+    "name": "cake3d_glsl_cube", 
+    "chromium-args": "", 
+    "user-agent": "", 
+    "window": {
+        "fullscreen": false, 
+        "resizable": false, 
+        "show": true, 
+        "always-on-top": false, 
+        "frame": true, 
+        "title": "tests", 
+        "kiosk": false, 
+        "kiosk_emulation": false, 
+        "exe_icon": "", 
+        "visible": true, 
+        "as_desktop": false, 
+        "mac_icon": "", 
+        "position": "", 
+        "width": 640, 
+        "show_in_taskbar": true, 
+        "height": 480, 
+        "transparent": false, 
+        "toolbar": false, 
+        "icon": ""
+    }, 
+    "version": "0.1.0", 
+    "snapshot": "", 
+    "keywords": [], 
+    "inject-js-start": "", 
+    "main": "readme.html", 
+    "node-main": ""
+}

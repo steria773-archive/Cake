@@ -1,0 +1,4 @@
+.DS_Store
+*.pyc
+docs
+lightgl.js
