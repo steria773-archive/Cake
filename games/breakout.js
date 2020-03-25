@@ -129,10 +129,16 @@ var Breakout = new Level(() =>
         if(ball.x < (WindowWidth - 20) / 2) ball.speedY = -ball.speedY
         else ball.speedY = -ball.speedY;
     }
+    //If Ball Collided With The Paddle(Player)
     if(CheckCollisionCircleRectAdvanced(ball.x,ball.y,ball.radius,player.x,player.y,120,100))
     {
+        //What Part Collided Of The Paddle,Is It Right Part,Do This!!!
         if(ball.x > player.x + 30) ball.speedX = Math.abs(Math.random() * 2);
+
+        //Else(Left Part),Do This!!!
         else ball.speedX = -Math.abs(Math.random() * 2);
+
+        //Continue
         ball.speedY = -2;
     }
 
