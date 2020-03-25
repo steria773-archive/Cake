@@ -22,7 +22,8 @@ var ball = new Circle(player.x + 45,player.y - 50,8,"yellow");
 ball.speedX = Math.random() * 2;
 ball.speedY = -2;
 
-var rightPressed = false,leftPressed = false;
+var rightPressed = false,leftPressed = false
+var ai_enabled = false;
 
 for(var i = 0;i < bricks_each_y;i++)
 {
@@ -108,6 +109,7 @@ var Breakout = new Level(() =>
     }
     if(player.x < 0) player.x = 0;
     if(player.x > CanvasWidth - 100) player.x = CanvasWidth - 100;
+    if(ai_enabled) player.x = ball.x;
 },240);
 
 document.addEventListener("keydown", keydown, false);
