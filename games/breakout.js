@@ -2,6 +2,7 @@
 //Breakout Game Made With Cake
 CreateCanvas(WindowWidth - 20,WindowHeight - 20,"white");
 Initialize();
+HideCursor();
 
 var score = 0;
 var bricks = [];
@@ -124,5 +125,7 @@ function keyup(e)
     if (e.key == "Left" || e.key == "ArrowLeft" || e.keyCode == 37 || e.key == "a") leftPressed = false;
 }
 
+
+cakecanvas.onmousemove = (e) => player.x = e.clientX;
 cakecanvas.onclick = () => ToggleFullscreen();
 Breakout.Start();
