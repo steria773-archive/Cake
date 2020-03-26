@@ -37,6 +37,7 @@ var ai_enabled = false; //Set This To true For Enabling AI
 
 //Ask For Enabling Classic Mode
 var classic_mode = confirm("Enable Classic Breakout Mode?");
+var disco_mode = confirm("Enable Disco Mode?");
 
 
 //For Screen Height...Screen Width -> Add Bricks Around Each bricks_each_x And bricks_each_y
@@ -44,7 +45,8 @@ for(var i = 0;i < bricks_each_y;i++)
 {
 	for(z = 0;z < bricks_each_x;z++)
 	{
-        bricks.push(new Rectangle(bricks_x,bricks_y,40,20,bricks_color,"black"));
+        if(disco_mode) bricks.push(new Rectangle(bricks_x,bricks_y,40,20,RandomColor()));
+        else bricks.push(new Rectangle(bricks_x,bricks_y,40,20,bricks_color,"black"));
 		bricks_x = bricks_x + bricks_each_x;
 	}
     bricks_x = 0
@@ -76,8 +78,16 @@ var Breakout = new Level(() =>
                 {
                     
                     //Make Coloring Effect For Bricks
-                    bricks[b].color = bricks_color;
-                    bricks[b].stroke_color = "black";
+                    if(!disco_mode)
+                    {
+                        bricks[b].color = bricks_color;
+                        bricks[b].stroke_color = "black";
+                    }
+                    else
+                    {
+                        bricks[b].color = RandomColor();
+                        bricks[b].stroke_color = bricks[b].color;
+                    }
                 }
             }
         }
