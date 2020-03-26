@@ -1,6 +1,6 @@
 //Copyright (c)2019-Present Rabia Alhaffar,All Rights Reserved!!!
 //Cake Canvas (2D And 3D) And WebGL(2D And 3D) HTML5 Game Engine!!!
-//Date: 24/March/2020
+//Date: 26/March/2020
 //The Engine/Framework Code Starts Here!!!
 //Variables:
 var Opera = (!!window.opr && !!opr.addons) || !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0,
@@ -305,26 +305,78 @@ var NextHistory = () => window.history.forward();
 var BackHistory = () => window.history.back();
 var OpenURL = (url) => window.open(url);
 
-//Module: Audio
+//Module: Media(Video And Audio)
+//Audio
 var PlayAudio = (url) => audio = new Audio(url).play();
-
 function Music(url)
 {
 	this.url = url;
 	this.audio = new Audio(this.url);
-	this.Play = function ()
-	{
-		this.audio.play();
-	}
-	this.Pause = function ()
-	{
-		this.audio.pause();
-	}
-	this.Resume = function ()
-	{
-		this.Play();
-	}
+	this.Play = function() { this.audio.play(); };
+	this.Pause = function() { this.audio.pause(); };
+	this.Resume = function() { this.audio.play(); };
+	this.Reload = function() { this.audio.load(); }
+	this.SetVolume = function(v) { this.audio.volume = v; };
+	this.SetSource = function(src) { this.audio.src = src; this.audio.load(); };
+	this.ShowControls = function() { this.audio.controls = true; };
+	this.HideControls = function() { this.audio.controls = false; };
+	this.Mute = function() { this.audio.muted = true; };
+	this.UnMute = function() { this.audio.muted = false; };
+	this.EnableLoop = function() { this.audio.loop = true; };
+	this.DisableLoop = function() { this.audio.loop = false; };
+	this.paused = function() { return this.audio.paused; };
+	this.finished = function() { return this.audio.ended; }; 
+	this.muted = function() { return this.audio.muted; };
+	this.EnablePreload = function() { this.audio.preload = "auto"; };
+	this.DisablePreload = function() { this.audio.preload = "none"; };
 };
+
+//Video
+var PlayVideo = (src) =>
+{
+    var video = document.createElement("video");
+    video.src = src;
+    video.loop = false;
+    cakepen.drawImage(video,0,0,cakecanvas.width,cakecanvas.height);
+    video.onended = () => video.parentNode.removeChild(video);
+};
+
+function Video(src)
+{
+    this.src = src;
+    this.removeonfinish = false;
+    this.video = document.createElement("video");
+    this.video.src = this.src;
+    this.video.loop = false;
+    this.video.controls = false;
+    this.Play = function() 
+    {
+		if(!this.video.autoplay) this.video.play();
+        cakepen.drawImage(this.video,0,0,cakecanvas.width,cakecanvas.height); 
+        if(this.removeonfinish) this.video.onended = () => this.video.parentNode.removeChild(this.video);
+    };
+	this.Pause = function() { this.video.pause(); };
+	this.Resume = function() { this.Play(); };
+	this.Reload = function() { this.video.load(); }
+	this.SetVolume = function(v) { this.video.volume = v; };
+	this.SetSource = function(src) { this.video.src = src; this.video.load(); };
+	this.ShowControls = function() { this.video.controls = true; };
+	this.HideControls = function() { this.video.controls = false; };
+	this.Mute = function() { this.video.muted = true; };
+	this.UnMute = function() { this.video.muted = false; };
+	this.EnableLoop = function() { this.video.loop = true; };
+	this.DisableLoop = function() { this.video.loop = false; };
+	this.paused = function() { return this.video.paused; };
+	this.finished = function() { return this.video.ended; }; 
+	this.muted = function() { return this.video.muted; };
+	this.EnablePreload = function() { this.video.preload = "auto"; };
+    this.DisablePreload = function() { this.video.preload = "none"; };
+    this.RemoveWhenFinish = function() 
+    {
+        this.removeonfinish = true;
+    };
+
+}
 
 //Module: Fullscreen API
 var Fullscreen = window.fullscreen;
