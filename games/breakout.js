@@ -10,10 +10,8 @@ HideCursor();
 
 var score = 0;
 var bricks = [];
+var bricks_color = RandomColor();
 var lives = 3;
-
-//Ask For Enabling Classic Mode
-var classic_mode = confirm("Enable Classic Breakout Mode?");
 
 //For Bricks Creating Loop
 var bricks_each_x = 800 / 20;
@@ -37,13 +35,16 @@ ball.speedY = -2;
 var rightPressed = false,leftPressed = false; //For Game Controls
 var ai_enabled = false; //Set This To true For Enabling AI
 
+//Ask For Enabling Classic Mode
+var classic_mode = confirm("Enable Classic Breakout Mode?");
+
 
 //For Screen Height...Screen Width -> Add Bricks Around Each bricks_each_x And bricks_each_y
 for(var i = 0;i < bricks_each_y;i++)
 {
 	for(z = 0;z < bricks_each_x;z++)
 	{
-        bricks.push(new Rectangle(bricks_x,bricks_y,40,20,RandomColor()));
+        bricks.push(new Rectangle(bricks_x,bricks_y,40,20,bricks_color,"black"));
 		bricks_x = bricks_x + bricks_each_x;
 	}
     bricks_x = 0
@@ -62,10 +63,10 @@ var Breakout = new Level(() =>
         //Warning: If You Remove && !bricks[b].destroyed,The Game Will Treat Removed Blocks As Blocks Still In Game
         if(CheckCollisionCircleRect(ball,bricks[b]) && !bricks[b].destroyed)
         {
+            bricks_color = RandomColor();
             //Destroy Bricks And Increase Score
             bricks[b].Destroy();
             score++;
-
             //If Classic Mode Enabled
             if(classic_mode)
             {
@@ -73,9 +74,10 @@ var Breakout = new Level(() =>
                 ball.speedY = -ball.speedY;
                 for(var b = 0;b < bricks.length;b++)
                 {
+                    
                     //Make Coloring Effect For Bricks
-                    bricks[b].color = RandomColor();
-                    bricks[b].stroke_color = bricks[b].color;
+                    bricks[b].color = bricks_color;
+                    bricks[b].stroke_color = "black";
                 }
             }
         }
