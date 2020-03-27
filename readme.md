@@ -64,15 +64,15 @@ Most Of Cake Game Framework/Engine Functions Written As Variables With Arrow Fun
 - Also You Can Use Any Language But You Need To Find A Way To Compile That Language's Code To JavaScript
 - You Can Call Native Code (From Device) With It's Default Compiler(Python,Ruby, Or Any)
 - Scripting Languages Tested On Cake Game Framework/Engine:
-1. JavaScript 
-2. CoffeeScript
+1. [JavaScript](https://github.com/Cake-Engine/Documentation/blob/master/getting_started.md) 
+2. [CoffeeScript](https://github.com/Cake-Engine/Documentation/blob/master/coffeescript.md)
 3. LiveScript
 4. TypeScript
-5. ColaScript
+5. [ColaScript](https://github.com/Cake-Engine/Documentation/blob/master/colascript.md)
 6. ToffeeScript
-7. Python(Via Transcrypt)
-8. JS++
-9. Lua
+7. [Python(Via Transcrypt)](https://github.com/Cake-Engine/Documentation/blob/master/python.md)
+8. [JS++](https://github.com/Cake-Engine/Documentation/blob/master/jspp.md)
+9. [Lua](https://github.com/Cake-Engine/Cake-Lua)
 
 > Formula Here Is: Programming Language -> Compiles To/Is JavaScript Code + `cake.js` = Web Game
 
