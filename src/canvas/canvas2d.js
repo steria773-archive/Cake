@@ -30,11 +30,10 @@ var CanvasHeight,CanvasWidth,texture,RandomX,RandomY,HalfCanvasHeight,HalfCanvas
 			if(Unknown(shadowblur)) cakepen.shadowBlur = "0px";
 			cakepen.shadowOffsetX = shadowOffsetX,cakepen.shadowOffsetY = shadowOffsetY,cakepen.shadowColor = shadowcolor,cakepen.shadowBlur = shadowblur;			
 		};
-	    var SetLineProperties = (line_width,line_height) =>
+	    var SetLineProperties = (line_width) =>
 		{
-			if(Unknown(line_height)) line_height = 1;
 			if(Unknown(line_width)) line_width = 1;
-			cakepen.lineHeight = line_height,cakepen.lineWidth = line_width;
+			cakepen.lineWidth = line_width;
 		};
 		var DrawRect = (x,y,width,height,color,stroke_color,alpha) =>
 		{
@@ -285,7 +284,7 @@ var CanvasHeight,CanvasWidth,texture,RandomX,RandomY,HalfCanvasHeight,HalfCanvas
 				x = 0,y = y + gridsize;
 			}
 			}; 
-           	var RemoveAlpha = () => cakepen.globalAlpha = 0;	 
+           	var ClearAlpha = () => cakepen.globalAlpha = 0;	 
 			var SetTransform = (horizontal_scaling,horizontal_skewing,vertical_skewing,vertical_scaling,horizontal_moving,vertical_moving) =>
 			{
 				if(Unknown(horizontal_scaling)) horizontal_scaling = 0;
@@ -604,7 +603,7 @@ var CanvasHeight,CanvasWidth,texture,RandomX,RandomY,HalfCanvasHeight,HalfCanvas
 		TEXTS = "texts",
 		ROUNDED_RECTANGLES = "rounded_rectangles";
 //Drawing Using Arrays Feature Is Available,Now For Everyone!!!
-	var DrawArrays = (type,content) =>
+	var DrawContent = (type,content) =>
 	{
 		if(type == RECTANGLES)
 		{
@@ -839,7 +838,5 @@ var CanvasHeight,CanvasWidth,texture,RandomX,RandomY,HalfCanvasHeight,HalfCanvas
 		if(Unknown(y)) y = 0;
 		cakepen.shear(x,y);
 	};
-	var ClearShadows = () =>
-	{
-		if(Safari) cakepen.clearShadow();
-	};
+	var SetCanvasBackground = (bg) => cakecanvas.style.background = bg;
+	var RemoveCanvasBackground = () => cakecanvas.style.background = "none";
