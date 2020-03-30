@@ -1,6 +1,6 @@
 //Copyright (c)2019-Present Rabia Alhaffar,All Rights Reserved!!!
 //Cake Canvas (2D And 3D) And WebGL(2D And 3D) HTML5 Game Engine!!!
-//Date: 26/March/2020
+//Date: 30/March/2020
 //The Engine/Framework Code Starts Here!!!
 //Variables:
 var Opera = (!!window.opr && !!opr.addons) || !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0,
@@ -545,11 +545,10 @@ var CanvasHeight,CanvasWidth,texture,RandomX,RandomY,HalfCanvasHeight,HalfCanvas
 			if(Unknown(shadowblur)) cakepen.shadowBlur = "0px";
 			cakepen.shadowOffsetX = shadowOffsetX,cakepen.shadowOffsetY = shadowOffsetY,cakepen.shadowColor = shadowcolor,cakepen.shadowBlur = shadowblur;			
 		};
-	    var SetLineProperties = (line_width,line_height) =>
+	    var SetLineProperties = (line_width) =>
 		{
-			if(Unknown(line_height)) line_height = 1;
 			if(Unknown(line_width)) line_width = 1;
-			cakepen.lineHeight = line_height,cakepen.lineWidth = line_width;
+			cakepen.lineWidth = line_width;
 		};
 		var DrawRect = (x,y,width,height,color,stroke_color,alpha) =>
 		{
@@ -800,7 +799,7 @@ var CanvasHeight,CanvasWidth,texture,RandomX,RandomY,HalfCanvasHeight,HalfCanvas
 				x = 0,y = y + gridsize;
 			}
 			}; 
-           	var RemoveAlpha = () => cakepen.globalAlpha = 0;	 
+           	var ClearAlpha = () => cakepen.globalAlpha = 0;	 
 			var SetTransform = (horizontal_scaling,horizontal_skewing,vertical_skewing,vertical_scaling,horizontal_moving,vertical_moving) =>
 			{
 				if(Unknown(horizontal_scaling)) horizontal_scaling = 0;
@@ -1354,11 +1353,34 @@ var CanvasHeight,CanvasWidth,texture,RandomX,RandomY,HalfCanvasHeight,HalfCanvas
 		if(Unknown(y)) y = 0;
 		cakepen.shear(x,y);
 	};
-	var ClearShadows = () =>
-	{
-		if(Safari) cakepen.clearShadow();
-	};
-	
+	var SetCanvasBackground = (bg) => cakecanvas.style.background = bg;
+	var RemoveCanvasBackground = () => cakecanvas.style.background = "none";
+
+
+//Module: Execution
+//Created By Rabia Alhaffar On 15/November/2019
+//An Library To Debug,Run Scripts In-Game
+var scripts_added = 0;
+var Execute = (code,l,time) =>
+{
+    if(Unknown(l)) l = 0;
+    if(Unknown(time)) time = 0;
+    if(l == 0) setTimeout(code,0);
+    if(l == 1) setTimeout(code,time);
+    if(l == 2) setInterval(code,0);
+    if(l == 3) setInterval(code,time);
+};
+
+var Import = (script_source) =>
+{
+  var script = document.createElement('script'); 
+  script.src = script_source; 
+  script.type = 'text/javascript'; 
+  script.defer = true; 
+  document.getElementsByTagName('head')[scripts_added].appendChild(script); 
+  scripts_added++;
+};
+
 //Module: Game
 //Cake Game Library!!!
 //Just For Closing Game Page As Exit Or Opening URL Or Even Restart Game!!!
@@ -1372,7 +1394,7 @@ var CrashGame = () =>
 var ViewSourceCode = (index) => window.open(document.scripts[index].src);
 var ViewGameSourceCode = () => window.open(document.scripts[2].src);
 var StartProcess = (dir) => window.open("file:///" + dir.toString);
-var UpdateCake = () => Import("https://cdn.jsdelivr.net/gh/Cake-Engine/Cake@master/build/cake.js");
+var UpdateEngine = () => Import("https://cdn.jsdelivr.net/gh/Cake-Engine/Cake@master/build/cake.js");
 var Destroy = (component) =>
 {
     if(!component.destroyed) component.Destroy();
@@ -2596,30 +2618,6 @@ var CheckCheatCode = (cheatcode, f) =>
 	}
 };
 var SetCheatCode = (cheatcode) => cheat = cheatcode;
-
-//Module: Execution
-//Created By Rabia Alhaffar On 15/November/2019
-//An Library To Debug,Run Scripts In-Game
-var scripts_added = 0;
-var Execute = (code,l,time) =>
-{
-    if(Unknown(l)) l = 0;
-    if(Unknown(time)) time = 0;
-    if(l == 0) setTimeout(code,0);
-    if(l == 1) setTimeout(code,time);
-    if(l == 2) setInterval(code,0);
-    if(l == 3) setInterval(code,time);
-};
-
-var Import = (script_source) =>
-{
-  var script = document.createElement('script'); 
-  script.src = script_source; 
-  script.type = 'text/javascript'; 
-  script.defer = true; 
-  document.getElementsByTagName('head')[scripts_added].appendChild(script); 
-  scripts_added++;
-};
 
 //Module: FPS And Levels
 //Created By Rabia Alhaffar On 16/November/2019
@@ -3979,352 +3977,332 @@ var _0x1152=['TWFkZSBXaXRoIENha2UgR2FtZSBFbmdpbmUhISEKaHR0cHM6Ly9naXRodWIuY29tL0
 //Created By Rabia Alhaffar In 9/February/2020
 //A Additions To CanvasRenderingContext2D That Adds More Functions!!!
 //New: Added CanvasRenderingContext2D.shear() Function
-if(!CanvasRenderingContext2D.prototype.cc) 
+//New: Added Flipping Horizontally And Vertically
+//New: Added CanvasRenderingContext2D.line() And CanvasRenderingContext2D.applyFilters() And CanvasRenderingContext2D.setFilters()
+if(!CanvasRenderingContext2D.prototype.clear) 
 {
-    CanvasRenderingContext2D.prototype.cc = function() 
+    CanvasRenderingContext2D.prototype.clear = function() 
     {
-            this.clearRect(0,0,this.canvas.width,this.canvas.height);
+        this.clearRect(0,0,this.canvas.width,this.canvas.height);
     };
 }
-CanvasRenderingContext2D.prototype.clear = function()
+
+if(!CanvasRenderingContext2D.prototype.fillCircle)
 {
-    this.cc();
-};
-if(!CanvasRenderingContext2D.prototype.fc)
-{
-    CanvasRenderingContext2D.prototype.fc = function(x,y,radius)
+    CanvasRenderingContext2D.prototype.fillCircle = function(x,y,radius)
     {
-            this.beginPath();
-            this.arc(x,y,radius,90,180 * Math.PI);
-            this.fill();
-            this.closePath();
+        this.beginPath();
+        this.arc(x,y,radius,90,180 * Math.PI);
+        this.closePath();
+        this.fill();
     };
 }
-CanvasRenderingContext2D.prototype.fillCircle = function(x,y,radius) 
-{ 
-    this.fc(x,y,radius); 
-};
-if(!CanvasRenderingContext2D.prototype.sc)
+
+if(!CanvasRenderingContext2D.prototype.strokeCircle)
 {
-    CanvasRenderingContext2D.prototype.sc = function(x,y,radius)
+    CanvasRenderingContext2D.prototype.strokeCircle = function(x,y,radius)
     {
-            this.beginPath();
-            this.arc(x,y,radius,90,180 * Math.PI);
-            this.stroke();
-            this.closePath();
+        this.beginPath();
+        this.arc(x,y,radius,90,180 * Math.PI);
+        this.closePath();
+        this.stroke();
     };
 }
-CanvasRenderingContext2D.prototype.strokeCircle = function(x,y,radius) 
-{ 
-    this.sc(x,y,radius); 
-};
-if(!CanvasRenderingContext2D.prototype.ft)
+
+
+if(!CanvasRenderingContext2D.prototype.fillTriangle)
 {
-    CanvasRenderingContext2D.prototype.ft = function(x1,y1,x2,y2,x3,y3)
+    CanvasRenderingContext2D.prototype.fillTriangle = function(x1,y1,x2,y2,x3,y3)
     {
-            this.beginPath();
-            this.moveTo(x1,y1);
-            this.lineTo(x2,y2);
-            this.lineTo(x3,y3);
-            this.lineTo(x1,y1);
-            this.fill();
-            this.closePath();
+        this.beginPath();
+        this.moveTo(x1,y1);
+        this.lineTo(x2,y2);
+        this.lineTo(x3,y3);
+        this.lineTo(x1,y1);
+        this.closePath();
+        this.fill();
     };
 }
-CanvasRenderingContext2D.prototype.fillTriangle = function(x1,y1,x2,y2,x3,y3) 
-{ 
-    this.ft(x1,y1,x2,y2,x3,y3); 
-};
-if(!CanvasRenderingContext2D.prototype.st)
+
+if(!CanvasRenderingContext2D.prototype.strokeTriangle)
 {
-    CanvasRenderingContext2D.prototype.st = function(x1,y1,x2,y2,x3,y3)
+    CanvasRenderingContext2D.prototype.strokeTriangle = function(x1,y1,x2,y2,x3,y3)
     {
-            this.beginPath();
-            this.moveTo(x1,y1);
-            this.lineTo(x2,y2);
-            this.lineTo(x3,y3);
-            this.lineTo(x1,y1);
-            this.stroke();
-            this.closePath();
+        this.beginPath();
+        this.moveTo(x1,y1);
+        this.lineTo(x2,y2);
+        this.lineTo(x3,y3);
+        this.lineTo(x1,y1);
+        this.closePath();
+        this.stroke();
     };
 }
-CanvasRenderingContext2D.prototype.strokeTriangle = function(x1,y1,x2,y2,x3,y3)
+
+if(!CanvasRenderingContext2D.prototype.fillPolygon)
 {
-    this.st(x1,y1,x2,y2,x3,y3);
-};
-if(!CanvasRenderingContext2D.prototype.fp)
-{
-    CanvasRenderingContext2D.prototype.fp = function(points)
+    CanvasRenderingContext2D.prototype.fillPolygon = function(points)
     {
-            this.beginPath();
-            this.moveTo(points[0][0], points[0][1]);
-            for(var i = 0; i < points.length; i++) this.lineTo(points[i][0], points[i][1]);
-            this.fill();
-            this.closePath();
+        this.beginPath();
+        this.moveTo(points[0][0], points[0][1]);
+    for(var i = 0; i < points.length; i++) this.lineTo(points[i][0], points[i][1]);
+        this.closePath();
+        this.fill();
     };
 }
-CanvasRenderingContext2D.prototype.fillPolygon = function(points)
+
+if(!CanvasRenderingContext2D.prototype.strokePolygon)
 {
-    this.fp(points);
-};
-if(!CanvasRenderingContext2D.prototype.sp)
-{
-    CanvasRenderingContext2D.prototype.sp = function(points)
+    CanvasRenderingContext2D.prototype.strokePolygon = function(points)
     {
-            this.beginPath();
-            this.moveTo(points[0][0], points[0][1]);
-            for(var i = 0; i < points.length; i++) this.lineTo(points[i][0], points[i][1]);
-            this.stroke();
-            this.closePath();
+        this.beginPath();
+        this.moveTo(points[0][0], points[0][1]);
+    for(var i = 0; i < points.length; i++) this.lineTo(points[i][0], points[i][1]);
+        this.closePath();
+        this.stroke();
     };
 }
-CanvasRenderingContext2D.prototype.strokePolygon = function(points)
+
+if(!CanvasRenderingContext2D.prototype.fillRoundedRect)
 {
-    this.sp(points);
-};
-if(!CanvasRenderingContext2D.prototype.frr)
-{
-    CanvasRenderingContext2D.prototype.frr = function(x,y,width,height,radius)
+    CanvasRenderingContext2D.prototype.fillRoundedRect = function(x,y,width,height,radius)
     {
-            this.beginPath();
-            this.moveTo(x + radius,y);
-            this.lineTo(x + width - radius,y);
-            this.quadraticCurveTo(x + width,y,x + width,y + radius);
-            this.lineTo(x + width,y + height - radius);
-            this.quadraticCurveTo(x + width,y + height,x + width - radius,y + height);
-            this.lineTo(x + radius,y + height);
-            this.quadraticCurveTo(x,y + height,x,y + height - radius);
-            this.lineTo(x,y + radius);
-            this.quadraticCurveTo(x,y,x + radius,y);
-            this.fill();
-            this.closePath();
+        this.beginPath();
+        this.moveTo(x + radius,y);
+        this.lineTo(x + width - radius,y);
+        this.quadraticCurveTo(x + width,y,x + width,y + radius);
+        this.lineTo(x + width,y + height - radius);
+        this.quadraticCurveTo(x + width,y + height,x + width - radius,y + height);
+        this.lineTo(x + radius,y + height);
+        this.quadraticCurveTo(x,y + height,x,y + height - radius);
+        this.lineTo(x,y + radius);
+        this.quadraticCurveTo(x,y,x + radius,y);
+        this.closePath();
+        this.fill();
     };
 }
-CanvasRenderingContext2D.prototype.fillRoundedRect = function(x,y,width,height,radius)
+
+if(!CanvasRenderingContext2D.prototype.strokeRoundedRect)
 {
-    this.frr(x,y,width,height,radius);
-};
-if(!CanvasRenderingContext2D.prototype.srr)
-{
-    CanvasRenderingContext2D.prototype.srr = function(x,y,width,height,radius)
+    CanvasRenderingContext2D.prototype.strokeRoundedRect = function(x,y,width,height,radius)
     {
-            this.beginPath();
-            this.moveTo(x + radius,y);
-            this.lineTo(x + width - radius,y);
-            this.quadraticCurveTo(x + width,y,x + width,y + radius);
-            this.lineTo(x + width,y + height - radius);
-            this.quadraticCurveTo(x + width,y + height,x + width - radius,y + height);
-            this.lineTo(x + radius,y + height);
-            this.quadraticCurveTo(x,y + height,x,y + height - radius);
-            this.lineTo(x,y + radius);
-            this.quadraticCurveTo(x,y,x + radius,y);
-            this.stroke();
-            this.closePath();
+        this.beginPath();
+        this.moveTo(x + radius,y);
+        this.lineTo(x + width - radius,y);
+        this.quadraticCurveTo(x + width,y,x + width,y + radius);
+        this.lineTo(x + width,y + height - radius);
+        this.quadraticCurveTo(x + width,y + height,x + width - radius,y + height);
+        this.lineTo(x + radius,y + height);
+        this.quadraticCurveTo(x,y + height,x,y + height - radius);
+        this.lineTo(x,y + radius);
+        this.quadraticCurveTo(x,y,x + radius,y);
+        this.closePath();
+        this.stroke();
     };
 }
-CanvasRenderingContext2D.prototype.strokeRoundedRect = function(x,y,width,height,radius)
+
+if(!CanvasRenderingContext2D.prototype.fillAndStroke)
 {
-    this.srr(x,y,width,height,radius);
-};
-if(!CanvasRenderingContext2D.prototype.fas)
-{
-    CanvasRenderingContext2D.prototype.fas = function()
+    CanvasRenderingContext2D.prototype.fillAndStroke = function()
     {
-            this.fill();
-            this.stroke();
+        this.fill();
+        this.stroke();
     };
 }
-CanvasRenderingContext2D.prototype.fillAndStroke = function()
+
+if(!CanvasRenderingContext2D.prototype.blur) 
 {
-    this.fas();
-};
-if(!CanvasRenderingContext2D.prototype.blu) 
-{
-    CanvasRenderingContext2D.prototype.blu = function(px) 
+    CanvasRenderingContext2D.prototype.blur = function(px) 
     { 
-            this.canvas.style.filter += " blur(" + px + "px) "; 
+        this.canvas.style.filter += " blur(" + px + "px) "; 
     };
 }
-CanvasRenderingContext2D.prototype.blur = function(px)
+
+if(!CanvasRenderingContext2D.prototype.bright) 
 {
-    this.blu(px);
-};
-if(!CanvasRenderingContext2D.prototype.brightness) 
-{
-    CanvasRenderingContext2D.prototype.brightness = function(percentage) 
+    CanvasRenderingContext2D.prototype.bright = function(percentage) 
     {
-            this.canvas.style.filter += " brightness(" + percentage + "%) ";
+        this.canvas.style.filter += " brightness(" + percentage + "%) ";
     };
 }
-CanvasRenderingContext2D.prototype.bright = function(percentage)
+
+if(!CanvasRenderingContext2D.prototype.contrast) 
 {
-    this.brightness(percentage);
-};
-if(!CanvasRenderingContext2D.prototype.contras) 
-{
-    CanvasRenderingContext2D.prototype.contras = function(percentage) 
+    CanvasRenderingContext2D.prototype.contrast = function(percentage) 
     {
-            this.canvas.style.filter += " contrast(" + percentage + "%) ";
+        this.canvas.style.filter += " contrast(" + percentage + "%) ";
     };
 }
-CanvasRenderingContext2D.prototype.contrast = function(percentage)
+
+
+if(!CanvasRenderingContext2D.prototype.invert) 
 {
-    this.contras(percentage);
-};
-if(!CanvasRenderingContext2D.prototype.inv) 
-{
-    CanvasRenderingContext2D.prototype.inv = function(percentage)
+    CanvasRenderingContext2D.prototype.invert = function(percentage)
     {
-            this.canvas.style.filter += " invert(" + percentage + "%) ";
+        this.canvas.style.filter += " invert(" + percentage + "%) ";
     };
 }
-CanvasRenderingContext2D.prototype.invert = function(percentage)
+
+
+if(!CanvasRenderingContext2D.prototype.grayscale) 
 {
-    this.inv(percentage);
-};
-if(!CanvasRenderingContext2D.prototype.grace) 
-{
-    CanvasRenderingContext2D.prototype.grace = function(percentage)
+    CanvasRenderingContext2D.prototype.grayscale = function(percentage)
     {
-            this.canvas.style.filter += " grayscale(" + percentage + "%) ";
+        this.canvas.style.filter += " grayscale(" + percentage + "%) ";
     };
 }
-CanvasRenderingContext2D.prototype.grayscale = function(percentage)
+
+if(!CanvasRenderingContext2D.prototype.opacity) 
 {
-    this.grace(percentage);
-};
-if(!CanvasRenderingContext2D.prototype.opal) 
-{
-    CanvasRenderingContext2D.prototype.opal = function(percentage) 
+    CanvasRenderingContext2D.prototype.opacity = function(percentage) 
     {
-            this.canvas.style.filter += " opacity(" + percentage + "%) ";
+        this.canvas.style.filter += " opacity(" + percentage + "%) ";
     };
 }
-CanvasRenderingContext2D.prototype.opacity = function(percentage)
+
+if(!CanvasRenderingContext2D.prototype.saturate) 
 {
-    this.opal(percentage);
-};
-if(!CanvasRenderingContext2D.prototype.sat) 
-{
-    CanvasRenderingContext2D.prototype.sat = function(percentage)
+    CanvasRenderingContext2D.prototype.saturate = function(percentage)
     {
-            this.canvas.style.filter += " saturate(" + percentage + "%) ";
+        this.canvas.style.filter += " saturate(" + percentage + "%) ";
     };
 }
-CanvasRenderingContext2D.prototype.saturate = function(percentage)
+
+if(!CanvasRenderingContext2D.prototype.sepia) 
 {
-    this.sat(percentage);
-};
-if(!CanvasRenderingContext2D.prototype.spyro) 
-{
-    CanvasRenderingContext2D.prototype.spyro = function(percentage)
+    CanvasRenderingContext2D.prototype.sepia = function(percentage)
     {
-            this.canvas.style.filter += " sepia(" + percentage + "%) ";
+        this.canvas.style.filter += " sepia(" + percentage + "%) ";
     };
 }
-CanvasRenderingContext2D.prototype.sepia = function(percentage)
+
+if(!CanvasRenderingContext2D.prototype.rotateHue) 
 {
-    this.spyro(percentage);
-};
-if(!CanvasRenderingContext2D.prototype.roue) 
-{
-    CanvasRenderingContext2D.prototype.roue = function(percentage) 
+    CanvasRenderingContext2D.prototype.rotateHue = function(percentage) 
     {
-            this.canvas.style.filter += " hue-rotate(" + percentage + "%) ";
+        this.canvas.style.filter += " hue-rotate(" + percentage + "%) ";
     };
 }
-CanvasRenderingContext2D.prototype.rotateHue = function(percentage)
+
+if(!CanvasRenderingContext2D.prototype.setFilters) 
 {
-    this.roue(percentage);
-};
+    CanvasRenderingContext2D.prototype.setFilters = function(filters)
+    {
+        this.canvas.style.filter = filters.toString();
+    };
+}
+
 if(!CanvasRenderingContext2D.prototype.applyFilters) 
 {
     CanvasRenderingContext2D.prototype.applyFilters = function(filters)
     {
-            this.canvas.style.filter = filters.toString();
+        this.canvas.style.filter += filters.toString();
     };
 }
-CanvasRenderingContext2D.prototype.setFilters = function(filters)
-{
-    this.applyFilters(filters);
-};
+
+
 if(!CanvasRenderingContext2D.prototype.clearFilters) 
 {
     CanvasRenderingContext2D.prototype.clearFilters = function()
     {
-            this.canvas.style.filter = "none";
+        this.canvas.style.filter = "none";
     };
 }
-CanvasRenderingContext2D.prototype.removeFilters = function()
+
+if(!CanvasRenderingContext2D.prototype.fillSquare) 
 {
-    this.clearFilters();
-};
-if(!CanvasRenderingContext2D.prototype.flis) 
-{
-    CanvasRenderingContext2D.prototype.flis = function(x,y,size)
+    CanvasRenderingContext2D.prototype.fillSquare = function(x,y,size)
     {
-            this.fillRect(x,y,size,size);
+        this.fillRect(x,y,size,size);
     };
 }
-CanvasRenderingContext2D.prototype.fillSquare = function(x,y,size)
+
+if(!CanvasRenderingContext2D.prototype.strokeSquare) 
 {
-    this.flis(x,y,size);
-};
-if(!CanvasRenderingContext2D.prototype.slis) 
-{
-    CanvasRenderingContext2D.prototype.slis = function(x,y,size)
+    CanvasRenderingContext2D.prototype.strokeSquare = function(x,y,size)
     {
-            this.strokeRect(x,y,size,size);
+        this.strokeRect(x,y,size,size);
     };
-}              
-CanvasRenderingContext2D.prototype.strokeSquare = function(x,y,size)
+}      
+
+if(!CanvasRenderingContext2D.prototype.hideCanvas) 
 {
-    this.slis(x,y,size);
-};
-if(!CanvasRenderingContext2D.prototype.hoco) 
-{
-    CanvasRenderingContext2D.prototype.hoco = function()
+    CanvasRenderingContext2D.prototype.hideCanvas = function()
     {
-            this.canvas.style.visibility = "hidden";
+        this.canvas.style.visibility = "hidden";
     };
 }
-CanvasRenderingContext2D.prototype.hideCanvas = function()
+
+
+if(!CanvasRenderingContext2D.prototype.showCanvas) 
 {
-    this.hoco();
-};
-if(!CanvasRenderingContext2D.prototype.sirocco) 
-{
-    CanvasRenderingContext2D.prototype.sirocco = function()
+    CanvasRenderingContext2D.prototype.showCanvas = function()
     {
-            this.canvas.style.visibility = "visible";
+        this.canvas.style.visibility = "visible";
     };
 }
-CanvasRenderingContext2D.prototype.showCanvas = function()
+
+if(!CanvasRenderingContext2D.prototype.removeCanvas) 
 {
-    this.sirocco();
-};
-if(!CanvasRenderingContext2D.prototype.rocco) 
-{
-    CanvasRenderingContext2D.prototype.rocco = function()
+    CanvasRenderingContext2D.prototype.removeCanvas = function()
     {
-            this.canvas.parentNode.removeChild(this.canvas);
+        this.canvas.parentNode.removeChild(this.canvas);
     };
 }
-CanvasRenderingContext2D.prototype.removeCanvas = function()
+
+if(!CanvasRenderingContext2D.prototype.shear)
 {
-    this.rocco();
-};
-if(!CanvasRenderingContext2D.prototype.sxsy)
-{
-    CanvasRenderingContext2D.prototype.sxsy = function(sx,sy)
+    CanvasRenderingContext2D.prototype.shear = function(sx,sy)
     {
-            this.transform(1,sy,sx,1,0,0);
+        this.transform(1,sy,sx,1,0,0);
     };
 }
-CanvasRenderingContext2D.prototype.shear = function(shear_x,shear_y)
+
+if(!CanvasRenderingContext2D.prototype.flipHorizontally)
 {
-    this.sxsy(shear_x,shear_y);
-};
+    CanvasRenderingContext2D.prototype.flipHorizontally = function()
+    {
+        this.scale(-1,1);
+    };
+}
+
+
+if(!CanvasRenderingContext2D.prototype.flipVertically)
+{
+    CanvasRenderingContext2D.prototype.flipVertically = function()
+    {
+        this.scale(1,-1);
+    };
+}
+
+if(!CanvasRenderingContext2D.prototype.flipContent)
+{
+    CanvasRenderingContext2D.prototype.flipContent = function()
+    {
+        this.scale(-1,-1);
+    };
+}
+
+
+if(!CanvasRenderingContext2D.prototype.resetFlipping)
+{
+    CanvasRenderingContext2D.prototype.resetFlipping = function()
+    {
+        this.scale(1,1);
+    };
+}
+
+if(!CanvasRenderingContext2D.prototype.line)
+{
+    CanvasRenderingContext2D.prototype.line = function(x1,y1,x2,y2,size)
+    {
+        this.lineWidth = size;
+        this.beginPath();
+        this.moveTo(x1,y1);
+        this.lineTo(x2,y2);
+        this.closePath();
+        this.stroke();
+    };
+}
 
 //Module: requestAnimationFrame
 //Created By Rabia Alhaffar In 8/February/2020
@@ -4836,3 +4814,303 @@ var CallTP = (script) =>              child_process.exec("start tpc " + script);
 var CallJSPP = (script) =>            child_process.exec("start js++ " + script);
 var Call = (compiler,script) =>       child_process.exec("start " + compiler + " " + script);
 var Start = (loc) =>                  child_process.exec("start " + loc);
+
+//Module: WebOS TV
+//Libs
+window.webOS=function(e){var n={};function r(t){if(n[t])return n[t].exports;var o=n[t]={i:t,l:!1,exports:{}};return e[t].call(o.exports,o,o.exports,r),o.l=!0,o.exports}return r.m=e,r.c=n,r.d=function(e,n,t){r.o(e,n)||Object.defineProperty(e,n,{enumerable:!0,get:t})},r.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},r.t=function(e,n){if(1&n&&(e=r(e)),8&n)return e;if(4&n&&"object"==typeof e&&e&&e.__esModule)return e;var t=Object.create(null);if(r.r(t),Object.defineProperty(t,"default",{enumerable:!0,value:e}),2&n&&"string"!=typeof e)for(var o in e)r.d(t,o,function(n){return e[n]}.bind(null,o));return t},r.n=function(e){var n=e&&e.__esModule?function(){return e.default}:function(){return e};return r.d(n,"a",n),n},r.o=function(e,n){return Object.prototype.hasOwnProperty.call(e,n)},r.p="",r(r.s=0)}([function(e,n,r){"use strict";r.r(n);var t=function(){return window.PalmSystem&&window.PalmSystem.identifier?window.PalmSystem.identifier.split(" ")[0]:""},o={},i=function(e,n){if(0===Object.keys(o).length){var r=function(n,r){if(!n&&r)try{o=JSON.parse(r),e&&e(o)}catch(n){console.error("Unable to parse appinfo.json file for",t()),e&&e()}else e&&e()},i=new window.XMLHttpRequest;i.onreadystatechange=function(){4===i.readyState&&(i.status>=200&&i.status<300||0===i.status?r(null,i.responseText):r({status:404}))};try{i.open("GET",n||"appinfo.json",!0),i.send(null)}catch(e){r({status:404})}}else e&&e(o)},s=function(){var e=window.location.href;if("baseURI"in window.document)e=window.document.baseURI;else{var n=window.document.getElementsByTagName("base");n.length>0&&(e=n[0].href)}var r=e.match(new RegExp(".*://[^#]*/"));return r?r[0]:""},a=function(){if(window.PalmSystem&&window.PalmSystem.platformBack)return window.PalmSystem.platformBack()};function c(e,n){var r=Object.keys(e);if(Object.getOwnPropertySymbols){var t=Object.getOwnPropertySymbols(e);n&&(t=t.filter(function(n){return Object.getOwnPropertyDescriptor(e,n).enumerable})),r.push.apply(r,t)}return r}function u(e){for(var n=1;n<arguments.length;n++){var r=null!=arguments[n]?arguments[n]:{};n%2?c(r,!0).forEach(function(n){l(e,n,r[n])}):Object.getOwnPropertyDescriptors?Object.defineProperties(e,Object.getOwnPropertyDescriptors(r)):c(r).forEach(function(n){Object.defineProperty(e,n,Object.getOwnPropertyDescriptor(r,n))})}return e}function l(e,n,r){return n in e?Object.defineProperty(e,n,{value:r,enumerable:!0,configurable:!0,writable:!0}):e[n]=r,e}function f(e,n){for(var r=0;r<n.length;r++){var t=n[r];t.enumerable=t.enumerable||!1,t.configurable=!0,"value"in t&&(t.writable=!0),Object.defineProperty(e,t.key,t)}}var d={},m=function(){function e(){!function(e,n){if(!(e instanceof n))throw new TypeError("Cannot call a class as a function")}(this,e),this.bridge=null,this.cancelled=!1,this.subscribe=!1}var n,r,t;return n=e,(r=[{key:"send",value:function(e){var n=e.service,r=void 0===n?"":n,t=e.method,o=void 0===t?"":t,i=e.parameters,s=void 0===i?{}:i,a=e.onSuccess,c=void 0===a?function(){}:a,l=e.onFailure,f=void 0===l?function(){}:l,m=e.onComplete,w=void 0===m?function(){}:m,y=e.subscribe,b=void 0!==y&&y;if(!window.PalmServiceBridge){var p={errorCode:-1,errorText:"PalmServiceBridge is not found.",returnValue:!1};return f(p),w(p),console.error("PalmServiceBridge is not found."),this}this.ts&&d[this.ts]&&delete d[this.ts];var v,h=u({},s);return this.subscribe=b,this.subscribe&&(h.subscribe=this.subscribe),h.subscribe&&(this.subscribe=h.subscribe),this.ts=Date.now(),d[this.ts]=this,this.bridge=new PalmServiceBridge,this.bridge.onservicecallback=this.callback.bind(this,c,f,w),this.bridge.call(("/"!==(v=r).slice(-1)&&(v+="/"),v+o),JSON.stringify(h)),this}},{key:"callback",value:function(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:function(){},n=arguments.length>1&&void 0!==arguments[1]?arguments[1]:function(){},r=arguments.length>2&&void 0!==arguments[2]?arguments[2]:function(){},t=arguments.length>3&&void 0!==arguments[3]?arguments[3]:"";if(!this.cancelled){var o={};try{o=JSON.parse(t)}catch(e){o={errorCode:-1,errorText:t,returnValue:!1}}var i=o,s=i.errorCode,a=i.returnValue;s||!1===a?(o.returnValue=!1,n(o)):(o.returnValue=!0,e(o)),r(o),this.subscribe||this.cancel()}}},{key:"cancel",value:function(){this.cancelled=!0,null!==this.bridge&&(this.bridge.cancel(),this.bridge=null),this.ts&&d[this.ts]&&delete d[this.ts]}}])&&f(n.prototype,r),t&&f(n,t),e}(),w={request:function(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:"",n=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{},r=u({service:e},n);return(new m).send(r)}};function y(e){return(y="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e})(e)}var b={};if("object"===("undefined"==typeof window?"undefined":y(window))&&window.PalmSystem)if(window.navigator.userAgent.indexOf("SmartWatch")>-1)b.watch=!0;else if(window.navigator.userAgent.indexOf("SmartTV")>-1||window.navigator.userAgent.indexOf("Large Screen")>-1)b.tv=!0;else{try{var p=JSON.parse(window.PalmSystem.deviceInfo||"{}");if(p.platformVersionMajor&&p.platformVersionMinor){var v=Number(p.platformVersionMajor),h=Number(p.platformVersionMinor);v<3||3===v&&h<=0?b.legacy=!0:b.open=!0}}catch(e){b.open=!0}window.Mojo=window.Mojo||{relaunch:function(){}},window.PalmSystem.stageReady&&window.PalmSystem.stageReady()}else b.unknown=!0;var g=b,S={},P=function(e){if(0===Object.keys(S).length){try{var n=JSON.parse(window.PalmSystem.deviceInfo);S.modelName=n.modelName,S.version=n.platformVersion,S.versionMajor=n.platformVersionMajor,S.versionMinor=n.platformVersionMinor,S.versionDot=n.platformVersionDot,S.sdkVersion=n.platformVersion,S.screenWidth=n.screenWidth,S.screenHeight=n.screenHeight}catch(e){S.modelName="webOS Device"}S.screenHeight=S.screenHeight||window.screen.height,S.screenWidth=S.screenWidth||window.screen.width,g.tv&&(new m).send({service:"luna://com.webos.service.tv.systemproperty",method:"getSystemInfo",parameters:{keys:["firmwareVersion","modelName","sdkVersion","UHD"]},onSuccess:function(n){if(S.modelName=n.modelName||S.modelName,S.sdkVersion=n.sdkVersion||S.sdkVersion,S.uhd="true"===n.UHD,n.firmwareVersion&&"0.0.0"!==n.firmwareVersion||(n.firmwareVersion=n.sdkVersion),n.firmwareVersion){S.version=n.firmwareVersion;for(var r=S.version.split("."),t=["versionMajor","versionMinor","versionDot"],o=0;o<t.length;o+=1)try{S[t[o]]=parseInt(r[o],10)}catch(e){S[t[o]]=r[o]}}e(S)},onFailure:function(){e(S)}})}else e(S)},O={isShowing:function(){return PalmSystem&&PalmSystem.isKeyboardVisible||!1}},j=function(){var e={};if(window.PalmSystem){if(window.PalmSystem.country){var n=JSON.parse(window.PalmSystem.country);e.country=n.country,e.smartServiceCountry=n.smartServiceCountry}window.PalmSystem.timeZone&&(e.timezone=window.PalmSystem.timeZone)}return e};r.d(n,"deviceInfo",function(){return P}),r.d(n,"fetchAppId",function(){return t}),r.d(n,"fetchAppInfo",function(){return i}),r.d(n,"fetchAppRootPath",function(){return s}),r.d(n,"keyboard",function(){return O}),r.d(n,"libVersion",function(){return"1.1.1"}),r.d(n,"platformBack",function(){return a}),r.d(n,"platform",function(){return g}),r.d(n,"service",function(){return w}),r.d(n,"systemInfo",function(){return j})}]);
+window.webOSDev=function(e){var r={};function t(n){if(r[n])return r[n].exports;var i=r[n]={i:n,l:!1,exports:{}};return e[n].call(i.exports,i,i.exports,t),i.l=!0,i.exports}return t.m=e,t.c=r,t.d=function(e,r,n){t.o(e,r)||Object.defineProperty(e,r,{enumerable:!0,get:n})},t.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},t.t=function(e,r){if(1&r&&(e=t(e)),8&r)return e;if(4&r&&"object"==typeof e&&e&&e.__esModule)return e;var n=Object.create(null);if(t.r(n),Object.defineProperty(n,"default",{enumerable:!0,value:e}),2&r&&"string"!=typeof e)for(var i in e)t.d(n,i,function(r){return e[r]}.bind(null,i));return n},t.n=function(e){var r=e&&e.__esModule?function(){return e.default}:function(){return e};return t.d(r,"a",r),r},t.o=function(e,r){return Object.prototype.hasOwnProperty.call(e,r)},t.p="",t(t.s=0)}([function(e,r,t){"use strict";function n(e,r){var t=Object.keys(e);if(Object.getOwnPropertySymbols){var n=Object.getOwnPropertySymbols(e);r&&(n=n.filter(function(r){return Object.getOwnPropertyDescriptor(e,r).enumerable})),t.push.apply(t,n)}return t}function i(e){for(var r=1;r<arguments.length;r++){var t=null!=arguments[r]?arguments[r]:{};r%2?n(t,!0).forEach(function(r){o(e,r,t[r])}):Object.getOwnPropertyDescriptors?Object.defineProperties(e,Object.getOwnPropertyDescriptors(t)):n(t).forEach(function(r){Object.defineProperty(e,r,Object.getOwnPropertyDescriptor(t,r))})}return e}function o(e,r,t){return r in e?Object.defineProperty(e,r,{value:t,enumerable:!0,configurable:!0,writable:!0}):e[r]=t,e}function u(e,r){for(var t=0;t<r.length;t++){var n=r[t];n.enumerable=n.enumerable||!1,n.configurable=!0,"value"in n&&(n.writable=!0),Object.defineProperty(e,n.key,n)}}t.r(r);var c={},a=function(){function e(){!function(e,r){if(!(e instanceof r))throw new TypeError("Cannot call a class as a function")}(this,e),this.bridge=null,this.cancelled=!1,this.subscribe=!1}var r,t,n;return r=e,(t=[{key:"send",value:function(e){var r=e.service,t=void 0===r?"":r,n=e.method,o=void 0===n?"":n,u=e.parameters,a=void 0===u?{}:u,s=e.onSuccess,l=void 0===s?function(){}:s,d=e.onFailure,f=void 0===d?function(){}:d,v=e.onComplete,p=void 0===v?function(){}:v,b=e.subscribe,m=void 0!==b&&b;if(!window.PalmServiceBridge){var h={errorCode:-1,errorText:"PalmServiceBridge is not found.",returnValue:!1};return f(h),p(h),console.error("PalmServiceBridge is not found."),this}this.ts&&c[this.ts]&&delete c[this.ts];var O,y=i({},a);return this.subscribe=m,this.subscribe&&(y.subscribe=this.subscribe),y.subscribe&&(this.subscribe=y.subscribe),this.ts=Date.now(),c[this.ts]=this,this.bridge=new PalmServiceBridge,this.bridge.onservicecallback=this.callback.bind(this,l,f,p),this.bridge.call(("/"!==(O=t).slice(-1)&&(O+="/"),O+o),JSON.stringify(y)),this}},{key:"callback",value:function(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:function(){},r=arguments.length>1&&void 0!==arguments[1]?arguments[1]:function(){},t=arguments.length>2&&void 0!==arguments[2]?arguments[2]:function(){},n=arguments.length>3&&void 0!==arguments[3]?arguments[3]:"";if(!this.cancelled){var i={};try{i=JSON.parse(n)}catch(e){i={errorCode:-1,errorText:n,returnValue:!1}}var o=i,u=o.errorCode,c=o.returnValue;u||!1===c?(i.returnValue=!1,r(i)):(i.returnValue=!0,e(i)),t(i),this.subscribe||this.cancel()}}},{key:"cancel",value:function(){this.cancelled=!0,null!==this.bridge&&(this.bridge.cancel(),this.bridge=null),this.ts&&c[this.ts]&&delete c[this.ts]}}])&&u(r.prototype,t),n&&u(r,n),e}(),s={BROWSER:"APP_BROWSER"},l=function(e){var r=e.id,t=void 0===r?"":r,n=e.params,i=void 0===n?{}:n,o=e.onSuccess,u=void 0===o?function(){}:o,c=e.onFailure,l=void 0===c?function(){}:c,d={id:t,params:i};s.BROWSER===t&&(d.params.target=i.target||"",d.params.fullMode=!0,d.id="com.webos.app.browser"),function(e){var r=e.parameters,t=e.onSuccess,n=e.onFailure;(new a).send({service:"luna://com.webos.applicationManager",method:"launch",parameters:r,onComplete:function(e){var r=e.returnValue,i=e.errorCode,o=e.errorText;return!0===r?t():n({errorCode:i,errorText:o})}})}({parameters:d,onSuccess:u,onFailure:l})},d=function(){var e={};if(window.PalmSystem&&""!==window.PalmSystem.launchParams)try{e=JSON.parse(window.PalmSystem.launchParams)}catch(e){console.error("JSON parsing error")}return e},f=function(){return window.PalmSystem&&window.PalmSystem.identifier?window.PalmSystem.identifier.split(" ")[0]:""};function v(e,r){var t=Object.keys(e);if(Object.getOwnPropertySymbols){var n=Object.getOwnPropertySymbols(e);r&&(n=n.filter(function(r){return Object.getOwnPropertyDescriptor(e,r).enumerable})),t.push.apply(t,n)}return t}function p(e){for(var r=1;r<arguments.length;r++){var t=null!=arguments[r]?arguments[r]:{};r%2?v(t,!0).forEach(function(r){b(e,r,t[r])}):Object.getOwnPropertyDescriptors?Object.defineProperties(e,Object.getOwnPropertyDescriptors(t)):v(t).forEach(function(r){Object.defineProperty(e,r,Object.getOwnPropertyDescriptor(t,r))})}return e}function b(e,r,t){return r in e?Object.defineProperty(e,r,{value:t,enumerable:!0,configurable:!0,writable:!0}):e[r]=t,e}function m(e,r){for(var t=0;t<r.length;t++){var n=r[t];n.enumerable=n.enumerable||!1,n.configurable=!0,"value"in n&&(n.writable=!0),Object.defineProperty(e,n.key,n)}}var h={NOT_ERROR:-1,CLIENT_NOT_LOADED:0,VENDOR_ERROR:500,API_NOT_SUPPORTED:501,WRONG_CLIENT_ID:502,KEY_NOT_FOUND:503,INVALID_PARAMS:504,UNSUPPORTED_DRM_TYPE:505,INVALID_KEY_FORMAT:506,INVALID_TIME_INFO:507,UNKNOWN_ERROR:599},O={PLAYREADY:"playready",WIDEVINE:"widevine"},y={UNLOADED:0,LOADING:1,LOADED:2,UNLOADING:3},g=function(e){var r=e.method,t=e.parameters,n=e.onComplete;(new a).send({service:"luna://com.webos.service.drm",onComplete:n,method:r,parameters:t})},D=function(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:function(){},r=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{};setTimeout(function(){return e(r)},0)},w=function(e){return e.state===y.LOADED&&""!==e.getClientId()},P=function(e,r){var t=r.errorCode,n=void 0===t?h.UNKNOWN_ERROR:t,i=r.errorText,o={errorCode:n,errorText:void 0===i?"Unknown error.":i};return e.setError(o),o},E={errorCode:h.CLIENT_NOT_LOADED,errorText:"DRM client is not loaded."},S=function(){function e(r){!function(e,r){if(!(e instanceof r))throw new TypeError("Cannot call a class as a function")}(this,e),this.clientId="",this.drmType=r,this.errorCode=h.NOT_ERROR,this.errorText="",this.state=y.UNLOADED}var r,t,n;return r=e,(t=[{key:"getClientId",value:function(){return this.clientId}},{key:"getDrmType",value:function(){return this.drmType}},{key:"getErrorCode",value:function(){return this.errorCode}},{key:"getErrorText",value:function(){return this.errorText}},{key:"setError",value:function(e){var r=e.errorCode,t=e.errorText;this.errorCode=r,this.errorText=t}},{key:"isLoaded",value:function(e){var r=this,t=e.onSuccess,n=void 0===t?function(){}:t,i=e.onFailure,o=void 0===i?function(){}:i;g({method:"isLoaded",parameters:{appId:f()},onComplete:function(e){if(!0===e.returnValue){if(r.clientId=e.clientId||"",r.state=e.loadStatus?y.LOADED:y.UNLOADED,!0===e.loadStatus&&e.drmType!==r.drmType){var t={errorCode:h.UNKNOWN_ERROR,errorText:"DRM types of set and loaded are not matched."};return o(P(r,t))}var i=p({},e);return delete i.returnValue,n(i)}return o(P(r,e))}})}},{key:"load",value:function(e){var r=this,t=e.onSuccess,n=void 0===t?function(){}:t,i=e.onFailure,o=void 0===i?function(){}:i;if(this.state!==y.LOADING&&this.state!==y.LOADED){var u={appId:f(),drmType:this.drmType};this.state=y.LOADING,g({method:"load",onComplete:function(e){return!0===e.returnValue?(r.clientId=e.clientId,r.state=y.LOADED,n({clientId:r.clientId})):o(P(r,e))},parameters:u})}else D(n,{isLoaded:!0,clientId:this.clientId})}},{key:"unload",value:function(e){var r=this,t=e.onSuccess,n=void 0===t?function(){}:t,i=e.onFailure,o=void 0===i?function(){}:i;if(w(this)){var u={clientId:this.clientId};this.state=y.UNLOADING,g({method:"unload",onComplete:function(e){return!0===e.returnValue?(r.clientId="",r.state=y.UNLOADED,n()):o(P(r,e))},parameters:u})}else D(o,P(this,E))}},{key:"getRightsError",value:function(e){var r=this,t=e.onSuccess,n=void 0===t?function(){}:t,i=e.onFailure,o=void 0===i?function(){}:i;w(this)?g({method:"getRightsError",parameters:{clientId:this.clientId,subscribe:!0},onComplete:function(e){if(!0===e.returnValue){var t=p({},e);return delete t.returnValue,n(t)}return o(P(r,e))}}):D(o,P(this,E))}},{key:"sendDrmMessage",value:function(e){var r=this,t=e.msg,n=void 0===t?"":t,i=e.onSuccess,o=void 0===i?function(){}:i,u=e.onFailure,c=void 0===u?function(){}:u;if(w(this)){var a=function(e){var r="",t="";switch(e){case O.PLAYREADY:r="application/vnd.ms-playready.initiator+xml",t="urn:dvb:casystemid:19219";break;case O.WIDEVINE:r="application/widevine+xml",t="urn:dvb:casystemid:19156"}return{msgType:r,drmSystemId:t}}(this.drmType),s=p({clientId:this.clientId,msg:n},a);g({method:"sendDrmMessage",onComplete:function(e){if(!0===e.returnValue){var t=p({},e);return delete t.returnValue,o(t)}return c(P(r,e))},parameters:s})}else D(c,P(this,E))}}])&&m(r.prototype,t),n&&m(r,n),e}(),I={Error:h,Type:O},T=function(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:"";return""===e?null:new S(e)};function N(e,r){var t=Object.keys(e);if(Object.getOwnPropertySymbols){var n=Object.getOwnPropertySymbols(e);r&&(n=n.filter(function(r){return Object.getOwnPropertyDescriptor(e,r).enumerable})),t.push.apply(t,n)}return t}function R(e,r,t){return r in e?Object.defineProperty(e,r,{value:t,enumerable:!0,configurable:!0,writable:!0}):e[r]=t,e}var j=function(e){var r=e.service,t=e.subscribe,n=e.onSuccess,i=e.onFailure;(new a).send({service:r,method:"getStatus",parameters:{subscribe:t},onComplete:function(e){var r=function(e){for(var r=1;r<arguments.length;r++){var t=null!=arguments[r]?arguments[r]:{};r%2?N(t,!0).forEach(function(r){R(e,r,t[r])}):Object.getOwnPropertyDescriptors?Object.defineProperties(e,Object.getOwnPropertyDescriptors(t)):N(t).forEach(function(r){Object.defineProperty(e,r,Object.getOwnPropertyDescriptor(t,r))})}return e}({},e);if(delete r.returnValue,!0===e.returnValue)return delete r.subscribe,void n(r);delete r.returnValue,i(r)}})},C={getStatus:function(e){var r=e.onSuccess,t=void 0===r?function(){}:r,n=e.onFailure,i=void 0===n?function(){}:n,o=e.subscribe,u=void 0!==o&&o,c="webos.service";navigator.userAgent.indexOf("537.41")>-1&&(c="palm"),j({service:"luna://com.".concat(c,".connectionmanager"),subscribe:u,onSuccess:t,onFailure:i})}},A=function(e){var r=e.onSuccess,t=void 0===r?function(){}:r,n=e.onFailure,i=void 0===n?function(){}:n;-1!==navigator.userAgent.indexOf("Chrome")?(new a).send({service:"luna://com.webos.service.sm",method:"deviceid/getIDs",parameters:{idType:["LGUDID"]},onComplete:function(e){if(!0!==e.returnValue)i({errorCode:e.errorCode,errorText:e.errorText});else{var r=e.idList.filter(function(e){return"LGUDID"===e.idType})[0].idValue;t({id:r})}}}):setTimeout(function(){return i({errorCode:"ERROR.000",errorText:"Not supported."})},0)};t.d(r,"APP",function(){return s}),t.d(r,"connection",function(){return C}),t.d(r,"DRM",function(){return I}),t.d(r,"drmAgent",function(){return T}),t.d(r,"launch",function(){return l}),t.d(r,"launchParams",function(){return d}),t.d(r,"LGUDID",function(){return A})}]);
+
+//Uses Both WebOS And WebOSDEV Javascript API
+var WebOSTV,
+    Not_WebOSTV,
+    WebOS_Info,
+    WebOS_Country,
+    WebOS_DeviceVersion,
+    WebOS_DeviceModel,
+    WebOS_DeviceScreenHeight,
+    WebOS_DeviceScreenWidth,
+    WebOS_DeviceUHD,
+    WebOS_Pass,
+    WebOS_UserID,
+    WebOS_Page,
+    WebOS_AppVersion,
+    WebOS_AppPath,
+    WebOS_DeviceWired,
+    WebOS_DeviceConnected,
+    WebOS_DeviceUsesWifi,
+    WebOS_DeviceMajorVersion,
+    WebOS_DeviceMinorVersion,
+    WebOS_DeviceDotVersion,
+    WebOS_DRMAgent,
+    WebOS_SmartServiceCountry,
+    WebOS_TimeZone,
+    WebOS_VirtualKeyboardVisible,
+    WebOS_LibrayBuildVersion;
+
+var WebOS_SUCCESS = () => console.info("COMMAND EXECUTED SUCCESSFULLY!!!");	
+var WebOS_FAILURE = () => console.error("ERROR: 000\nFAILED TO PATCH COMMAND EXECUTION!!!");
+
+var WebOS_CallServiceFromID = (app_package) =>
+{
+var appId = webOS.fetchAppId();
+ webOS.service.request(app_package, {
+        method: 'load',
+        parameters: {
+            appId: appId,
+            drmType: 'playready'
+        },
+		onSuccess: WebOS_SUCCESS,
+		onFailure: WebOS_FAILURE	
+});
+};
+
+var WebOS_CallService = (url,method_to_do) =>
+{
+ webOS.service.request(url,
+    {
+      method: method_to_do,
+      parameters: { subscribe: true },
+      onSuccess: WebOS_SUCCESS,
+      onFailure: WebOS_FAILURE	
+    });
+};
+
+var WebOS_CallSystemService = (method_to_do) =>
+{
+ webOS.service.request('luna://com.palm.systemservice',
+    {
+      method: method_to_do,
+      parameters: { 
+	  subscribe: true 
+	  },
+      onSuccess: WebOS_SUCCESS,
+      onFailure: WebOS_FAILURE
+    });	
+};
+
+var WebOS_InitializeWebOS = () =>
+{
+    WebOSTV = webOS.platform.tv;
+    Not_WebOSTV = !webOS.platform.tv;
+    WebOS_Info = webOS.systemInfo;
+    WebOS_Country = webOS.systemInfo.country;
+    WebOS_Pass = webOSDev.launchParams();
+    WebOS_UserID = WebOS_Pass.userId;
+    WebOS_Page = WebOS_Pass.page;
+    webOS.deviceInfo((device) => 
+    {
+        WebOS_DeviceModel = device.modelName;
+        WebOS_DeviceVersion = device.version.split('.');
+        WebOS_DeviceMajorVersion = Number(device.versionMajor);
+        WebOS_DeviceMinorVersion = Number(device.versionMinor);
+        WebOS_DeviceDotVersion = Number(device.versionDot);
+        WebOS_DeviceScreenHeight = device.screenHeight;
+        WebOS_DeviceScreenWidth = device.screenWidth;
+        WebOS_DeviceUHD = device.uhd;
+        WebOS_DRMAgent = webOSDev.drmAgent(webOSDev.DRM.Type.PLAYREADY);
+        WebOS_SmartServiceCountry = webOS.systemInfo.smartServiceCountry;
+        WebOS_TimeZone = webOS.systemInfo.timezone;
+        WebOS_VirtualKeyboardVisible = webOS.keyboard.isShowing();
+        WebOS_LibrayBuildVersion = Number(webOS.libVersion.split('.')[0]);
+    });
+};
+
+var WebOS_SimulateBackKeyPress = () => webOS.platformBack();
+var WebOS_GetAppID = () => webOS.fetchAppId();
+var WebOS_TrackWebOSDevice = () => console.info("Device Model: " + WebOS_DeviceModel + "\nDevice Version: " + WebOS_DeviceVersion + "\nMajor Version: " + WebOS_DeviceMajorVersion + "\nMinor Version: " + WebOS_DeviceMajorVersion + "\nMinor Version: " + WebOS_DeviceMajorVersion + "\nMedium Version: " + WebOS_DeviceDotVersion + "\nScreen Height: " + WebOS_DeviceScreenHeight + "\nScreen Width: " + WebOS_DeviceScreenWidth + "UHD: " + WebOS_DeviceUHD);
+var WebOS_GetAppPath = () => webOS.fetchAppRootPath();	
+var WebOS_GetAppInfo = () =>
+{
+var path = webOS.fetchAppRootPath();
+ webOS.fetchAppInfo(function (info) {
+  if (info) 
+  {
+  WebOS_AppVersion = Number(info.version.split('.'));   
+    }
+}, path + 'appinfo.json');
+};	
+
+//From Here,WebOSDev API Functions Start
+var WebOS_GetNetworkState = () =>
+{
+webOSDev.connection.getStatus({
+    onSuccess: function (res) {
+		WebOS_DeviceConnected = res.isInternetConnectionAvailable;
+        WebOS_DeviceWired = res.wired;
+        WebOS_DeviceUsesWifi = res.wifi;
+            },
+    onFailure: WebOS_FAILURE,
+    subscribe: true
+});
+};
+
+var WebOS_LaunchBrowserWithURL = (url) =>
+{
+webOSDev.launch({
+    id: webOSDev.APP.BROWSER,
+    params: { target: url },
+    onSuccess: WebOS_SUCCESS,
+    onFailure: WebOS_FAILURE
+});	
+};
+
+var WebOS_LaunchApp = (app_package) =>
+{
+webOSDev.launch({
+    id: app_package,
+    params: 
+	{
+        userId: 'user',
+        page: 'shown page'
+    },
+    onSuccess: WebOS_SUCCESS,
+    onFailure: WebOS_FAILURE
+});	
+}; 
+
+//Module: Tizen
+//Created By Rabia Alhaffar In 27/March/2020
+//For Tizen OS
+//See Here: https://developer.samsung.com/SmartTV/develop/api-references.html
+//Also: Don't Forget To Add Needed From API References (Prerequisites)
+
+//Emptied For Some Cases
+var Tizen_SUCCESS = () => {};
+var Tizen_FAILURE = () => {};
+
+//Video And Window
+var Tizen_SetWindowVideoInputSource = (source) => tizen.tvwindow.setSource(source,Tizen_SUCCESS,Tizen_FAILURE);
+var Tizen_WindowVideoInputSource = () => { return tizen.tvwindow.getSource(); };
+var Tizen_Resolution = () => { return tizen.tvwindow.getVideoResolution(); };
+
+//Input
+var Tizen_SupportedKeys = () => { return tizen.tvinputdevice.getSupportedKeys(); };
+var Tizen_RegisterKey = (key) => tizen.tvinputdevice.registerKey(key);
+var Tizen_UnregisterKey = (key) => tizen.tvinputdevice.unregisterKey(key);
+var Tizen_RegisterKeys = (keys) => tizen.tvinputdevice.registerKeyBatch(keys,Tizen_SUCCESS,Tizen_FAILURE);
+var Tizen_UnregisterKeys = (keys) => tizen.tvinputdevice.unregisterKeyBatch(keys,Tizen_SUCCESS,Tizen_FAILURE);
+var Tizen_KeyCode = (key) => { return tizen.tvinputdevice.getKey(key).code; };
+
+//Display Control
+var Tizen_3DEffectMode = () => { return tizen.tvdisplaycontrol.get3DEffectMode(); };
+var Tizen_3DModeEnabled = () => { return tizen.tvdisplaycontrol.is3DModeEnabled(); };
+
+//Audio Control
+var Tizen_Mute = () => tizen.tvaudiocontrol.setMute(true);
+var Tizen_Unmute = () => tizen.tvaudiocontrol.setMute(false);
+var Tizen_Muted = () => { return tizen.tvaudiocontrol.isMute(); };
+var Tizen_IncreaseVolume = () => tizen.tvaudiocontrol.setVolumeUp();
+var Tizen_DecreaseVolume = () => tizen.tvaudiocontrol.setVolumeDown();
+var Tizen_SetVolume = (v) => tizen.tvaudiocontrol.setVolume(v); //From 1 To 100
+var Tizen_GetVolume = () => tizen.tvaudiocontrol.getVolume();
+var Tizen_ListenVolumeChange = (l) => tizen.tvaudiocontrol.setVolumeChangeListener(l);
+var Tizen_UnlistenVolumeChange = () => tizen.tvaudiocontrol.unsetVolumeChangeListener();
+var Tizen_AudioOutputMode = () => { return tizen.tvaudiocontrol.getOutputMode(); };
+var Tizen_PlaySound = (beep) => tizen.tvaudiocontrol.playSound(beep);
+
+//Voice Control
+var Tizen_Client = () => { return tizen.voicecontrol.getVoiceControlClient(); };
+var Tizen_Language = () => { return tizen.voicecontrol.getVoiceControlClient().getCurrentLanguage(); };
+var Tizen_VoiceCommand = (c) => { return new tizen.VoiceControlCommand(c); };
+var Tizen_RegisterVoiceCommandsList = (list) => tizen.voicecontrol.getVoiceControlClient().setCommandList(list,"FOREGROUND"); //List Is JavaScript Array Consists Of Tizen_VoiceCommand() Voice Commands
+var Tizen_AddVoiceCommandListener = (l) => { return tizen.voicecontrol.getVoiceControlClient().addResultListener(l); };
+var Tizen_RemoveVoiceCommandListener = (l) => { return tizen.voicecontrol.getVoiceControlClient().removeResultListener(l); };
+var Tizen_AddLanguageChangeListener = (l) => { return tizen.voicecontrol.getVoiceControlClient().addLanguageChangeListener(l); };
+var Tizen_RemoveLanguageChangeListener = (l) => { tizen.voicecontrol.getVoiceControlClient().removeLanguageChangeListener(l); };
+var Tizen_DisableVoiceControls = () => { tizen.voicecontrol.getVoiceControlClient().release(); }; 
+
+//WebView Settings
+var Tizen_SetWebUserAgent = (useragent_string) => tizen.websetting.setUserAgentString(useragent_string,Tizen_SUCCESS,Tizen_FAILURE);
+var Tizen_RemoveWebCookies = () => tizen.websetting.removeAllCookies(Tizen_SUCCESS,Tizen_FAILURE);
+
+//Time
+var Tizen_CurrentTime = () => { return tizen.time.getCurrentDateTime().toLocaleString(); };
+var Tizen_LocalTimezone = () => { return tizen.time.getLocalTimezone(); };
+var Tizen_Timezone = (place) => { return new tizen.TZDate(new Date(),place).toString(); };
+var Tizen_AvailableTimezones = () => { return tizen.time.getAvailableTimezones(); };
+var Tizen_TimezoneExists = (place) => { return tizen.time.getAvailableTimezones().indexOf(place) > -1; };
+var Tizen_LongDateFormat = () => { return tizen.time.getDateFormat(); };
+var Tizen_ShortDateFormat = () => { return tizen.time.getDateFormat(true); };
+var Tizen_TimeFormat = () => { return tizen.time.getTimeFormat(); };
+var Tizen_LeapYear = () => { return tizen.time.isLeapYear(tizen.time.getCurrentDateTime().getFullYear()); };
+var Tizen_TimezoneDate = () => { return new tizen.TZDate(); };
+var Tizen_ListenDateTimeChange = (l) => { tizen.time.setDateTimeChangeListener(l); };
+var Tizen_UnlistenDateTimeChange = () => { tizen.time.unsetDateTimeChangeListener(); };
+var Tizen_ListenTimezoneChange = (l) => { tizen.time.setTimezoneChangeListener(l); };
+var Tizen_UnlistenTimezoneChange = () => { tizen.time.unsetTimezoneChangeListener(); };
+
+//System Info
+//For Properties And Capabilities,See Link Below!!!
+//https://developer.samsung.com/SmartTV/develop/api-references/tizen-web-device-api-references/systeminfo-api.html
+var Tizen_AvailableRAM = () => { return tizen.systeminfo.getAvailableMemory() * 1000 + "GB"; };
+var Tizen_DeviceCapabilities = () => { return tizen.systeminfo.getCapabilities(); };
+var Tizen_DeviceCapability = (c) => { return tizen.systeminfo.getCapability(c); };
+var Tizen_PropertyValue = (p) => { tizen.systeminfo.getPropertyValue(p,Tizen_SUCCESS,Tizen_FAILURE); };
+
+//Data Saving
+var Tizen_SaveData = (data_name,raw_data,password) => { tizen.keymanager.saveData(data_name,raw_data,password,Tizen_SUCCESS); }; //password Can Be Set To Null,password Is Password To Encrypt Saved Raw Data
+var Tizen_RemoveData = (data_name) => tizen.keymanager.removeData({ "name": data_name });
+var Tizen_Data = (data_name) => { return tizen.keymanager.getData({ "name": data_name }); };
+
+//Download
+var Tizen_DownloadAPISupported = () => { return tizen.systeminfo.getCapability("http://tizen.org/feature/download"); };
+var Tizen_DownloadRequest = (url,location,name,download_mode) => { return new tizen.DownloadRequest(url,location,name,download_mode); };
+/*
+1- Location Can Be "downloads","documents",etc...
+2- If You Set Parameter name Value To null,Tizen Will Download The File In His Original Name
+3- download_mode Can Be "WIFI","CELLUAR",Or "ALL",Which Means What Way User Wants To Download File
+*/
+var Tizen_DownloadFile = (url,location,name,download_mode,listener) => { return tizen.download.start(new tizen.DownloadRequest(url,location,name,download_mode),listener); };
+//NOTES: Tizen_DownloadFile() Downloads A File
+//But You Must Store It As Value In A Variable
+//Cause It Returns Himself As Download ID
+var Tizen_CancelDownload = (tizen_downloadfile_as_id) => tizen.download.cancel(tizen_downloadfile_as_id);
+var Tizen_PauseDownload = (tizen_downloadfile_as_id) => tizen.download.pause(tizen_downloadfile_as_id);
+var Tizen_ResumeDownload = (tizen_downloadfile_as_id) => tizen.download.resume(tizen_downloadfile_as_id);
+var Tizen_DownloadState = (tizen_downloadfile_as_id) => { return tizen.download.getState(tizen_downloadfile_as_id); };
+var Tizen_DownloadRequestInfo = (tizen_downloadfile_as_id) => { return tizen.download.getDownloadRequest(tizen_downloadfile_as_id); };
+
+//Packages
+var Tizen_InstallPackage = (file_package) => tizen.package.install(file_package.toURI(),Tizen_SUCCESS,Tizen_FAILURE);
+var Tizen_UninstallPackage = (package_id) => tizen.package.uninstall(package_id,Tizen_SUCCESS,Tizen_FAILURE);
+
+//Application
+//You Can Use Function Below This Comment To Get Info About The App(Assign It As Value To Variable)
+var Tizen_CurrentApp = () => { return tizen.application.getCurrentApplication(); };
+var Tizen_CurrentAppID = () => { return tizen.application.getCurrentApplication().appInfo.id; };
+var Tizen_KillApp = (app_target_id) => tizen.application.kill(app_target_id,Tizen_SUCCESS,Tizen_FAILURE);
+var Tizen_LaunchApp = (app_target_id) => tizen.application.launch(app_target_id,Tizen_SUCCESS);
+var Tizen_AppInfo = () => { return tizen.application.getAppInfo(null); };
+var Tizen_CloseApp = () => tizen.application.getCurrentApplication().exit();
+var Tizen_HideApp = () => tizen.application.getCurrentApplication().hide();
+
+//Archives
+var Tizen_ReadArchive = (directory) => tizen.archive.open(directory,"r",Tizen_SUCCESS);
+var Tizen_OpenArchive = (directory,mode) => tizen.archive.open(directory,mode,Tizen_SUCCESS);
+var Tizen_ExtractArchive = (directory,extract_directory) =>
+{
+    tizen.archive.open(directory,"rw",(archive) =>
+    {
+        var extra = archive.extractAll(extract_directory);
+        tizen.archive.abort(extra);
+        archive.close();
+    });
+};
+var Tizen_CreateArchive = (directory,files) =>
+{
+    tizen.archive.open(directory,"rw",(archive) =>
+    {
+        for(var arc = 0;arc < files.length;arc++) archive.add(files[arc],null,null,null);
+        archive.close();
+    },null,null);
+};
+
+//Alarms
+//Tizen_Alarm() Assigned As Value To Variable,Cause Also Treated As Alarm ID
+//In Case User Wants To Control It
+var Tizen_Alarm = (date) => { return new tizen.AlarmAbsolute(date); };
+var Tizen_AddAlarm = (alarm,app_target_id) => tizen.alarm.add(alarm,app_target_id,null);
+var Tizen_RemoveAlarm = (alarm) => tizen.alarm.add(alarm);
+var Tizen_AllAlarms = () => { return tizen.alarm.getAll(); };
+var Tizen_RemoveAllAlarms = () => tizen.alarm.removeAll();
+var Tizen_GetAlarm = (alarm) => { return tizen.alarm.get(alarm); };
