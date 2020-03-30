@@ -1,6 +1,7 @@
 //Created By Rabia Alhaffar In 5/March/2020
 //A Game About Catching Apples With Basket LOL
 //This Will Be The Tutorial For Cake
+UpdateEngine();
 CreateCanvas(600,600,"white","3px black solid");
 Initialize();
 
