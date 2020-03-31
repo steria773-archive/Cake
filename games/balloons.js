@@ -20,7 +20,7 @@ CreateCanvas(640,640,"dodgerblue");
 Initialize();
 
 //Score,Balloon Speed
-var score = 0,balloon_speed = 6;
+var score = 0,balloon_speed = 3;
 
 //Balloons Images
 var balloons = 
@@ -36,7 +36,7 @@ var balloon = new Texture(balloons[Math.floor(Math.random() * 4)],Math.floor(Mat
 
 var balloons_game = new Level(() =>
 {
-    //Increasing Balloon Speed
+    //Increase Balloon Speed
     balloon_speed += 0.001;
 
     //Clearing Graphics
