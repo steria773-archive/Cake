@@ -9,7 +9,7 @@ https://opengameart.org/content/sprites-from-porcupop
 Licensed Under Creative Commons 3.0 License (CC-BY-SA 3.0)
 
 
-Gniffelbaf At freesound.org For Using Sound
+Gniffelbaf At freesound.org For Using Balloon Popping Sound
 
 https://freesound.org/people/Gniffelbaf/sounds/82120/
 This work is licensed under the Creative Commons 0 License.
@@ -19,8 +19,8 @@ This work is licensed under the Creative Commons 0 License.
 CreateCanvas(640,640,"dodgerblue");
 Initialize();
 
-//Score
-var score = 0;
+//Score,Balloon Speed
+var score = 0,balloon_speed = 6;
 
 //Balloons Images
 var balloons = 
@@ -36,6 +36,9 @@ var balloon = new Texture(balloons[Math.floor(Math.random() * 4)],Math.floor(Mat
 
 var balloons_game = new Level(() =>
 {
+    //Increasing Balloon Speed
+    balloon_speed += 0.001;
+
     //Clearing Graphics
     ClearCanvas();
 
@@ -44,7 +47,7 @@ var balloons_game = new Level(() =>
     DrawText(CanvasWidth / 2.2,80,score,"white");
 
     //Updating Balloon With Moving Him Up (Note The Decrease)
-    balloon.speedY = -10;
+    balloon.speedY = -balloon_speed;
     balloon.Update();
 
     //If Balloon Clicked Or Touched
