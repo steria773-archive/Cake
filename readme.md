@@ -48,6 +48,10 @@ Result Can Be Found [Here](https://cake-engine.github.io/Cake/examples/input_03.
 - Powered By WebAudio API
 - A Component `Music()` For Playing,Pausing,Resuming Playing Sounds 
 
+### Video
+- Easy And Simple To Create And Control Videos
+- Ability To Remove It After Being Finished Playing
+
 ### Detection
 - Detecting Made For:
 1. Device Operating System Detection
