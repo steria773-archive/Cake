@@ -4,6 +4,7 @@ var PlayVideo = (src) =>
 {
     var video = document.createElement("video");
     video.src = src;
+    video.style.visibility = "visible";
     video.loop = false;
     cakepen.drawImage(video,0,0,cakecanvas.width,cakecanvas.height);
     video.onended = () => video.parentNode.removeChild(video);
@@ -14,6 +15,7 @@ function Video(src)
     this.src = src;
     this.removeonfinish = false;
     this.video = document.createElement("video");
+    this.video.style.visibility = "visible";
     this.video.src = this.src;
     this.video.loop = false;
     this.video.controls = false;
@@ -43,5 +45,4 @@ function Video(src)
     {
         this.removeonfinish = true;
     };
-
 }
